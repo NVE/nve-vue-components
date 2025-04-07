@@ -1,0 +1,842 @@
+[
+  {
+    "name": "United States",
+    "countryCode": "US",
+    "capital": "Washington, D.C.",
+    "continent": "North America",
+    "governmentType": "Federal presidential constitutional republic",
+    "population": 331002651,
+    "area": 9833517,
+    "foundingYear": 1776
+  },
+  {
+    "name": "China",
+    "governmentType": "Unitary one-party socialist republic",
+    "countryCode": "CN",
+    "capital": "Beijing",
+    "continent": "Asia",
+    "population": 1439323776,
+    "area": 9596961,
+    "foundingYear": 1949
+  },
+  {
+    "name": "Germany",
+    "governmentType": "Federal parliamentary republic",
+    "countryCode": "DE",
+    "capital": "Berlin",
+    "continent": "Europe",
+    "population": 83783942,
+    "area": 357022,
+    "foundingYear": 1871
+  },
+  {
+    "name": "India",
+    "governmentType": "Federal parliamentary democratic republic",
+    "countryCode": "IN",
+    "capital": "New Delhi",
+    "continent": "Asia",
+    "population": 1380004385,
+    "area": 3287263,
+    "foundingYear": 1947
+  },
+  {
+    "name": "Brazil",
+    "governmentType": "Federal presidential constitutional republic",
+    "countryCode": "BR",
+    "capital": "Brasília",
+    "continent": "South America",
+    "population": 212559417,
+    "area": 8515767,
+    "foundingYear": 1822
+  },
+  {
+    "name": "South Africa",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "ZA",
+    "capital": "Pretoria",
+    "continent": "Africa",
+    "population": 59308690,
+    "area": 1219090,
+    "foundingYear": 1910
+  },
+  {
+    "name": "Australia",
+    "governmentType": "Federal parliamentary constitutional monarchy",
+    "countryCode": "AU",
+    "capital": "Canberra",
+    "continent": "Oceania",
+    "population": 25499884,
+    "area": 7692024,
+    "foundingYear": 1901
+  },
+  {
+    "name": "Canada",
+    "governmentType": "Federal parliamentary constitutional monarchy",
+    "countryCode": "CA",
+    "capital": "Ottawa",
+    "continent": "North America",
+    "population": 37742154,
+    "area": 9984670,
+    "foundingYear": 1867
+  },
+  {
+    "name": "Russia",
+    "governmentType": "Federal semi-presidential constitutional republic",
+    "countryCode": "RU",
+    "capital": "Moscow",
+    "continent": "Europe/Asia",
+    "population": 145934462,
+    "area": 17098242,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Japan",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "JP",
+    "capital": "Tokyo",
+    "continent": "Asia",
+    "population": 126476461,
+    "area": 377975,
+    "foundingYear": 660
+  },
+  {
+    "name": "United Kingdom",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "GB",
+    "capital": "London",
+    "continent": "Europe",
+    "population": 67886011,
+    "area": 243610,
+    "foundingYear": 1707
+  },
+  {
+    "name": "France",
+    "governmentType": "Unitary semi-presidential constitutional republic",
+    "countryCode": "FR",
+    "capital": "Paris",
+    "continent": "Europe",
+    "population": 65273511,
+    "area": 551695,
+    "foundingYear": 1792
+  },
+  {
+    "name": "Italy",
+    "governmentType": "Unitary parliamentary constitutional republic",
+    "countryCode": "IT",
+    "capital": "Rome",
+    "continent": "Europe",
+    "population": 60461826,
+    "area": 301340,
+    "foundingYear": 1861
+  },
+  {
+    "name": "Mexico",
+    "governmentType": "Federal presidential constitutional republic",
+    "countryCode": "MX",
+    "capital": "Mexico City",
+    "continent": "North America",
+    "population": 128932753,
+    "area": 1964375,
+    "foundingYear": 1821
+  },
+  {
+    "name": "South Korea",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "KR",
+    "capital": "Seoul",
+    "continent": "Asia",
+    "population": 51269185,
+    "area": 100210,
+    "foundingYear": 1948
+  },
+  {
+    "name": "Argentina",
+    "governmentType": "Federal presidential constitutional republic",
+    "countryCode": "AR",
+    "capital": "Buenos Aires",
+    "continent": "South America",
+    "population": 45195774,
+    "area": 2780400,
+    "foundingYear": 1816
+  },
+  {
+    "name": "Saudi Arabia",
+    "governmentType": "Unitary absolute monarchy",
+    "countryCode": "SA",
+    "capital": "Riyadh",
+    "continent": "Asia",
+    "population": 34813871,
+    "area": 2149690,
+    "foundingYear": 1932
+  },
+  {
+    "name": "Spain",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "ES",
+    "capital": "Madrid",
+    "continent": "Europe",
+    "population": 46754778,
+    "area": 505990,
+    "foundingYear": 1492
+  },
+  {
+    "name": "Turkey",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "TR",
+    "capital": "Ankara",
+    "continent": "Asia/Europe",
+    "population": 84339067,
+    "area": 783562,
+    "foundingYear": 1923
+  },
+  {
+    "name": "Indonesia",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "ID",
+    "capital": "Jakarta",
+    "continent": "Asia",
+    "population": 273523615,
+    "area": 1904569,
+    "foundingYear": 1945
+  },
+  {
+    "name": "Nigeria",
+    "governmentType": "Federal presidential constitutional republic",
+    "countryCode": "NG",
+    "capital": "Abuja",
+    "continent": "Africa",
+    "population": 206139589,
+    "area": 923768,
+    "foundingYear": 1960
+  },
+  {
+    "name": "Pakistan",
+    "governmentType": "Federal parliamentary republic",
+    "countryCode": "PK",
+    "capital": "Islamabad",
+    "continent": "Asia",
+    "population": 220892340,
+    "area": 881913,
+    "foundingYear": 1947
+  },
+  {
+    "name": "Bangladesh",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "BD",
+    "capital": "Dhaka",
+    "continent": "Asia",
+    "population": 164689383,
+    "area": 147570,
+    "foundingYear": 1971
+  },
+  {
+    "name": "Vietnam",
+    "governmentType": "Unitary one-party socialist republic",
+    "countryCode": "VN",
+    "capital": "Hanoi",
+    "continent": "Asia",
+    "population": 97338579,
+    "area": 331212,
+    "foundingYear": 1945
+  },
+  {
+    "name": "Egypt",
+    "governmentType": "Unitary semi-presidential republic",
+    "countryCode": "EG",
+    "capital": "Cairo",
+    "continent": "Africa",
+    "population": 102334404,
+    "area": 1002450,
+    "foundingYear": 1922
+  },
+  {
+    "name": "Thailand",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "TH",
+    "capital": "Bangkok",
+    "continent": "Asia",
+    "population": 69799978,
+    "area": 513120,
+    "foundingYear": 1238
+  },
+  {
+    "name": "Iran",
+    "governmentType": "Unitary presidential Islamic republic",
+    "countryCode": "IR",
+    "capital": "Tehran",
+    "continent": "Asia",
+    "population": 83992949,
+    "area": 1648195,
+    "foundingYear": 1979
+  },
+  {
+    "name": "Philippines",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "PH",
+    "capital": "Manila",
+    "continent": "Asia",
+    "population": 109581078,
+    "area": 300000,
+    "foundingYear": 1946
+  },
+  {
+    "name": "Ethiopia",
+    "governmentType": "Federal parliamentary republic",
+    "countryCode": "ET",
+    "capital": "Addis Ababa",
+    "continent": "Africa",
+    "population": 114963588,
+    "area": 1104300,
+    "foundingYear": -980
+  },
+  {
+    "name": "Colombia",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "CO",
+    "capital": "Bogotá",
+    "continent": "South America",
+    "population": 50882891,
+    "area": 1141748,
+    "foundingYear": 1810
+  },
+  {
+    "name": "Ukraine",
+    "governmentType": "Unitary semi-presidential constitutional republic",
+    "countryCode": "UA",
+    "capital": "Kyiv",
+    "continent": "Europe",
+    "population": 43733762,
+    "area": 603500,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Oman",
+    "governmentType": "Unitary absolute monarchy",
+    "countryCode": "OM",
+    "capital": "Muscat",
+    "continent": "Asia",
+    "population": 5106626,
+    "area": 309500,
+    "foundingYear": 1650
+  },
+  {
+    "name": "Myanmar",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "MM",
+    "capital": "Naypyidaw",
+    "continent": "Asia",
+    "population": 54409800,
+    "area": 676578,
+    "foundingYear": 1948
+  },
+  {
+    "name": "Kenya",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "KE",
+    "capital": "Nairobi",
+    "continent": "Africa",
+    "population": 53771296,
+    "area": 580367,
+    "foundingYear": 1963
+  },
+  {
+    "name": "South Sudan",
+    "governmentType": "Federal presidential republic",
+    "countryCode": "SS",
+    "capital": "Juba",
+    "continent": "Africa",
+    "population": 11193725,
+    "area": 619745,
+    "foundingYear": 2011
+  },
+  {
+    "name": "Chile",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "CL",
+    "capital": "Santiago",
+    "continent": "South America",
+    "population": 19116201,
+    "area": 756102,
+    "foundingYear": 1818
+  },
+  {
+    "name": "Malaysia",
+    "governmentType": "Federal parliamentary constitutional monarchy",
+    "countryCode": "MY",
+    "capital": "Kuala Lumpur",
+    "continent": "Asia",
+    "population": 32365999,
+    "area": 330803,
+    "foundingYear": 1957
+  },
+  {
+    "name": "Norway",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "NO",
+    "capital": "Oslo",
+    "continent": "Europe",
+    "population": 5379475,
+    "area": 385207,
+    "foundingYear": 872
+  },
+  {
+    "name": "Sweden",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "SE",
+    "capital": "Stockholm",
+    "continent": "Europe",
+    "population": 10353442,
+    "area": 450295,
+    "foundingYear": 1523
+  },
+  {
+    "name": "Denmark",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "DK",
+    "capital": "Copenhagen",
+    "continent": "Europe",
+    "population": 5831404,
+    "area": 43094,
+    "foundingYear": 965
+  },
+  {
+    "name": "Finland",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "FI",
+    "capital": "Helsinki",
+    "continent": "Europe",
+    "population": 5536146,
+    "area": 338424,
+    "foundingYear": 1917
+  },
+  {
+    "name": "Iceland",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "IS",
+    "capital": "Reykjavik",
+    "continent": "Europe",
+    "population": 366425,
+    "area": 103000,
+    "foundingYear": 1944
+  },
+  {
+    "name": "Portugal",
+    "governmentType": "Unitary parliamentary constitutional republic",
+    "countryCode": "PT",
+    "capital": "Lisbon",
+    "continent": "Europe",
+    "population": 10276617,
+    "area": 92212,
+    "foundingYear": 1143
+  },
+  {
+    "name": "Greece",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "GR",
+    "capital": "Athens",
+    "continent": "Europe",
+    "population": 10423054,
+    "area": 131957,
+    "foundingYear": 1830
+  },
+  {
+    "name": "Switzerland",
+    "governmentType": "Federal directorial republic",
+    "countryCode": "CH",
+    "capital": "Bern",
+    "continent": "Europe",
+    "population": 8654622,
+    "area": 41284,
+    "foundingYear": 1291
+  },
+  {
+    "name": "Austria",
+    "governmentType": "Federal parliamentary republic",
+    "countryCode": "AT",
+    "capital": "Vienna",
+    "continent": "Europe",
+    "population": 9006398,
+    "area": 83879,
+    "foundingYear": 1955
+  },
+  {
+    "name": "Belgium",
+    "governmentType": "Federal parliamentary constitutional monarchy",
+    "countryCode": "BE",
+    "capital": "Brussels",
+    "continent": "Europe",
+    "population": 11589623,
+    "area": 30528,
+    "foundingYear": 1830
+  },
+  {
+    "name": "Netherlands",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "NL",
+    "capital": "Amsterdam",
+    "continent": "Europe",
+    "population": 17441139,
+    "area": 41543,
+    "foundingYear": 1581
+  },
+  {
+    "name": "Poland",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "PL",
+    "capital": "Warsaw",
+    "continent": "Europe",
+    "population": 38386000,
+    "area": 312696,
+    "foundingYear": 966
+  },
+  {
+    "name": "Czech Republic",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "CZ",
+    "capital": "Prague",
+    "continent": "Europe",
+    "population": 10708981,
+    "area": 78865,
+    "foundingYear": 1993
+  },
+  {
+    "name": "Hungary",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "HU",
+    "capital": "Budapest",
+    "continent": "Europe",
+    "population": 9772756,
+    "area": 93028,
+    "foundingYear": 1000
+  },
+  {
+    "name": "Romania",
+    "governmentType": "Unitary semi-presidential republic",
+    "countryCode": "RO",
+    "capital": "Bucharest",
+    "continent": "Europe",
+    "population": 19237691,
+    "area": 238397,
+    "foundingYear": 1859
+  },
+  {
+    "name": "Bulgaria",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "BG",
+    "capital": "Sofia",
+    "continent": "Europe",
+    "population": 6927288,
+    "area": 110879,
+    "foundingYear": 681
+  },
+  {
+    "name": "Slovakia",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "SK",
+    "capital": "Bratislava",
+    "continent": "Europe",
+    "population": 5456362,
+    "area": 49035,
+    "foundingYear": 1993
+  },
+  {
+    "name": "Croatia",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "HR",
+    "capital": "Zagreb",
+    "continent": "Europe",
+    "population": 4047200,
+    "area": 56594,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Serbia",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "RS",
+    "capital": "Belgrade",
+    "continent": "Europe",
+    "population": 6963764,
+    "area": 77474,
+    "foundingYear": 2006
+  },
+  {
+    "name": "Slovenia",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "SI",
+    "capital": "Ljubljana",
+    "continent": "Europe",
+    "population": 2100126,
+    "area": 20273,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "governmentType": "Federal parliamentary republic",
+    "countryCode": "BA",
+    "capital": "Sarajevo",
+    "continent": "Europe",
+    "population": 3280819,
+    "area": 51197,
+    "foundingYear": 1992
+  },
+  {
+    "name": "Montenegro",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "ME",
+    "capital": "Podgorica",
+    "continent": "Europe",
+    "population": 622359,
+    "area": 13812,
+    "foundingYear": 2006
+  },
+  {
+    "name": "North Macedonia",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "MK",
+    "capital": "Skopje",
+    "continent": "Europe",
+    "population": 2077132,
+    "area": 25713,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Albania",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "AL",
+    "capital": "Tirana",
+    "continent": "Europe",
+    "population": 2877797,
+    "area": 28748,
+    "foundingYear": 1912
+  },
+  {
+    "name": "Kosovo",
+    "governmentType": "Unitary parliamentary republic",
+    "countryCode": "XK",
+    "capital": "Pristina",
+    "continent": "Europe",
+    "population": 1831000,
+    "area": 10887,
+    "foundingYear": 2008
+  },
+  {
+    "name": "Kazakhstan",
+    "governmentType": "Unitary presidential republic",
+    "countryCode": "KZ",
+    "capital": "Astana",
+    "continent": "Asia",
+    "population": 18754440,
+    "area": 2724900,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Uzbekistan",
+    "governmentType": "Unitary presidential republic",
+    "countryCode": "UZ",
+    "capital": "Tashkent",
+    "continent": "Asia",
+    "population": 34232050,
+    "area": 447400,
+    "foundingYear": 1991
+  },
+  {
+    "name": "Morocco",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "MA",
+    "capital": "Rabat",
+    "continent": "Africa",
+    "population": 36910560,
+    "area": 446550,
+    "foundingYear": 1956
+  },
+  {
+    "name": "Algeria",
+    "governmentType": "Unitary presidential republic",
+    "countryCode": "DZ",
+    "capital": "Algiers",
+    "continent": "Africa",
+    "population": 43851044,
+    "area": 2381741,
+    "foundingYear": 1962
+  },
+  {
+    "name": "Angola",
+    "governmentType": "Unitary presidential republic",
+    "countryCode": "AO",
+    "capital": "Luanda",
+    "continent": "Africa",
+    "population": 32866272,
+    "area": 1246700,
+    "foundingYear": 1975
+  },
+  {
+    "name": "Tanzania",
+    "governmentType": "Unitary presidential republic",
+    "countryCode": "TZ",
+    "capital": "Dodoma",
+    "continent": "Africa",
+    "population": 59734218,
+    "area": 945087,
+    "foundingYear": 1964
+  },
+  {
+    "name": "Eritrea",
+    "governmentType": "Unitary one-party presidential republic",
+    "countryCode": "ER",
+    "capital": "Asmara",
+    "continent": "Africa",
+    "population": 3546421,
+    "area": 117600,
+    "foundingYear": 1993
+  },
+  {
+    "name": "Sri Lanka",
+    "governmentType": "Unitary semi-presidential republic",
+    "countryCode": "LK",
+    "capital": "Sri Jayawardenepura Kotte",
+    "continent": "Asia",
+    "population": 21919000,
+    "area": 65610,
+    "foundingYear": 1948
+  },
+  {
+    "name": "Nepal",
+    "governmentType": "Federal parliamentary republic",
+    "countryCode": "NP",
+    "capital": "Kathmandu",
+    "continent": "Asia",
+    "population": 29136808,
+    "area": 147181,
+    "foundingYear": 1768
+  },
+  {
+    "name": "Ghana",
+    "governmentType": "Unitary presidential constitutional republic",
+    "countryCode": "GH",
+    "capital": "Accra",
+    "continent": "Africa",
+    "population": 31072940,
+    "area": 238533,
+    "foundingYear": 1957
+  },
+  {
+    "name": "Vatican City",
+    "governmentType": "Ecclesiastical elective monarchy",
+    "countryCode": "VA",
+    "capital": "Vatican City",
+    "continent": "Europe",
+    "population": 825,
+    "area": 0.44,
+    "foundingYear": 1929
+  },
+  {
+    "name": "Monaco",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "MC",
+    "capital": "Monaco",
+    "continent": "Europe",
+    "population": 39242,
+    "area": 2.02,
+    "foundingYear": 1297
+  },
+  {
+    "name": "Andorra",
+    "governmentType": "Unitary parliamentary constitutional diarchy",
+    "countryCode": "AD",
+    "capital": "Andorra la Vella",
+    "continent": "Europe",
+    "population": 77265,
+    "area": 468,
+    "foundingYear": 1278
+  },
+  {
+    "name": "San Marino",
+    "governmentType": "Unitary parliamentary constitutional republic",
+    "countryCode": "SM",
+    "capital": "San Marino",
+    "continent": "Europe",
+    "population": 33931,
+    "area": 61,
+    "foundingYear": 301
+  },
+  {
+    "name": "Liechtenstein",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "LI",
+    "capital": "Vaduz",
+    "continent": "Europe",
+    "population": 38749,
+    "area": 160,
+    "foundingYear": 1719
+  },
+  {
+    "name": "North Korea",
+    "governmentType": "Unitary one-party socialist republic",
+    "countryCode": "KP",
+    "capital": "Pyongyang",
+    "continent": "Asia",
+    "population": 25778816,
+    "area": 120540,
+    "foundingYear": 1948
+  },
+  {
+    "name": "Eswatini",
+    "governmentType": "Unitary absolute monarchy",
+    "countryCode": "SZ",
+    "capital": "Mbabane",
+    "continent": "Africa",
+    "population": 1160164,
+    "area": 17364,
+    "foundingYear": 1968
+  },
+  {
+    "name": "Brunei",
+    "governmentType": "Unitary absolute monarchy",
+    "countryCode": "BN",
+    "capital": "Bandar Seri Begawan",
+    "continent": "Asia",
+    "population": 437479,
+    "area": 5765,
+    "foundingYear": 1984
+  },
+  {
+    "name": "Qatar",
+    "governmentType": "Unitary absolute monarchy",
+    "countryCode": "QA",
+    "capital": "Doha",
+    "continent": "Asia",
+    "population": 2881060,
+    "area": 11571,
+    "foundingYear": 1971
+  },
+  {
+    "name": "Kuwait",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "KW",
+    "capital": "Kuwait City",
+    "continent": "Asia",
+    "population": 4270571,
+    "area": 17818,
+    "foundingYear": 1961
+  },
+  {
+    "name": "United Arab Emirates",
+    "governmentType": "Federal absolute monarchy",
+    "countryCode": "AE",
+    "capital": "Abu Dhabi",
+    "continent": "Asia",
+    "population": 9890402,
+    "area": 83600,
+    "foundingYear": 1971
+  },
+  {
+    "name": "New Zealand",
+    "governmentType": "Unitary parliamentary constitutional monarchy",
+    "countryCode": "NZ",
+    "capital": "Wellington",
+    "continent": "Oceania",
+    "population": 5084300,
+    "area": 268838,
+    "foundingYear": 1840
+  }
+]
