@@ -1,0 +1,43 @@
+@import "./reset.css";
+@import "/node_modules/nve-designsystem/css/nve.css";
+@import "/node_modules/nve-designsystem/css/nve_dark.css";
+
+:root.darkmode {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  color: var(--neutrals-foreground-primary);
+  --top-menu-height: 80px;
+  --footer-height: 80px;
+  outline-color: var(--interactive-ghost-border-focus);
+}
+
+#app,
+#modalholder {
+  font: var(--body-small);
+}
+
+/* Material Symbols sine ikoner */
+svg[height="48"][width="48"] {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  &.scaleicon {
+    height: unset;
+    width: unset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
