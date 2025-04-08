@@ -31,10 +31,6 @@
     ".": {
       "import": "./dist/nve-vue-components.js",
       "require": "./dist/nve-vue-components.umd.cjs"
-    },
-    "./dist/nve-vue-components.css": {
-      "import": "./dist/nve-vue-components.css",
-      "require": "./dist/nve-vue-components.css"
     }
   },
   "dependencies": {
@@ -46,13 +42,14 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vue/eslint-config-typescript": "^14.5.0",
     "@types/node": "^22.13.14",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-typescript": "^14.5.0",
     "@vue/tsconfig": "^0.7.0",
     "path": "^0.12.7",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.3",
     "vue-tsc": "^2.2.4"
   }

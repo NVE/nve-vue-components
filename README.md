@@ -17,7 +17,6 @@ For å kjøre demo-applikasjonen, sørg først for at du har gjort en `npm insta
 ## Bruk i prosjekt
 
 For info om komponentene, se demo-mappen.
-Husk at du også må inkludere `nve-vue-components.css` i prosjektet ved bruk.
 
 ## Utvikling
 
