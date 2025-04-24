@@ -94,7 +94,6 @@ const props = withDefaults(
   {
     async: false,
     pageSize: undefined,
-    textFilterFunction: undefined,
     onClickRow: undefined,
     filterFunction: undefined,
     saveStateId: undefined,
