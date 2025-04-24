@@ -127,7 +127,7 @@ const numPages = computed(() => {
   if (isAsyncTable(props)) {
     return Math.ceil(props.totalHits / (props.pageSize ?? 1));
   } else if (isSyncTable(props)) {
-    props.pageSize
+    return props.pageSize
       ? Math.ceil((filteredData.value?.length ?? 0) / props.pageSize)
       : 1;
   }
