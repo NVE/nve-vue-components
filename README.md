@@ -26,6 +26,11 @@ app.use(NVEComponents)
 app.mount('#app')
 ```
 
+### ℹ️ Importstruktur:
+
+Biblioteket eksporterer både som `default` og `named` for fleksibel bruk. `rollupOptions.output.exports = "named"` er brukt i byggverktøyet for å støtte dette.
+
+
 ## 📘 Eksempel: Bruk av NveTable i et Vue 3-prosjekt
 
 ```ts
@@ -119,16 +124,33 @@ Dette fungerer med `<script setup>` i Vue 3.
 - Skriv JsDoc-kommentarer på norsk for alle offentlige props
 - Bruk `defineExpose` hvis du eksporterer metoder fra komponenten
 
-### 4. 🔄 Ingen manuell registrering kreves
+### 4. 📝 Legg til komponenten manuelt i src/index.ts
 
-Komponenter registreres automatisk av `index.ts` hvis:
+Etter at du har opprettet komponenten, må du eksportere den manuelt fra `index.ts`:
 
-- De ligger i `src/components/`
-- De har `name` definert
+```ts
+export { default as NveAlert } from './components/NveAlert.vue';
+```
+
+Dette er nødvendig for at komponenten skal kunne importeres eksplisitt:
+
+```ts
+import { NveAlert } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
+```
+
 
 ### 5. 🔬 Test komponenten i `/demo`-appen
 
 Bruk demo-prosjektet for å verifisere utseende og funksjonalitet.
+
+## 📦 Eksportstruktur
+
+Dette biblioteket tilbyr:
+
+- `default` eksport for global registrering
+- `named` eksport for individuell import
+
+`vite.config.ts` bruker `output.exports = "named"` for å unngå advarsler og støtte begge måter. Dette er bevisst valgt for fleksibilitet.
 
 ## 📄 Lisens
 

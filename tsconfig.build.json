@@ -6,7 +6,11 @@
       "emitDeclarationOnly": true,
       "noEmit": false,
       "outDir": "dist",
-      "composite": false
+      "composite": false,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      }
     },
     "include": ["src"],
     "exclude": ["demo", "dist", "node_modules"]

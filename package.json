@@ -9,12 +9,11 @@
   "module": "./dist/nve-vue-components.es.js",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/nve-vue-components.es.js",
-      "require": "./dist/nve-vue-components.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/nve-vue-components.umd.js"
     }
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src/components/"

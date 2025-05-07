@@ -29,6 +29,7 @@ export default defineConfig({
     rollupOptions: {
       external: ["vue", "nve-designsystem", "@vueuse/core"],
       output: {
+        exports: "named",
         globals: {
           vue: "Vue",
           "nve-designsystem": "NveDesignsystem",
