@@ -1,23 +1,64 @@
-# Vue-komponenter for NVE Designsystem
+# @norges-vassdrags-og-energidirektorat/nve-vue-components
 
-NVE's standard komponentbibliotek er implementert som web-components. Mer info om dette finner du her: https://designsystem.nve.no/
+Vue-komponenter som bygger på [NVE Designsystem](https://designsystem.nve.no/), men som er for komplekse til å implementeres som rene web-komponenter.
 
-Dette prosjektet inneholder komponenter som bygger på NVE sitt designsystem, men som blir ansett som for komplekse til å være rene web-komponenter.
+## 📦 Installasjon
 
-## Dokumentasjon
+```bash
+npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
+```
 
-Vi dokumenterer på norsk. Gjelder også JsDoc og kommentarer i koden.
+## 🚀 Bruk i Vue 3-prosjekter 
 
-## Kjøremiljø
+```ts
+import { NveButton, NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+````
 
-Dette prosjektet inneholder selve koden, og en demo-applikasjon som ligger i `/demo`-mappen
+Eller registrer hele pakken globalt:
 
-For å kjøre demo-applikasjonen, sørg først for at du har gjort en `npm install` i rot og i `/demo`, kjør deretter `npm run demo` i rot-mappen
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import NVEComponents from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
 
-## Bruk i prosjekt
+const app = createApp(App)
+app.use(NVEComponents)
+app.mount('#app')
+````
 
-For info om komponentene, se demo-mappen.
+## 📚 Dokumentasjon
 
-## Utvikling
+- Dokumentasjon skrives på norsk – dette gjelder også kommentarer og JsDoc i koden.
+- Eksempler og komponentbruk finnes i /demo-mappen.
 
-For å teste koden i et lokalt miljø kan du kjøre en `npm run build` for så å kjøre `npm install <path-til-denne-koden>` i et prosjekt. Husk å også endre path til css-filen.
+## 🛠️ Kjøremiljø og utvikling
+
+Prosjektet inneholder:
+
+- Kildekode (/src/components)
+- Demo-applikasjon (/demo)
+
+## Starte demo-løsningen
+
+1) Kjør npm install i rot og i /demo
+
+2) Kjør npm run demo fra rotmappen
+
+## Lokal testing i et annet prosjekt
+
+Etter  `npm run build`, lenk inn biblioteket:
+
+```bash
+npm install <path-til-denne-koden>
+```
+
+### 🧪 Lint med [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
+
+### 📄 Lisens
+
+MIT © NVE
+

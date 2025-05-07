@@ -1,26 +1,30 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import dts from "vite-plugin-dts";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import * as path from "path";
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
+import dts from "vite-plugin-dts"
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js"
+import * as path from "path"
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.toLocaleLowerCase().startsWith("nve-"),
+          isCustomElement: (tag) => tag.toLowerCase().startsWith("nve-"),
         },
       },
     }),
-    dts(),
-    cssInjectedByJsPlugin(),
+    dts({
+      outDir: "dist",             
+      insertTypesEntry: true    
+    }),
+    cssInjectedByJsPlugin()
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: path.resolve(__dirname, "src/index.ts"), 
       name: "NveVueComponents",
-      fileName: "nve-vue-components",
+      fileName: (format) => `nve-vue-components.${format}.js`, 
+      formats: ["es", "umd"]
     },
     rollupOptions: {
       external: ["vue", "nve-designsystem", "@vueuse/core"],
@@ -28,14 +32,16 @@ export default defineConfig({
         globals: {
           vue: "Vue",
           "nve-designsystem": "NveDesignsystem",
-          "@vueuse/core": "@vueuse/core",
-        },
-      },
+          "@vueuse/core": "@vueuse/core"
+        }
+      }
     },
+    outDir: "dist",
+    emptyOutDir: true
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
-});
+      "@": path.resolve(__dirname, "src")
+    }
+  }
+})
