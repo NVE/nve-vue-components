@@ -1,4 +1,6 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
+  defineOptions({ name: 'NveTable' })
+
 import {
   computed,
   ref,

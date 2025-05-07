@@ -1,15 +1,22 @@
-import NveTable from "./components/NveTable.vue";
-import type {
-  TableHeader,
-  SortFunction,
-  SorterType,
-  TableProps,
-} from "./components/NveTable.vue";
-import {
-  sortByFunction,
-  sortByProperty,
-} from "./components/tableSortFunctions";
+import { App } from 'vue'
+import { sortByFunction, sortByProperty } from './components/tableSortFunctions'
 
-export { NveTable };
-export { sortByFunction, sortByProperty };
-export type { TableHeader, SortFunction, SorterType, TableProps };
+// Automatisk import av alle .vue-komponenter til ./components
+const modules = import.meta.glob('./components/**/*.vue', { eager: true })
+
+const NVEComponents = {
+  install(app: App) {
+    for (const path in modules) {
+      const mod = modules[path] as any
+      const component = mod.default
+      if (component?.name) {
+        app.component(component.name, component)
+      }
+    }
+  }
+}
+
+export default NVEComponents
+
+// Navngitte eksporter hvis du vil bruke individuelle ting
+export { sortByFunction, sortByProperty }

@@ -58,6 +58,50 @@ npm install <path-til-denne-koden>
 npm run lint
 ```
 
+### 🧱 Lage nye komponenter
+
+For å legge til nye komponenter i biblioteket, følg disse stegene:
+
+#### 1. 📁 Legg komponenten i `src/components/`
+
+Opprett en ny fil, f.eks. `NveAlert.vue`
+
+```ts
+<script setup lang="ts">
+defineOptions({ name: 'NveAlert' })
+</script>
+
+<template>
+  <div class="alert"><slot /></div>
+</template>
+```
+
+#### 2. 🏷️ Viktig: Sett `name` med `defineOptions`
+
+```ts
+defineOptions({ name: 'NveAlert' })
+```
+
+Dette fungerer med `<script setup>` i Vue 3.
+
+#### 3.💡 Tips for kvalitet og gjenbruk
+
+- Navngi komponenter med prefiks `Nve` (f.eks. `NveDialog`, `NveTable`)
+- Bruk props og typer konsekvent med `defineProps` og `withDefaults`
+- Skriv JsDoc-kommentarer på norsk for alle offentlige props
+- Bruk `defineExpose` hvis du eksporterer metoder fra komponenten
+
+#### 4. 🔄 Ingen manuell registrering kreves
+
+Komponenter registreres automatisk av `index.ts` hvis:
+
+- De ligger i `src/components/`
+- De har `name` definert
+
+#### 5. 🔬 Test komponenten i `/demo`-appen
+
+Bruk demo-prosjektet for å verifisere utseende og funksjonalitet.
+
 ### 📄 Lisens
 
 MIT © NVE
