@@ -8,15 +8,18 @@ Vue-komponenter som bygger på [NVE Designsystem](https://designsystem.nve.no/),
 npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
 ```
 
-## 🚀 Bruk i Vue 3-prosjekter 
+## 🚀 Bruk i Vue 3-prosjekter
+
+### ℹ️ Importstruktur: Global vs. Lokal bruk
+
+Biblioteket støtter både `global registrering` (hele pakken) og `lokal import` (enkeltkomponenter). Dette gir fleksibilitet i forskjellige prosjektstørrelser og behov.
+
+#### ✅ Alternativ 1: Global registrering (app.use)
+
+Registrerer `alle komponenter automatisk globalt`, slik at du slipper å importere dem én og én.
 
 ```ts
-import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
-````
-
-Eller registrer hele pakken globalt:
-
-```ts
+// main.ts eller main.js
 import { createApp } from 'vue'
 import App from './App.vue'
 import NVEComponents from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
@@ -26,12 +29,33 @@ app.use(NVEComponents)
 app.mount('#app')
 ```
 
-### ℹ️ Importstruktur:
+##### ✅ Bruk i komponenter uten import
 
-Biblioteket eksporterer både som `default` og `named` for fleksibel bruk. `rollupOptions.output.exports = "named"` er brukt i byggverktøyet for å støtte dette.
+```ts
+<template>
+  <NveTable :headers="headers" :data="countries" />
+</template>
 
+<script setup lang="ts">
+// Ingen import av NveTable nødvendig!
+</script>
+```
 
-## 📘 Eksempel: Bruk av NveTable i et Vue 3-prosjekt
+#### ✅ Alternativ 2: Lokal import (tree-shaking)
+
+Bare komponentene du faktisk bruker blir inkludert i bundlen – ideelt for optimal ytelse.
+
+```ts
+<template>
+  <NveTable :headers="headers" :data="countries" />
+</template>
+
+<script setup lang="ts">
+import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+</script>
+```
+
+### 📘 Eksempel: Bruk av NveTable
 
 ```ts
 <script setup lang="ts">
@@ -58,100 +82,10 @@ const countries = ref<Country[]>([
 </template>
 ```
 
-
-## 📚 Dokumentasjon
-
-- Dokumentasjon skrives på norsk – dette gjelder også kommentarer og JsDoc i koden.
-- Eksempler og komponentbruk finnes i /demo-mappen.
-
-## 🛠️ Kjøremiljø og utvikling
-
-Prosjektet inneholder:
-
-- Kildekode (/src/components)
-- Demo-applikasjon (/demo)
-
-## Starte demo-løsningen
-
-1) Kjør npm install i rot og i /demo
-
-2) Kjør npm run demo fra rotmappen
-
-## Lokal testing i et annet prosjekt
-
-Etter  `npm run build`, lenk inn biblioteket:
-
-```bash
-npm install <path-til-denne-koden>
-```
-
-### 🧪 Lint med [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
-## 🧱 Lage nye komponenter
-
-For å legge til nye komponenter i biblioteket, følg disse stegene:
-
-### 1. 📁 Legg komponenten i `src/components/`
-
-Opprett en ny fil, f.eks. `NveAlert.vue`
-
-```ts
-<script setup lang="ts">
-defineOptions({ name: 'NveAlert' })
-</script>
-
-<template>
-  <div class="alert"><slot /></div>
-</template>
-```
-
-### 2. 🏷️ Viktig: Sett `name` med `defineOptions`
-
-```ts
-defineOptions({ name: 'NveAlert' })
-```
-
-Dette fungerer med `<script setup>` i Vue 3.
-
-### 3.💡 Tips for kvalitet og gjenbruk
-
-- Navngi komponenter med prefiks `Nve` (f.eks. `NveDialog`, `NveTable`)
-- Bruk props og typer konsekvent med `defineProps` og `withDefaults`
-- Skriv JsDoc-kommentarer på norsk for alle offentlige props
-- Bruk `defineExpose` hvis du eksporterer metoder fra komponenten
-
-### 4. 📝 Legg til komponenten manuelt i src/index.ts
-
-Etter at du har opprettet komponenten, må du eksportere den manuelt fra `index.ts`:
-
-```ts
-export { default as NveAlert } from './components/NveAlert.vue';
-```
-
-Dette er nødvendig for at komponenten skal kunne importeres eksplisitt:
-
-```ts
-import { NveAlert } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
-```
-
-
-### 5. 🔬 Test komponenten i `/demo`-appen
-
-Bruk demo-prosjektet for å verifisere utseende og funksjonalitet.
-
-## 📦 Eksportstruktur
-
-Dette biblioteket tilbyr:
-
-- `default` eksport for global registrering
-- `named` eksport for individuell import
-
-`vite.config.ts` bruker `output.exports = "named"` for å unngå advarsler og støtte begge måter. Dette er bevisst valgt for fleksibilitet.
-
 ## 📄 Lisens
 
 MIT © NVE
+
+## 👩‍💻 For utviklere
+
+Hvis du skal bidra eller bygge ut biblioteket: se [DEVELOPERS.md](./DEVELOPERS.md)
