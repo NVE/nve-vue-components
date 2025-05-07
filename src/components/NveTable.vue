@@ -1,6 +1,6 @@
 
 
-<script setup lang="ts" generic="T extends Record<string, any>">
+<script setup lang="ts" generic="T extends Record<string, unknown>">
   import {
   ref,
   computed,
@@ -13,7 +13,6 @@ import { computedAsync } from "@vueuse/core";
   import {
   type TableHeader,
   type SorterType,
-  type SortFunction,
   type SyncTableProps,
   type AsyncTableProps
 } from "@/types/table.types";
@@ -21,10 +20,10 @@ import { computedAsync } from "@vueuse/core";
 
 
 const emit = defineEmits<{
-  setExternalData: [val: Record<string, any>];
+  setExternalData: [val: Record<string, unknown>];
 }>();
 type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
-  
+
   const props = withDefaults(defineProps<PropsType>(), {
   async: false,
   pageSize: undefined,
@@ -139,8 +138,8 @@ const subgridTemplateStyle = () => {
   }
   return gridTemplateArr.join(" ");
 };
-const externalDataForSaving = ref({} as Record<string, any>);
-const saveExternalData = (data: Record<string, any>) => {
+const externalDataForSaving = ref({} as Record<string, unknown>);
+const saveExternalData = (data: Record<string, unknown>) => {
   externalDataForSaving.value = data;
 };
 
@@ -231,6 +230,7 @@ const hasFilterFunction = computed(() => {
   if (isSyncTable(props)) {
     return !!props.filterFunction;
   }
+  return false;
 });
 
 const showTable = computed(() => {
@@ -239,6 +239,7 @@ const showTable = computed(() => {
   } else if (isSyncTable(props)) {
     return props.data?.length > 0;
   }
+  return false; 
 });
 </script>
 
@@ -340,7 +341,7 @@ const showTable = computed(() => {
                   header.accessor ? header.accessor(item) : item[header.key]
                 "
                 :index="rowIndex"
-                :original-index="data!.findIndex((i: any) => i === item)"
+                :original-index="data!.findIndex((i: unknown) => i === item)"
               ></slot>
             </template>
             <span v-else>

@@ -4,7 +4,7 @@ export type SorterType = {
   field: string;
   direction: "ASC" | "DESC";
 };
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type SortFunction = (sort: SorterType) => (a: any, b: any) => number;
 
 export type TableHeader<T> = {

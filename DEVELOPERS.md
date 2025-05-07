@@ -16,9 +16,9 @@ Prosjektet inneholder:
 
 ## Starte demo-løsningen
 
-1) Kjør npm install i rot og i /demo
+1) Kjør `npm install` i rot og i /demo
 
-2) Kjør npm run demo fra rotmappen
+2) Kjør `npm run demo` fra rotmappen
 
 ## Lokal testing i et annet prosjekt
 
