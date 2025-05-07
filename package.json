@@ -1,6 +1,6 @@
 {
   "name": "@norges-vassdrags-og-energidirektorat/nve-vue-components",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
   "description": "NVE's standard komponentbibliotek er implementert som web-components. Mer info om dette finner du her: https://designsystem.nve.no/ . Dette prosjektet inneholder komponenter som bygger på NVE sitt designsystem, men som blir ansett som for komplekse til å være rene web-komponenter.",
   "author": "IUR NVE",
