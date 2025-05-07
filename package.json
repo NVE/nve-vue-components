@@ -5,16 +5,16 @@
   "description": "NVE's standard komponentbibliotek er implementert som web-components. Mer info om dette finner du her: https://designsystem.nve.no/ . Dette prosjektet inneholder komponenter som bygger på NVE sitt designsystem, men som blir ansett som for komplekse til å være rene web-komponenter.",
   "author": "IUR NVE",
   "license": "MIT",
-  "main": "./dist/nve-vue-components.umd.cjs",
-  "module": "./dist/nve-vue-components.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/nve-vue-components.umd.js",
+  "module": "./dist/nve-vue-components.es.js",
   "exports": {
     ".": {
-      "import": "./dist/nve-vue-components.js",
-      "require": "./dist/nve-vue-components.umd.cjs",
+      "import": "./dist/nve-vue-components.es.js",
+      "require": "./dist/nve-vue-components.umd.js",
       "types": "./dist/index.d.ts"
     }
   },
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src/components/"
