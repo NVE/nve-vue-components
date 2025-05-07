@@ -27,6 +27,7 @@ app.mount('#app')
 ```
 
 ## 📘 Eksempel: Bruk av NveTable i et Vue 3-prosjekt
+
 ```ts
 <script setup lang="ts">
 import { ref } from 'vue'

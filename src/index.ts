@@ -1,10 +1,10 @@
-import { App } from 'vue'
+import { App, Plugin } from 'vue'
 import { sortByFunction, sortByProperty } from './components/tableSortFunctions'
 
-// Automatisk import av alle .vue-komponenter til ./components
+// Automatisk import av alle .vue-komponenter i ./components
 const modules = import.meta.glob('./components/**/*.vue', { eager: true })
 
-const NVEComponents = {
+const NVEComponents: Plugin = {
   install(app: App) {
     for (const path in modules) {
       const mod = modules[path] as any
@@ -16,7 +16,7 @@ const NVEComponents = {
   }
 }
 
-export default NVEComponents
+export default NVEComponents 
 
-// Navngitte eksporter hvis du vil bruke individuelle ting
+// Named exports
 export { sortByFunction, sortByProperty }
