@@ -217,6 +217,7 @@ const observer = new IntersectionObserver(
 );
 
 const tableheader: Ref<HTMLTableSectionElement | null> = ref(null);
+  
 onMounted(() => {
   const thead = tableheader.value;
   if (thead) {
