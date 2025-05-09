@@ -18,6 +18,11 @@ const router = createRouter({
       name: "nve-table-async",
       component: () => import("../views/NveAsyncTableDemo.vue"),
     },
+    {
+      path: "/nve-table-custom-components",
+      name: "nve-table-custom-components",
+      component: () => import("../views/NveTableDemoWithCustomComponents.vue"),
+    },
   ],
 });
 

@@ -13,10 +13,18 @@
     <router-link
       to="/nve-table-async"
       class="link"
-      title="Gå til Nve-table demo"
+      title="Gå til Async Nve-table demo"
     >
       <nve-icon name="table" />
       <span class="text">NVE-Table Async</span>
+    </router-link>
+    <router-link
+      to="/nve-table-custom-components"
+      class="link"
+      title="Gå til Nve-table demo med custom components"
+    >
+      <nve-icon name="table" />
+      <span class="text">NVE-Table Custom</span>
     </router-link>
   </div>
 </template>
