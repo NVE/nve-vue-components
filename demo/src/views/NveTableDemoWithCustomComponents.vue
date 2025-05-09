@@ -139,33 +139,4 @@ const prettyPrintNumber = (number: number): string => {
   </div>
 </template>
 
-<style scoped>
-.filter-wrapper {
-  display: grid;
-  grid-template-rows: 1fr;
-  transition: grid-template-rows 0.3s ease-out,
-    padding-block-end 0.3s ease-in-out;
-  padding-block-end: var(--spacing-large);
-  & .filter {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-small);
-  }
-  &:is(.filter-enter-from, .filter-leave-to) {
-    grid-template-rows: 0fr;
-    padding-block-end: 0;
-  }
-  &:is(.filter-leave-from, .filter-enter-to) {
-    grid-template-rows: 1fr;
-  }
-}
-
-.column-toggles {
-  display: flex;
-  gap: var(--spacing-small);
-}
-nve-accordion-item {
-  margin-block-end: var(--spacing-large);
-}
-</style>
+<style scoped></style>
