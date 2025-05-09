@@ -226,7 +226,6 @@ const toggleColumn = (header: TableHeader<Country>) => {
           </div>
         </Transition>
       </template>
-
       <template #[`item.countryCode`]="row">
         <span class="country-code">
           <img
