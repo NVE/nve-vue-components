@@ -190,7 +190,6 @@ const getData = (
         const sortHeader = tableHeaders.value.find((h) => h.key === sort.field);
         if (sortHeader?.sort) {
           const sortFn = sortHeader.sort(sort);
-          console.dir(sortFn);
           data.sort(sortFn);
         }
       }

@@ -408,7 +408,7 @@ const showTable = computed(() => {
                   header.accessor ? header.accessor(item) : item[header.key]
                 "
                 :index="rowIndex"
-                :original-index="data!.findIndex((i: any) => i === item)"
+                :original-index="data?.findIndex((i: any) => i === item) ?? null"
               ></slot>
             </template>
             <span v-else>
