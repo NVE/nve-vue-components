@@ -1,6 +1,6 @@
 {
     "branches": [
-    "main",
+    "test",
     {
         "name": "beta",
         "prerelease": true
