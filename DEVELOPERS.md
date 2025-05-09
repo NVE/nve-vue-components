@@ -82,7 +82,6 @@ Dette er nødvendig for at komponenten skal kunne importeres eksplisitt:
 import { NveAlert } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
 ```
 
-
 ### 5. 🔬 Test komponenten i `/demo`-appen
 
 Bruk demo-prosjektet for å verifisere utseende og funksjonalitet.
@@ -95,3 +94,45 @@ Dette biblioteket tilbyr:
 - `named` eksport for individuell import
 
 `vite.config.ts` bruker `output.exports = "named"` for å unngå advarsler og støtte begge måter. Dette er bevisst valgt for fleksibilitet.
+
+## 🚀 Automatisk release og versjonshåndtering 
+
+Prosjektet benytter semantic-release [semantic-release](https://github.com/semantic-release) for helautomatisk versjonshåndtering og publisering til npm. Dette sikrer at nye versjoner publiseres konsekvent og korrekt basert på commit-meldinger, uten manuell inngripen.
+
+### 🎯 Hva skjer automatisk?
+
+Ved merge til `main`-branchen:
+
+- `semantic-release` kjører i GitHub Actions
+- Endringer analyseres og neste versjonsnummer beregnes automatisk (`patch`, `minor`, `major`)
+- Endringslogg (release notes) genereres
+- Ny versjon tagges i Git
+- Pakken publiseres til npm under [@norges-vassdrags-og-energidirektorat](https://www.npmjs.com/package/@norges-vassdrags-og-energidirektorat/nve-vue-components)
+
+### 🧾 Commit-meldinger (Conventional Commits)
+
+For å utløse riktig versjonstype må commit-meldinger følge [Angular commit-konvensjonen:](https://www.conventionalcommits.org/en/v1.0.0/)
+
+Eksempler:
+
+- `fix: rettet feil i sortering` → patch release
+- `feat: lagt til støtte for kolonnegruppering` → minor release
+- `feat!: endret API for filtrering + BREAKING CHANGE:` i body → major release
+
+Tips: Bruk `npm run commit` med [Commitizen](https://github.com/commitizen/cz-cli) for veiledet commit.
+
+### 🔐 Autentisering og tilgang
+
+- **Publisering til npm** gjøres med en _granular access token_ som har:
+Read/write-tilgang til `@norges-vassdrags-og-energidirektorat`
+Begrenset til kun dette biblioteket
+
+- **GitHub Actions** bruker en `NPM_TOKEN` secret:
+Definert i repo: `Settings > Secrets and variables > Actions`
+Token må ha tilgang til å publisere under organisasjonen
+
+### 📦 Håndtering av versjoner
+
+- Versjonsnummer i `package.json` oppdateres ikke manuelt
+- Endringer følges via GitHub-releases og `CHANGELOG.md`
+- Alle utgivelser får en vX.Y.Z Git-tag
