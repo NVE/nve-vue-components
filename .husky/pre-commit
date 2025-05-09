@@ -1,0 +1,17 @@
+echo "🔍 Running pre-commit checks..."
+
+echo "🎨 Running ESLint..."
+npm run lint || {
+  echo "❌ ESLint failed. Commit aborted."
+  echo "ℹ️  To skip this check, run: git commit --no-verify"
+  exit 1
+}
+
+echo "🔎 Running vue-tsc type check..."
+npm run type-check || {
+  echo "❌ Type check failed. Commit aborted."
+  echo "ℹ️  To skip this check, run: git commit --no-verify"
+  exit 1
+}
+
+echo "✅ All pre-commit checks passed!"

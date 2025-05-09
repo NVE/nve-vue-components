@@ -1,23 +1,91 @@
-# Vue-komponenter for NVE Designsystem
+# @norges-vassdrags-og-energidirektorat/nve-vue-components
 
-NVE's standard komponentbibliotek er implementert som web-components. Mer info om dette finner du her: https://designsystem.nve.no/
+Vue-komponenter som bygger på [NVE Designsystem](https://designsystem.nve.no/), men som er for komplekse til å implementeres som rene web-komponenter.
 
-Dette prosjektet inneholder komponenter som bygger på NVE sitt designsystem, men som blir ansett som for komplekse til å være rene web-komponenter.
+## 📦 Installasjon
 
-## Dokumentasjon
+```bash
+npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
+```
 
-Vi dokumenterer på norsk. Gjelder også JsDoc og kommentarer i koden.
+## 🚀 Bruk i Vue 3-prosjekter
 
-## Kjøremiljø
+### ℹ️ Importstruktur: Global vs. Lokal bruk
 
-Dette prosjektet inneholder selve koden, og en demo-applikasjon som ligger i `/demo`-mappen
+Biblioteket støtter både `global registrering` (hele pakken) og `lokal import` (enkeltkomponenter). Dette gir fleksibilitet i forskjellige prosjektstørrelser og behov.
 
-For å kjøre demo-applikasjonen, sørg først for at du har gjort en `npm install` i rot og i `/demo`, kjør deretter `npm run demo` i rot-mappen
+#### ✅ Alternativ 1: Global registrering (app.use)
 
-## Bruk i prosjekt
+Registrerer `alle komponenter automatisk globalt`, slik at du slipper å importere dem én og én.
 
-For info om komponentene, se demo-mappen.
+```ts
+// main.ts eller main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import NVEComponents from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
 
-## Utvikling
+const app = createApp(App)
+app.use(NVEComponents)
+app.mount('#app')
+```
 
-For å teste koden i et lokalt miljø kan du kjøre en `npm run build` for så å kjøre `npm install <path-til-denne-koden>` i et prosjekt. Husk å også endre path til css-filen.
+##### ✅ Bruk i komponenter uten import
+
+```ts
+<template>
+  <NveTable :headers="headers" :data="countries" />
+</template>
+
+<script setup lang="ts">
+// Ingen import av NveTable nødvendig!
+</script>
+```
+
+#### ✅ Alternativ 2: Lokal import (tree-shaking)
+
+Bare komponentene du faktisk bruker blir inkludert i bundlen – ideelt for optimal ytelse.
+
+```ts
+<template>
+  <NveTable :headers="headers" :data="countries" />
+</template>
+
+<script setup lang="ts">
+import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+</script>
+```
+
+### 📘 Eksempel: Bruk av NveTable
+
+```ts
+<script setup lang="ts">
+import { ref } from 'vue'
+import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+
+type Country = { name: string; code: string; capital: string }
+
+const headers = ref([
+  { key: 'name', title: 'Navn' },
+  { key: 'code', title: 'Kode' },
+  { key: 'capital', title: 'Hovedstad' }
+])
+
+const countries = ref<Country[]>([
+  { name: 'Norge', code: 'NO', capital: 'Oslo' },
+  { name: 'Sverige', code: 'SE', capital: 'Stockholm' },
+  { name: 'Danmark', code: 'DK', capital: 'København' }
+])
+</script>
+
+<template>
+  <NveTable :headers="headers" :data="countries" :item-id="(item) => item.code" striped />
+</template>
+```
+
+## 📄 Lisens
+
+MIT © NVE
+
+## 👩‍💻 For utviklere
+
+Hvis du skal bidra eller bygge ut biblioteket: se [DEVELOPERS.md](./DEVELOPERS.md)

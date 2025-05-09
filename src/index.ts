@@ -1,15 +1,30 @@
-import NveTable from "./components/NveTable.vue";
-import type {
-  TableHeader,
-  SortFunction,
-  SorterType,
-  TableProps,
-} from "./components/NveTable.vue";
-import {
-  sortByFunction,
-  sortByProperty,
-} from "./components/tableSortFunctions";
+import type { App, Plugin } from 'vue';
+import { sortByFunction, sortByProperty } from './components/tableSortFunctions';
 
-export { NveTable };
+//  Automatisk global registrering
+const modules = import.meta.glob('./components/**/*.vue', { eager: true });
+
+const NVEComponents: Plugin = {
+  install(app: App) {
+    for (const path in modules) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const mod = modules[path] as any;
+      const component = mod.default;
+      if (component?.name) {
+        app.component(component.name, component);
+      }
+    }
+  },
+};
+
+export default NVEComponents;
+
+// Vi eksporterer både default og named exports for å støtte fleksibel import:
+// - `import NVEComponents from 'nve-vue-components'` (standardbruk)
+// - `import { NveTable } from 'nve-vue-components'` (direkte komponentbruk)
+
+//  Named exports
 export { sortByFunction, sortByProperty };
-export type { TableHeader, SortFunction, SorterType, TableProps };
+
+//  Legg til en eksport for hver komponent du ønsker å kunne importere separat:
+export { default as NveTable } from './components/NveTable.vue';
