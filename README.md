@@ -2,19 +2,19 @@
 
 Vue-komponenter som bygger på [NVE Designsystem](https://designsystem.nve.no/), men som er for komplekse til å implementeres som rene web-komponenter.
 
-## 📦 Installasjon
+## Installasjon
 
 ```bash
 npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
 ```
 
-## 🚀 Bruk i Vue 3-prosjekter
+## Bruk i Vue 3-prosjekter
 
-### ℹ️ Importstruktur: Global vs. Lokal bruk
+### Importstruktur: Global vs. Lokal bruk
 
 Biblioteket støtter både `global registrering` (hele pakken) og `lokal import` (enkeltkomponenter). Dette gir fleksibilitet i forskjellige prosjektstørrelser og behov.
 
-#### ✅ Alternativ 1: Global registrering (app.use)
+#### Alternativ 1: Global registrering (app.use)
 
 Registrerer `alle komponenter automatisk globalt`, slik at du slipper å importere dem én og én.
 
@@ -29,7 +29,7 @@ app.use(NVEComponents)
 app.mount('#app')
 ```
 
-##### ✅ Bruk i komponenter uten import
+##### Bruk i komponenter uten import
 
 ```ts
 <template>
@@ -41,7 +41,7 @@ app.mount('#app')
 </script>
 ```
 
-#### ✅ Alternativ 2: Lokal import (tree-shaking)
+#### Alternativ 2: Lokal import (tree-shaking)
 
 Bare komponentene du faktisk bruker blir inkludert i bundlen – ideelt for optimal ytelse.
 
@@ -55,7 +55,7 @@ import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-componen
 </script>
 ```
 
-### 📘 Eksempel: Bruk av NveTable
+### Eksempel: Bruk av NveTable
 
 ```ts
 <script setup lang="ts">
@@ -82,10 +82,10 @@ const countries = ref<Country[]>([
 </template>
 ```
 
-## 📄 Lisens
+## Lisens
 
 MIT © NVE
 
-## 👩‍💻 For utviklere
+## For utviklere
 
 Hvis du skal bidra eller bygge ut biblioteket: se [DEVELOPERS.md](./DEVELOPERS.md)

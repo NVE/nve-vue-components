@@ -1,5 +1,5 @@
 import type { App, Plugin } from 'vue';
-import { sortByFunction, sortByProperty } from './components/tableSortFunctions';
+import { sortByFunction, sortByProperty } from './components/NveTable/tableSortFunctions';
 
 //  Automatisk global registrering
 const modules = import.meta.glob('./components/**/*.vue', { eager: true });
@@ -27,4 +27,5 @@ export default NVEComponents;
 export { sortByFunction, sortByProperty };
 
 //  Legg til en eksport for hver komponent du ønsker å kunne importere separat:
-export { default as NveTable } from './components/NveTable.vue';
+export * from './components/NveTable';
+
