@@ -10,13 +10,28 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
     "@semantic-release/npm",
     [
       "@semantic-release/github",
       {
         "assets": [
-          "dist/**/*.js",
-          "dist/**/*.d.ts"
+          {
+            "path": "dist/nve-vue-components.es.js",
+            "name": "nve-vue-components-es-${nextRelease.version}.js"
+          },
+          {
+            "path": "dist/nve-vue-components.umd.js",
+            "name": "nve-vue-components-umd-${nextRelease.version}.js"
+          },
+          {
+            "path": "dist/index.d.ts",
+            "name": "index-${nextRelease.version}.d.ts"
+          },
+          {
+            "path": ["dist/**/*.d.ts", "!dist/index.d.ts"],
+            "label": "Other type declarations"
+          }
         ]
       }
     ],
