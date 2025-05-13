@@ -1,4 +1,4 @@
-import { defineConfig } from "vite"
+import { defineConfig } from 'vitest/config'
 import vue from "@vitejs/plugin-vue"
 import dts from "vite-plugin-dts"
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js"
@@ -15,7 +15,8 @@ export default defineConfig({
     }),
     dts({
       outDir: "dist",             
-      insertTypesEntry: true    
+      insertTypesEntry: true,
+        include: ["src"],    
     }),
     cssInjectedByJsPlugin()
   ],
@@ -44,5 +45,15 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src")
     }
-  }
+  },
+  test: {
+  globals: true,
+  environment: 'jsdom',
+  setupFiles: './vitest.setup.ts',
+  include: ['src/**/*.spec.ts', 'src/**/*.test.ts'],
+  coverage: {
+    reporter: ['text', 'json', 'html'],
+    exclude: ['src/index.ts'],
+  },
+}
 })

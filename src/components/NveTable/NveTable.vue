@@ -15,7 +15,7 @@ import { computedAsync } from "@vueuse/core";
   type SorterType,
   type SyncTableProps,
   type AsyncTableProps
-} from "@/types/table.types";
+} from "@/components/NveTable/table.types";
   defineOptions({ name: 'NveTable' });
 
 
@@ -211,11 +211,11 @@ const hasClickForRow = (row: T) => {
   }
   return true;
 };
-
 const observer = new IntersectionObserver(
   ([e]) => e.target.toggleAttribute("data-stuck", e.intersectionRatio < 1),
   { threshold: [1] }
 );
+
 const tableheader: Ref<HTMLTableSectionElement | null> = ref(null);
 onMounted(() => {
   const thead = tableheader.value;
@@ -257,6 +257,7 @@ const showTable = computed(() => {
         filled
         type="search"
         placeholder="Søk"
+         data-test="filter-input"
       >
         <nve-icon slot="prefix" name="search" library="Sharp"></nve-icon>
       </nve-input>
@@ -382,6 +383,7 @@ const showTable = computed(() => {
         </nve-button>
         <nve-button
           variant="ghost"
+          data-test="next-button"
           title="Neste side"
           :disabled="pageNumber >= numPages - 1"
           @click="() => pageNumber++"
