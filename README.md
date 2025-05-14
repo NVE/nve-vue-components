@@ -88,4 +88,4 @@ MIT © NVE
 
 ## For utviklere
 
-Hvis du skal bidra eller bygge ut biblioteket: se [DEVELOPERS.md](./DEVELOPERS.md)
+Hvis du skal bidra eller bygge ut biblioteket: se [CONTRIBUTING.md](./CONTRIBUTING.md)
