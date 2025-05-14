@@ -1,10 +1,6 @@
 {
   "branches": [
-    "test",
-    {
-      "name": "beta",
-      "prerelease": true
-    }
+    "main"
   ],
   "tagFormat": "v${version}",
   "plugins": [
