@@ -3,7 +3,7 @@ name: Enforce Conventional PR Title
 on:
   pull_request:
     branches:
-      - test
+      - main
     types:
       - opened
       - edited
