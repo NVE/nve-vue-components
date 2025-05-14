@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
 import { ref, computed, watch, onMounted, type Ref } from "vue";
-
 import { computedAsync } from "@vueuse/core";
+
 import {
   type TableHeader,
   type SorterType,
