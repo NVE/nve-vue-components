@@ -194,7 +194,7 @@ Token må ha tilgang til å publisere under organisasjonen
 
 #### NPM-brukerkonto
 
-Det er opprettet en felles NPM-brukerkonto (nve_design_system) for organisasjonen (norges-vassdrags-og-energidirektorat), og denne brukes til å håndtere tokens for dette biblioteket. Kontoen er tilknyttet en **Service bruker** i NVE.
+Det er opprettet en felles NPM-brukerkonto (nve_design_system) for organisasjonen (norges-vassdrags-og-energidirektorat), og denne brukes til å håndtere tokens for dette biblioteket. Kontoen er tilknyttet en **Service bruker** (nve_design_system) i NVE.
 
 Som fast ansatt i NVE kan du få tilgang til denne tjenestebrukeren og bruke den ved behov.
 
