@@ -24,9 +24,3 @@ updates:
 
     labels:
       - 'dependencies'
-
-    reviewers:
-      - 'gruble'
-      - 'amish1188'
-      - 'NVEJoel'
-      - 'tomapedersen'
