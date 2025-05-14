@@ -1,4 +1,4 @@
-# DEVELOPERS.md
+# CONTRIBUTING.md
 
 Her finner du informasjon for deg som utvikler eller vedlikeholder `@norges-vassdrags-og-energidirektorat/nve-vue-components`.
 
@@ -44,7 +44,7 @@ npm run build
 npm install <absolutt/path/til/nve-vue-components>
 ```
 
-### Enhetstestning
+### Enhetstesting
 
 Alle komponenter i biblioteket skal ha tilhørende enhetstester. Du bør alltid kjøre testene før du committer – både når du **lager nye komponenter**, og når du **gjør endringer i eksisterende.**
 
