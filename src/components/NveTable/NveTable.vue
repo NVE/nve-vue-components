@@ -1,114 +1,45 @@
-<script setup lang="ts" generic="T extends Record<string, any>">
-import {
-  computed,
+
+
+<script setup lang="ts" generic="T extends Record<string, unknown>">
+  import {
   ref,
+  computed,
   watch,
-  type StyleValue,
   onMounted,
-  type Ref,
+  type Ref
 } from "vue";
-import { NveButton, NveInput, NveIcon, NveSpinner } from "nve-designsystem";
+
 import { computedAsync } from "@vueuse/core";
+  import {
+  type TableHeader,
+  type SorterType,
+  type SyncTableProps,
+  type AsyncTableProps
+} from "@/components/NveTable/table.types";
+  defineOptions({ name: 'NveTable' });
 
-export type SorterType = {
-  field: string;
-  direction: "ASC" | "DESC";
-};
-export type SortFunction = (sort: SorterType) => (a: any, b: any) => number;
-export type TableHeader<T> = {
-  key: string;
-  title: string;
-  sort?: SortFunction;
-  accessor?: (item: T) => string | number | Date | boolean | null | undefined;
-  width?: string;
-  cellClass?: string;
-  style?: StyleValue;
-  headerClass?: string;
-  headerWrap?: boolean;
-  hidden?: boolean;
-};
-export type TableProps<T> = {
-  headers: Array<TableHeader<T>>;
-  itemId: (item: T, index: number) => string | number;
-  pageSize?: number;
-  /* zebra-striper eller underline */
-  striped?: boolean;
-  hideTextFilter?: boolean;
-  onClickRow?: (item: T, event: MouseEvent) => void;
-  /** Brukes for å stoppe klikk på en row
-   * (kan være at akkurat rad 5 ikke skal kunne klikkes på f.eks)
-   * Da vil ikke styling vise "klikkbar" på denne raden
-   */
-  hasClickForRow?: (row: T) => boolean;
-  /* (i) Dersom du har funksjonsknapper i celler, pass på å kjøre stopPropagation på disse for å ikke kalle onClickRow */
-  rowClass?: (item: T) => string;
-  /* Initiell sortering dersom man ønsker å sortere på en kolonne ved oppstart */
-  initialSort?: SorterType | null;
-  /* Gjemmer hele pagineringen. Bruk dersom du skal vise alle */
-  hidePagination?: boolean;
-  /* Tar bort hele header over tabellen (inkludert filter) */
-  hideHeader?: boolean;
-  /* Viser ikke <thead> med <th> */
-  hideTableHeader?: boolean;
-  /* Viser ikke tabellen dersom det ikke er data */
-  hideEmpty?: boolean;
-  /* Klasse for tabellen */
-  tableclass?: string;
-  /* Klasse for tableholder. Slot subheader, Tabellen, paginering og slot tablefooter er inne i denne */
-  tableholderclass?: string;
-  /* header er sticky. Ved scroll vil ikke header følge med */
-  stickyHeader?: boolean;
-  /* For paginering. Dersom man går til side 2 i tabellen så scroller vi til topp */
-  scrollToTopOnPageSwitch?: boolean;
-  hideAllFilters?: boolean;
-};
-
-export type SyncTableProps<T> = TableProps<T> & {
-  async?: false;
-  data: Array<T>;
-  /* Dersom denne er satt så lagrer vi state i localstorage slik at denne beholdes ved navigering */
-  saveStateId?: string;
-  filterFunction?: (searchString: string) => Array<T>;
-  getData?: never;
-  totalHits?: never;
-};
-
-export type AsyncTableProps<T> = TableProps<T> & {
-  async: true;
-  getData: (
-    pageNumber: number,
-    filterText: string,
-    sort: SorterType | null
-  ) => Promise<Array<T>>;
-  totalHits: number;
-  data?: never;
-  saveStateId?: never;
-  filterFunction?: never;
-};
 
 const emit = defineEmits<{
-  setExternalData: [val: Record<string, any>];
+  setExternalData: [val: Record<string, unknown>];
 }>();
-const props = withDefaults(
-  defineProps<SyncTableProps<T> | AsyncTableProps<T>>(),
-  {
-    async: false,
-    pageSize: undefined,
-    onClickRow: undefined,
-    filterFunction: undefined,
-    saveStateId: undefined,
-    tableclass: undefined,
-    tableholderclass: undefined,
-    hasClickForRow: undefined,
-    stickyHeader: false,
-    scrollToTopOnPageSwitch: false,
-    initialSort: null,
-    rowClass: undefined,
-    itemId: (_, index: number) => index,
-    hideAllFilters: false,
-  }
-);
+type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
 
+  const props = withDefaults(defineProps<PropsType>(), {
+  async: false,
+  pageSize: undefined,
+  onClickRow: undefined,
+  filterFunction: undefined,
+  saveStateId: undefined,
+  tableclass: undefined,
+  tableholderclass: undefined,
+  hasClickForRow: undefined,
+  stickyHeader: false,
+  scrollToTopOnPageSwitch: false,
+  initialSort: null,
+  rowClass: undefined,
+  itemId: (_, index: number) => index,
+  hideAllFilters: false,
+});
 function isAsyncTable(
   props: SyncTableProps<T> | AsyncTableProps<T>
 ): props is AsyncTableProps<T> {
@@ -207,8 +138,8 @@ const subgridTemplateStyle = () => {
   }
   return gridTemplateArr.join(" ");
 };
-const externalDataForSaving = ref({} as Record<string, any>);
-const saveExternalData = (data: Record<string, any>) => {
+const externalDataForSaving = ref({} as Record<string, unknown>);
+const saveExternalData = (data: Record<string, unknown>) => {
   externalDataForSaving.value = data;
 };
 
@@ -280,11 +211,11 @@ const hasClickForRow = (row: T) => {
   }
   return true;
 };
-
 const observer = new IntersectionObserver(
   ([e]) => e.target.toggleAttribute("data-stuck", e.intersectionRatio < 1),
   { threshold: [1] }
 );
+
 const tableheader: Ref<HTMLTableSectionElement | null> = ref(null);
 onMounted(() => {
   const thead = tableheader.value;
@@ -299,6 +230,7 @@ const hasFilterFunction = computed(() => {
   if (isSyncTable(props)) {
     return !!props.filterFunction;
   }
+  return false;
 });
 
 const showTable = computed(() => {
@@ -307,6 +239,7 @@ const showTable = computed(() => {
   } else if (isSyncTable(props)) {
     return props.data?.length > 0;
   }
+  return false; 
 });
 </script>
 
@@ -324,6 +257,7 @@ const showTable = computed(() => {
         filled
         type="search"
         placeholder="Søk"
+         data-test="filter-input"
       >
         <nve-icon slot="prefix" name="search" library="Sharp"></nve-icon>
       </nve-input>
@@ -449,6 +383,7 @@ const showTable = computed(() => {
         </nve-button>
         <nve-button
           variant="ghost"
+          data-test="next-button"
           title="Neste side"
           :disabled="pageNumber >= numPages - 1"
           @click="() => pageNumber++"
