@@ -1,30 +1,21 @@
-
-
 <script setup lang="ts" generic="T extends Record<string, unknown>">
-  import {
-  ref,
-  computed,
-  watch,
-  onMounted,
-  type Ref
-} from "vue";
+import { ref, computed, watch, onMounted, type Ref } from "vue";
 
 import { computedAsync } from "@vueuse/core";
-  import {
+import {
   type TableHeader,
   type SorterType,
   type SyncTableProps,
-  type AsyncTableProps
-} from "@/components/NveTable/table.types";
-  defineOptions({ name: 'NveTable' });
-
+  type AsyncTableProps,
+} from "./table.types";
+defineOptions({ name: "NveTable" });
 
 const emit = defineEmits<{
   setExternalData: [val: Record<string, unknown>];
 }>();
 type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
 
-  const props = withDefaults(defineProps<PropsType>(), {
+const props = withDefaults(defineProps<PropsType>(), {
   async: false,
   pageSize: undefined,
   onClickRow: undefined,
@@ -239,7 +230,7 @@ const showTable = computed(() => {
   } else if (isSyncTable(props)) {
     return props.data?.length > 0;
   }
-  return false; 
+  return false;
 });
 </script>
 
@@ -257,7 +248,7 @@ const showTable = computed(() => {
         filled
         type="search"
         placeholder="Søk"
-         data-test="filter-input"
+        data-test="filter-input"
       >
         <nve-icon slot="prefix" name="search" library="Sharp"></nve-icon>
       </nve-input>
@@ -321,10 +312,12 @@ const showTable = computed(() => {
             props.rowClass ? props.rowClass(item) : '',
           ]"
           @click="
-                        (e: MouseEvent) => {
-                            props.onClickRow && hasClickForRow(item) && props.onClickRow(item, e);
-                        }
-                    "
+            (e: MouseEvent) => {
+              props.onClickRow &&
+                hasClickForRow(item) &&
+                props.onClickRow(item, e);
+            }
+          "
         >
           <td
             v-for="header in props.headers"
@@ -342,12 +335,16 @@ const showTable = computed(() => {
                   header.accessor ? header.accessor(item) : item[header.key]
                 "
                 :index="rowIndex"
-                :original-index="data?.findIndex((i: any) => i === item) ?? null"
+                :original-index="
+                  data?.findIndex((i: any) => i === item) ?? null
+                "
               ></slot>
             </template>
             <span v-else>
               {{
-                header.accessor ? header.accessor(item) : item[header.key] ?? ""
+                header.accessor
+                  ? header.accessor(item)
+                  : (item[header.key] ?? "")
               }}
             </span>
           </td>

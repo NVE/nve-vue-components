@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable.vue";
+import NveTable from "../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
-} from "../../../src/components/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable.vue";
+} from "../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
@@ -195,7 +195,7 @@ const toggleColumn = (header: TableHeader<Country>) => {
       :page-size="15"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
       :filter-function="tableFilter"
-      :item-id="(country) => country.countryCode"
+      :item-id="(country: Country) => country.countryCode"
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">

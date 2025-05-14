@@ -1,19 +1,8 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable.vue";
-import {
-  sortByProperty,
-  sortByFunction,
-} from "../../../src/components/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable.vue";
-import {
-  NveButton,
-  NveCheckboxGroup,
-  NveCheckbox,
-  NveIcon,
-  NveAccordionItem,
-} from "nve-designsystem";
+import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import type { TableHeader } from "../../../src/components/NveTable/table.types";
 import countries from "../components/countries.json";
-import { computed, ref, type Ref, useTemplateRef } from "vue";
+import { computed,  type Ref } from "vue";
 type Country = {
   name: string;
   governmentType: string;
@@ -129,7 +118,7 @@ const prettyPrintNumber = (number: number): string => {
       :data="countries"
       striped
       :page-size="15"
-      :item-id="(country) => country.countryCode"
+      :item-id="(country: Country) => country.countryCode"
       :hide-text-filter="true"
     >
       <template v-for="col in tableHeaders" #[`item.${col.key}`]="row">
