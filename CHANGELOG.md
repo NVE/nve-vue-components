@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/NVE/nve-vue-components/compare/v1.2.1...v1.3.0) (2025-05-14)
+
+
+### Features
+
+* oppdater readme med brukseksempel ([ef24ee4](https://github.com/NVE/nve-vue-components/commit/ef24ee42758b11fc34c920ab0c2fc2a992d819c1))
+
 # 1.0.0 (2025-05-14)
 
 
