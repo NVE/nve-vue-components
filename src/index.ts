@@ -20,8 +20,8 @@ const NVEComponents: Plugin = {
 export default NVEComponents;
 
 // Vi eksporterer både default og named exports for å støtte fleksibel import:
-// - `import NVEComponents from 'nve-vue-components'` (standardbruk)
-// - `import { NveTable } from 'nve-vue-components'` (direkte komponentbruk)
+// - `import NVEComponents from 'vue-components'` (standardbruk)
+// - `import { NveTable } from 'vue-components'` (direkte komponentbruk)
 
 //  Named exports
 export { sortByFunction, sortByProperty };

@@ -24,7 +24,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"), 
       name: "NveVueComponents",
-      fileName: (format) => `nve-vue-components.${format}.js`, 
+      fileName: (format) => `vue-components.${format}.js`, 
       formats: ["es", "umd"]
     },
     rollupOptions: {
