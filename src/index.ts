@@ -7,7 +7,7 @@ const modules = import.meta.glob('./components/**/*.vue', { eager: true });
 const NVEComponents: Plugin = {
   install(app: App) {
     for (const path in modules) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       const mod = modules[path] as any;
       const component = mod.default;
       if (component?.name) {

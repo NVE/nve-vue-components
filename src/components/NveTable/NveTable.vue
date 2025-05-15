@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends Record<string, unknown>">
+<script setup lang="ts" generic="T extends Record<string, any>">
 import { ref, computed, watch, onMounted, type Ref } from "vue";
 import { computedAsync } from "@vueuse/core";
 
@@ -11,7 +11,7 @@ import {
 defineOptions({ name: "NveTable" });
 
 const emit = defineEmits<{
-  setExternalData: [val: Record<string, unknown>];
+  setExternalData: [val: Record<string, any>];
 }>();
 type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
 
