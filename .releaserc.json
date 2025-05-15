@@ -13,12 +13,12 @@
       {
         "assets": [
           {
-            "path": "dist/nve-vue-components.es.js",
-            "name": "nve-vue-components-es-${nextRelease.version}.js"
+            "path": "dist/vue-components.es.js",
+            "name": "vue-components-es-${nextRelease.version}.js"
           },
           {
-            "path": "dist/nve-vue-components.umd.js",
-            "name": "nve-vue-components-umd-${nextRelease.version}.js"
+            "path": "dist/vue-components.umd.js",
+            "name": "vue-components-umd-${nextRelease.version}.js"
           },
           {
             "path": "dist/index.d.ts",

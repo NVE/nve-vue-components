@@ -1,11 +1,11 @@
-# @norges-vassdrags-og-energidirektorat/nve-vue-components
+# @nve-org/vue-components
 
 Vue-komponenter som bygger på [NVE Designsystem](https://designsystem.nve.no/), men som er for komplekse til å implementeres som rene web-komponenter.
 
 ## Installasjon
 
 ```bash
-npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
+npm install @nve-org/vue-components
 ```
 
 ## Bruk i Vue 3-prosjekter
@@ -22,7 +22,7 @@ Registrerer `alle komponenter automatisk globalt`, slik at du slipper å importe
 // main.ts eller main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import NVEComponents from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+import NVEComponents from '@nve-org/vue-components'
 
 const app = createApp(App)
 app.use(NVEComponents)
@@ -51,7 +51,7 @@ Bare komponentene du faktisk bruker blir inkludert i bundlen – ideelt for opti
 </template>
 
 <script setup lang="ts">
-import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+import { NveTable } from '@nve-org/vue-components'
 </script>
 ```
 
@@ -60,7 +60,7 @@ import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-componen
 ```ts
 <script setup lang="ts">
 import { ref } from 'vue'
-import { NveTable } from '@norges-vassdrags-og-energidirektorat/nve-vue-components'
+import { NveTable } from '@nve-org/vue-components'
 
 type Country = { name: string; code: string; capital: string }
 

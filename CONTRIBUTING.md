@@ -1,6 +1,6 @@
 # CONTRIBUTING.md
 
-Her finner du informasjon for deg som utvikler eller vedlikeholder `@norges-vassdrags-og-energidirektorat/nve-vue-components`.
+Her finner du informasjon for deg som utvikler eller vedlikeholder `@nve-org/vue-components`.
 
 ## Dokumentasjon
 
@@ -41,7 +41,7 @@ npm run build
 - 2.Installer det lokalt i testprosjektet:
 
 ```bash
-npm install <absolutt/path/til/nve-vue-components>
+npm install <absolutt/path/til/vue-components>
 ```
 
 ### Enhetstesting
@@ -120,7 +120,7 @@ export { default as NveAlert } from './components/NveAlert.vue';
 Dette er nødvendig for at komponenten skal kunne importeres eksplisitt:
 
 ```ts
-import { NveAlert } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
+import { NveAlert } from '@nve-org/vue-components';
 ```
 
 ### 5. Test komponenten i `/demo`-appen
@@ -168,7 +168,7 @@ Ved merge til `main`-branchen:
 - Endringer analyseres og neste versjonsnummer beregnes automatisk (`patch`, `minor`, `major`)
 - Endringslogg (release notes) genereres
 - Ny versjon tagges i Git
-- Pakken publiseres til npm under [@norges-vassdrags-og-energidirektorat](https://www.npmjs.com/package/@norges-vassdrags-og-energidirektorat/nve-vue-components)
+- Pakken publiseres til npm under [@nve-org](https://www.npmjs.com/package/@nve-org/vue-components)
 
 ### Commit-meldinger (Conventional Commits)
 
@@ -185,7 +185,7 @@ Tips: Bruk `npm run commit` med [Commitizen](https://github.com/commitizen/cz-cl
 ### Autentisering og tilgang
 
 - **Publisering til npm** gjøres med en _granular access token_ som har:
-Read/write-tilgang til `@norges-vassdrags-og-energidirektorat`
+Read/write-tilgang til `@nve-org`
 Begrenset til kun dette biblioteket
 
 - **GitHub Actions** bruker en `NPM_TOKEN` secret:
@@ -194,7 +194,7 @@ Token må ha tilgang til å publisere under organisasjonen
 
 #### NPM-brukerkonto
 
-Det er opprettet en felles NPM-brukerkonto (nve_design_system) for organisasjonen (norges-vassdrags-og-energidirektorat), og denne brukes til å håndtere tokens for dette biblioteket. Kontoen er tilknyttet en **Service bruker** (nve_design_system) i NVE.
+Det er opprettet en felles NPM-brukerkonto (nve_design_system) for organisasjonen (nve-org), og denne brukes til å håndtere tokens for dette biblioteket. Kontoen er tilknyttet en **Service bruker** (nve_design_system) i NVE.
 
 Som fast ansatt i NVE kan du få tilgang til denne tjenestebrukeren og bruke den ved behov.
 
