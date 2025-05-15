@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/NVE/nve-vue-components/compare/v1.4.0...v1.4.1) (2025-05-15)
+
+
+### Bug Fixes
+
+* Mulig en fiks på record-issue nevnt i forrige commit ([ef8d078](https://github.com/NVE/nve-vue-components/commit/ef8d07826ab3af7906a7074a90e6ec92a8f7d8ca))
+
 # [1.4.0](https://github.com/NVE/nve-vue-components/compare/v1.3.0...v1.4.0) (2025-05-15)
 
 
