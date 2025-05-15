@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/NVE/nve-vue-components/compare/v1.3.0...v1.4.0) (2025-05-15)
+
+
+### Features
+
+* Eksporterer nå nve-table i src. Er et issue med generics dersom T er en klasse/interface (istedenfor type) ([9283a0c](https://github.com/NVE/nve-vue-components/commit/9283a0c599d92b412c610e8e76991a6567be2ac9))
+
 # [1.3.0](https://github.com/NVE/nve-vue-components/compare/v1.2.1...v1.3.0) (2025-05-14)
 
 
