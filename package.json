@@ -14,8 +14,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/nve-vue-components.es.js",
-      "require": "./dist/nve-vue-components.umd.js"
+      "import": "./dist/vue-components.es.js",
+      "require": "./dist/vue-components.umd.js"
     },
     "./src/components/NveTable/*": {
       "import": "./src/components/NveTable/*",
