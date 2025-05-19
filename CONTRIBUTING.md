@@ -184,9 +184,8 @@ Tips: Bruk `npm run commit` med [Commitizen](https://github.com/commitizen/cz-cl
 
 ### Autentisering og tilgang
 
-- **Publisering til npm** gjøres med en _granular access token_ som har:
+- **Publisering til npm** gjøres med en _classic Token_ som har:
 Read/write-tilgang til `@nve-org`
-Begrenset til kun dette biblioteket
 
 - **GitHub Actions** bruker en `NPM_TOKEN` secret:
 Definert i repo: `Settings > Secrets and variables > Actions`
