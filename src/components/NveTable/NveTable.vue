@@ -232,6 +232,19 @@ const showTable = computed(() => {
   }
   return false;
 });
+
+const getCellClass = (
+  cellClass: undefined | string | ((item: T) => string),
+  item: T
+) => {
+  if (!cellClass) {
+    return "";
+  }
+  if (typeof cellClass === "string") {
+    return cellClass;
+  }
+  return cellClass(item);
+};
 </script>
 
 <template>
@@ -323,7 +336,10 @@ const showTable = computed(() => {
             v-for="header in props.headers"
             :key="header.key"
             class="table-cell"
-            :class="[header.cellClass, { hidden: header.hidden }]"
+            :class="[
+              getCellClass(header.cellClass, item),
+              { hidden: header.hidden },
+            ]"
             :data-header="header.title"
             :style="header.style"
           >

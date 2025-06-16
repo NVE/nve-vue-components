@@ -105,6 +105,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
       return (a: Country, b: Country) => sF(a["area"], b["area"]);
     },
     accessor: (row: Country) => `${prettyPrintNumber(row["area"])} km²`,
+    cellClass: (item: Country) => (item.area > 50000 ? "big" : "small"),
   },
   {
     key: "foundingYear",
@@ -115,6 +116,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
       return (a: Country, b: Country) =>
         sF(a["foundingYear"], b["foundingYear"]);
     },
+    cellClass: "year",
   },
 ]);
 
@@ -242,7 +244,8 @@ const toggleColumn = (header: TableHeader<Country>) => {
 .filter-wrapper {
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 0.3s ease-out,
+  transition:
+    grid-template-rows 0.3s ease-out,
     padding-block-end 0.3s ease-in-out;
   padding-block-end: var(--spacing-large);
   & .filter {
@@ -266,5 +269,16 @@ const toggleColumn = (header: TableHeader<Country>) => {
 }
 nve-accordion-item {
   margin-block-end: var(--spacing-large);
+}
+.nve-table-demo :deep(.table-cell.year) {
+  ::before {
+    content: "📅";
+  }
+}
+.nve-table-demo :deep(.table-cell.small) {
+  font-size: 95%;
+}
+.nve-table-demo :deep(.table-cell.big) {
+  font-size: 105%;
 }
 </style>
