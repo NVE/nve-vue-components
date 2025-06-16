@@ -1,10 +1,10 @@
-import type { StyleValue } from 'vue';
+import type { StyleValue } from "vue";
 
 export type SorterType = {
   field: string;
   direction: "ASC" | "DESC";
 };
-   
+
 export type SortFunction = (sort: SorterType) => (a: any, b: any) => number;
 
 export type TableHeader<T> = {
@@ -13,7 +13,7 @@ export type TableHeader<T> = {
   sort?: SortFunction;
   accessor?: (item: T) => string | number | Date | boolean | null | undefined;
   width?: string;
-  cellClass?: string;
+  cellClass?: ((item: T) => string) | string;
   style?: StyleValue;
   headerClass?: string;
   headerWrap?: boolean;
