@@ -51,7 +51,7 @@
     "vue": "^3.5.13"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.0",
     "@vueuse/core": "^13.3.0",
     "eslint-plugin-vue": "^10.2.0",
@@ -62,8 +62,8 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^24.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@types/node": "^24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.0",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitest/ui": "^3.2.3",
