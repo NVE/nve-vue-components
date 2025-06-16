@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/NVE/nve-vue-components/compare/v1.5.0...v1.6.0) (2025-06-16)
+
+
+### Features
+
+* Kan nå bruke cell-class som funksjon eller streng ([40a9092](https://github.com/NVE/nve-vue-components/commit/40a9092763cd76286236c1600bbbdf61e4d437f7))
+
 # [1.5.0](https://github.com/NVE/nve-vue-components/compare/v1.4.1...v1.5.0) (2025-05-19)
 
 
