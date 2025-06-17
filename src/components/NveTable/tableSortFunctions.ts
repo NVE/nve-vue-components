@@ -72,8 +72,11 @@ export const sortByProperty = (
 };
 
 /**
- * Veldig enkel funksjon for sortering. Bare send inn accessor og resten skal fikses
- * @returns
+ * Veldig enkel funksjon for sortering. Bare send inn en accessor-funksjon og resten skal fikses
+ * Har også mulighet for å sortere numerisk med en boolean
+ * Brukes for en tableHeader i NveTable, f.eks denne som sorterer på landets navn
+ *
+ *       sort: simpleSortByAccessor<Country>((c) => c.name),
  */
 export const simpleSortByAccessor = <T extends Record<string, any>>(
   accessor: (item: T) => string,
