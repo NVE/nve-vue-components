@@ -291,7 +291,6 @@ const getCellClass = (
             <button
               v-if="header.sort"
               type="button"
-              variant="ghost"
               class="headersort"
               @click="() => sortFunction(header)"
             >
@@ -435,6 +434,8 @@ thead {
       /*justify-content: space-between;*/
       gap: var(--spacing-large);
       align-items: center;
+      background: transparent;
+      border: none;
     }
     & th {
       @supports not (grid-template-columns: subgrid) {

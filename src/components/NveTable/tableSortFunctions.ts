@@ -1,3 +1,5 @@
+import { SorterType } from "./table.types";
+
 /**
  *  Enkel sorteringsfunksjon som tar inn en funksjon som henter ut verdien som skal sorteres på.
  * Brukes for en tableHeader i NveTable, f.eks denne som sorterer på saksnummer og dokumentnummer: 
@@ -66,5 +68,19 @@ export const sortByProperty = (
       sortN = (a ?? "").toString().localeCompare((b ?? "").toString(), "no");
     }
     return direction === "ASC" ? sortN : sortN * -1;
+  };
+};
+
+/**
+ * Veldig enkel funksjon for sortering. Bare send inn accessor og resten skal fikses
+ * @returns
+ */
+export const simpleSortByAccessor = <T extends Record<string, any>>(
+  accessor: (item: T) => string,
+  isNumeric?: boolean
+) => {
+  return (sorter: SorterType) => {
+    const sortFn = sortByProperty(sorter.direction, isNumeric);
+    return (a: T, b: T) => sortFn(accessor(a), accessor(b));
   };
 };
