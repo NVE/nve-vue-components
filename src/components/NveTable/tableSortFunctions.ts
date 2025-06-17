@@ -79,7 +79,7 @@ export const sortByProperty = (
  *       sort: simpleSortByAccessor<Country>((c) => c.name),
  */
 export const simpleSortByAccessor = <T extends Record<string, any>>(
-  accessor: (item: T) => string,
+  accessor: (item: T) => string | number | null | Date,
   isNumeric?: boolean
 ) => {
   return (sorter: SorterType) => {
