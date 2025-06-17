@@ -3,6 +3,7 @@ import NveTable from "../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
+  simpleSortByAccessor,
 } from "../../../src/components/NveTable/tableSortFunctions";
 import type { TableHeader } from "../../../src/components/NveTable/table.types";
 import {
@@ -44,10 +45,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
     key: "name",
     title: "Navn",
     hidden: false,
-    sort: (sorter) => {
-      const sF = sortByProperty(sorter.direction);
-      return (a: Country, b: Country) => sF(a["name"], b["name"]);
-    },
+    sort: simpleSortByAccessor<Country>((c) => c.name),
   },
   {
     key: "governmentType",
@@ -55,7 +53,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
     hidden: false,
     sort: (sorter) => {
       const sF = sortByFunction<Country>(sorter.direction);
-      return (a: Country, b: Country) =>
+      return (a, b) =>
         sF(a, b, (d) => governmentSorterFunction(d.governmentType));
     },
   },
