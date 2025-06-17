@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/NVE/nve-vue-components/compare/v1.6.1...v1.6.2) (2025-06-17)
+
+
+### Bug Fixes
+
+* simpleSortByAccessor bør også kunne returnere tall/null/Date ([#26](https://github.com/NVE/nve-vue-components/issues/26)) ([a55c384](https://github.com/NVE/nve-vue-components/commit/a55c3845ed695d5f0dc60a4d0d34723bd010b09e))
+
 ## [1.6.1](https://github.com/NVE/nve-vue-components/compare/v1.6.0...v1.6.1) (2025-06-17)
 
 
