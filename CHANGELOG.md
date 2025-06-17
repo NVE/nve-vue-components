@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/NVE/nve-vue-components/compare/v1.6.0...v1.6.1) (2025-06-17)
+
+
+### Bug Fixes
+
+* Liten tekstfiks i kommentar ([#25](https://github.com/NVE/nve-vue-components/issues/25)) ([08e92ab](https://github.com/NVE/nve-vue-components/commit/08e92ab2dc85096fd6b79d1c910341a4ada90b0e))
+
 # [1.6.0](https://github.com/NVE/nve-vue-components/compare/v1.5.0...v1.6.0) (2025-06-16)
 
 
