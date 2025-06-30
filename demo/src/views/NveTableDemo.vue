@@ -50,6 +50,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
   {
     key: "governmentType",
     title: "Styreform",
+    singleLineOverflow: true,
     hidden: false,
     sort: (sorter) => {
       const sF = sortByFunction<Country>(sorter.direction);
@@ -170,6 +171,12 @@ const toggleColumn = (header: TableHeader<Country>) => {
   header.hidden = !header.hidden;
   tableHeaders.value = [...tableHeaders.value];
 };
+
+const tableBorder = ref(false);
+const cellBorder = ref(false);
+const striped = ref(true);
+const hoverrow = ref(false);
+const stickyHeader = ref(false);
 </script>
 
 <template>
@@ -177,7 +184,7 @@ const toggleColumn = (header: TableHeader<Country>) => {
     <h2>NveTable Demo</h2>
     <nve-accordion-item variant="secondary" :open="true">
       <div slot="summary">Slå av og på kolonner</div>
-      <div class="column-toggles">
+      <div class="toggles">
         <nve-checkbox
           v-for="col in tableHeaders"
           :key="col.key"
@@ -188,14 +195,54 @@ const toggleColumn = (header: TableHeader<Country>) => {
         </nve-checkbox>
       </div>
     </nve-accordion-item>
+    <nve-accordion-item variant="secondary" :open="false">
+      <div slot="summary">Slå av og på properties</div>
+      <div class="toggles">
+        <nve-checkbox
+          :checked="tableBorder"
+          @sl-change="() => (tableBorder = !tableBorder)"
+        >
+          Ramme rundt tabell
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="cellBorder"
+          @sl-change="() => (cellBorder = !cellBorder)"
+        >
+          Ramme rundt hver celle
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="striped"
+          @sl-change="() => (striped = !striped)"
+        >
+          Zebra-striper
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="hoverrow"
+          @sl-change="() => (hoverrow = !hoverrow)"
+        >
+          Hover-effekt på rader
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="stickyHeader"
+          @sl-change="() => (stickyHeader = !stickyHeader)"
+        >
+          Gjør header "sticky"
+        </nve-checkbox>
+      </div>
+    </nve-accordion-item>
     <NveTable
       :headers="tableHeaders"
       :data="countries"
-      striped
+      :striped="striped"
       :page-size="15"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
       :filter-function="tableFilter"
       :item-id="(country: Country) => country.countryCode"
+      :sticky-header="stickyHeader"
+      :table-border="tableBorder"
+      :cell-border="cellBorder"
+      :hover-row-effect="hoverrow"
+      :scroll-to-top-on-page-switch="true"
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">
@@ -261,7 +308,7 @@ const toggleColumn = (header: TableHeader<Country>) => {
   }
 }
 
-.column-toggles {
+.toggles {
   display: flex;
   gap: var(--spacing-small);
 }

@@ -279,7 +279,8 @@ const getData = (
 .filter-wrapper {
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 0.3s ease-out,
+  transition:
+    grid-template-rows 0.3s ease-out,
     padding-block-end 0.3s ease-in-out;
   padding-block-end: var(--spacing-large);
   & .filter {

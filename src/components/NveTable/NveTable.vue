@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<PropsType>(), {
   itemId: (_, index: number) => index,
   hideAllFilters: false,
 });
+
 function isAsyncTable(
   props: SyncTableProps<T> | AsyncTableProps<T>
 ): props is AsyncTableProps<T> {
@@ -272,7 +273,17 @@ const getCellClass = (
     <nve-spinner v-if="isFetchingData" />
     <table
       v-if="showTable"
-      :class="[tableclass, { striped: striped, stickyheader: stickyHeader }]"
+      :class="[
+        tableclass,
+        {
+          striped: striped,
+          stickyheader: stickyHeader,
+          tableborder: tableBorder,
+          cellborder: cellBorder,
+          hoverrow: hoverRowEffect,
+          hideunderline: hideUnderline,
+        },
+      ]"
       :style="`--_numcolumns: ${
         props.headers.length
       }; --_subgridTemplate: ${subgridTemplateStyle()}`"
@@ -337,7 +348,10 @@ const getCellClass = (
             class="table-cell"
             :class="[
               getCellClass(header.cellClass, item),
-              { hidden: header.hidden },
+              {
+                hidden: header.hidden,
+                'single-line-overflow': header.singleLineOverflow,
+              },
             ]"
             :data-header="header.title"
             :style="header.style"
@@ -355,7 +369,12 @@ const getCellClass = (
                 "
               ></slot>
             </template>
-            <span v-else>
+            <span
+              v-else
+              :class="{
+                'single-line-overflow-inner': header.singleLineOverflow,
+              }"
+            >
               {{
                 header.accessor
                   ? header.accessor(item)
@@ -421,6 +440,58 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
+  --_row-border-bottom: var(--border-width-default) solid
+    var(--neutrals-border-subtle);
+  &.cellborder {
+    --_cell-border: var(--border-width-default) solid
+      var(--neutrals-border-subtle);
+    --_row-border-bottom: none;
+  }
+  &:is(.cellborder, .tableborder) {
+    --_br: var(--border-radius-large);
+    border-radius: var(--_br);
+    border: var(--border-width-default) solid var(--neutrals-border-subtle);
+    & thead {
+      & tr {
+        border-top-left-radius: var(--_br);
+        border-top-right-radius: var(--_br);
+        & th:first-of-type {
+          border-top-left-radius: var(--_br);
+        }
+        & th:last-of-type {
+          border-top-right-radius: var(--_br);
+        }
+      }
+    }
+    & tbody {
+      & tr:last-of-type {
+        border-bottom-left-radius: var(--_br);
+        border-bottom-right-radius: var(--_br);
+        & td:first-of-type {
+          border-bottom-left-radius: var(--_br);
+        }
+        & td:last-of-type {
+          border-bottom-right-radius: var(--_br);
+        }
+      }
+    }
+  }
+  &.striped {
+    --_row-border-bottom: none;
+  }
+  &.hoverrow {
+    tbody {
+      & tr {
+        transition: background-color 0.3s;
+      }
+      & tr:hover {
+        background: var(--_row-hover-color);
+      }
+    }
+  }
+  &:not(.hoverrow) tr {
+    --_row-hover-color: initial !important;
+  }
 }
 
 thead {
@@ -445,6 +516,12 @@ thead {
         visibility: collapse;
         padding: 0;
       }
+      &:has(button) {
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: var(--neutrals-background-secondary);
+        }
+      }
     }
   }
 }
@@ -467,21 +544,54 @@ thead {
 tbody {
   & tr {
     min-height: 44px;
+    --_row-color: var(--neutrals-background-primary);
+    background-color: var(--_row-color);
+    --_row-hover-color: var(--neutrals-background-secondary);
     & td {
+      border-bottom: var(--_cell-border);
+      border-right: var(--_cell-border);
       &.hidden {
         visibility: collapse;
         padding: 0;
+      }
+      &:last-child {
+        border-right: none;
+      }
+      &.single-line-overflow {
+        min-width: 0;
+        & .single-line-overflow-inner {
+          display: block;
+          max-width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          &:hover {
+            max-width: max-content;
+            z-index: 1;
+            overflow: visible;
+            background: var(--_row-hover-color, var(--_row-color));
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
+        }
+      }
+    }
+    &:last-child {
+      & td {
+        border-bottom: none;
       }
     }
   }
 }
 
 tr {
-  border-bottom: var(--border-width-default) solid var(--neutrals-border-subtle);
+  border-bottom: var(--_row-border-bottom);
 
   & :is(th, td) {
     text-align: left;
     padding-left: 1.125rem;
+    padding-right: 0.75rem;
     &:deep(button) {
       padding-left: 0 !important;
     }
@@ -493,15 +603,21 @@ tr {
     }
   }
 }
-.striped tr {
-  border-bottom: none;
+table.hideunderline {
+  & tr.hasclick {
+    & td:hover {
+      text-decoration: none;
+    }
+  }
 }
+
 .striped tbody tr {
   &:nth-of-type(2n) {
-    background-color: var(--neutrals-background-canvas);
+    --_row-color: var(--neutrals-background-canvas);
+    --_row-hover-color: var(--neutrals-background-secondary);
   }
   &:nth-of-type(2n + 1) {
-    background-color: var(--neutrals-background-primary);
+    --_row-color: var(--neutrals-background-primary);
   }
 }
 .pagination {

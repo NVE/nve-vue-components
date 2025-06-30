@@ -18,6 +18,9 @@ export type TableHeader<T> = {
   headerClass?: string;
   headerWrap?: boolean;
   hidden?: boolean;
+  /* if true: Vis teksten på en linje. Kutt den med "...", vis hele teksten på hover */
+  /* Kan kun brukes på "enkel" celle. Dersom du bruker template etc så må du gjøre dette selv */
+  singleLineOverflow?: boolean;
 };
 
 export type TableProps<T> = {
@@ -39,6 +42,10 @@ export type TableProps<T> = {
   stickyHeader?: boolean;
   scrollToTopOnPageSwitch?: boolean;
   hideAllFilters?: boolean;
+  hoverRowEffect?: boolean;
+  tableBorder?: boolean /* (!) Dersom cellBorder er satt har tableBorder ingen effekt */;
+  cellBorder?: boolean;
+  hideUnderline?: boolean;
 };
 
 export type SyncTableProps<T> = TableProps<T> & {
