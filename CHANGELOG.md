@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/NVE/nve-vue-components/compare/v1.6.2...v1.7.0) (2025-06-30)
+
+
+### Features
+
+* Gjort en del endringer etter designgjennomgang: ([#32](https://github.com/NVE/nve-vue-components/issues/32)) ([77e311d](https://github.com/NVE/nve-vue-components/commit/77e311da6f5267da606efa8a03eddd1e72a96ec3))
+
 ## [1.6.2](https://github.com/NVE/nve-vue-components/compare/v1.6.1...v1.6.2) (2025-06-17)
 
 
