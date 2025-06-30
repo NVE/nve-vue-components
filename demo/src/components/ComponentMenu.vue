@@ -24,7 +24,7 @@
       title="Gå til Nve-table demo med custom components"
     >
       <nve-icon name="table" />
-      <span class="text">NVE-Table Custom</span>
+      <span class="text">NVE-Table med egne komponenter for celler</span>
     </router-link>
   </div>
 </template>
