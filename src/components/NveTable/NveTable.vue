@@ -550,6 +550,23 @@ thead {
   }
 }
 
+thead {
+  & tr {
+    min-height: 44px;
+    & th {
+      border-bottom: var(--_cell-border);
+      border-right: var(--_cell-border);
+      &.hidden {
+        visibility: collapse;
+        padding: 0;
+      }
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
 tbody {
   & tr {
     min-height: 44px;
