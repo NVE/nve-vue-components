@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/NVE/nve-vue-components/compare/v1.8.0...v1.8.1) (2025-07-10)
+
+
+### Bug Fixes
+
+* Var en feil høyde-em på tableheader ([9c8e86b](https://github.com/NVE/nve-vue-components/commit/9c8e86b2c58e870770f43ec413b17660ef35c527))
+
 # [1.8.0](https://github.com/NVE/nve-vue-components/compare/v1.7.0...v1.8.0) (2025-07-10)
 
 

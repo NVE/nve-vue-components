@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.8.0",
+  "version": "1.8.1",
   "private": false,
   "description": "NVE's standard komponentbibliotek er implementert som web-components. Mer info om dette finner du her: https://designsystem.nve.no/ . Dette prosjektet inneholder komponenter som bygger på NVE sitt designsystem, men som blir ansett som for komplekse til å være rene web-komponenter.",
   "author": "IUR NVE",
