@@ -504,6 +504,7 @@ table {
 }
 
 thead {
+  background-color: var(--neutrals-background-canvas);
   & tr {
     height: 40px;
     background-color: var(--neutrals-background-canvas);
@@ -552,7 +553,9 @@ thead {
 
 thead {
   & tr {
-    min-height: 44px;
+    &:has(.headersort) {
+      min-height: 44px;
+    }
     & th {
       border-bottom: var(--_cell-border);
       border-right: var(--_cell-border);
