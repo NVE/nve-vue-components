@@ -62,7 +62,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^24.0.12",
+    "@types/node": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "@vitejs/plugin-vue": "^6.0.0",
@@ -76,7 +76,7 @@
     "prettier": "^3.6.2",
     "semantic-release": "^24.2.6",
     "typescript": "~5.8.3",
-    "vite": "^7.0.3",
+    "vite": "^7.0.4",
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4",
