@@ -305,7 +305,15 @@ const getCellClass = (
               class="headersort"
               @click="() => sortFunction(header)"
             >
-              <span>{{ header.title }}</span>
+              {{
+                /* Innholdet i header kan være en slot. Den samme koden er her i 'header med sort-knapp' og under hvor header ikke er sorterbar (v-else-if) */ ""
+              }}
+              <template v-if="$slots[`header.${header.key}`]">
+                <slot :name="`header.${header.key}`" :header="header"></slot>
+              </template>
+              <span v-else>{{ header.title }}</span>
+
+              {{ /* Ikon for sortering */ "" }}
               <template v-if="currentSort?.field === header.key">
                 <nve-icon
                   v-if="currentSort.direction === 'ASC'"
@@ -320,9 +328,10 @@ const getCellClass = (
                 <span style="width: 24px; display: inline-block"></span>
               </template>
             </button>
-            <span v-else>
-              {{ header.title }}
-            </span>
+            <template v-else-if="$slots[`header.${header.key}`]">
+              <slot :name="`header.${header.key}`" :header="header"></slot>
+            </template>
+            <span v-else>{{ header.title }}</span>
           </th>
         </tr>
       </thead>
@@ -495,6 +504,7 @@ table {
 }
 
 thead {
+  background-color: var(--neutrals-background-canvas);
   & tr {
     height: 40px;
     background-color: var(--neutrals-background-canvas);
@@ -536,6 +546,25 @@ thead {
     &[data-stuck] {
       & th {
         border-bottom: 1px solid var(--neutrals-border-default);
+      }
+    }
+  }
+}
+
+thead {
+  & tr {
+    &:has(.headersort) {
+      min-height: 44px;
+    }
+    & th {
+      border-bottom: var(--_cell-border);
+      border-right: var(--_cell-border);
+      &.hidden {
+        visibility: collapse;
+        padding: 0;
+      }
+      &:last-child {
+        border-right: none;
       }
     }
   }

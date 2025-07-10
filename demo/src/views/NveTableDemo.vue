@@ -273,6 +273,12 @@ const stickyHeader = ref(false);
           </div>
         </Transition>
       </template>
+      <template #[`header.countryCode`]="item">
+        <span style="display: flex; gap: 4px">
+          <span>{{ item.header.title }}</span>
+          <span>🚩</span>
+        </span>
+      </template>
       <template #[`item.countryCode`]="row">
         <span class="country-code">
           <img
