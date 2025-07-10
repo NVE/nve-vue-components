@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/NVE/nve-vue-components/compare/v1.7.0...v1.8.0) (2025-07-10)
+
+
+### Features
+
+* La til støtte for template-bestemt innhold i header-cells ([#37](https://github.com/NVE/nve-vue-components/issues/37)) ([d4e71d9](https://github.com/NVE/nve-vue-components/commit/d4e71d9e78008494f093c70327605c216e0b22ec))
+
 # [1.7.0](https://github.com/NVE/nve-vue-components/compare/v1.6.2...v1.7.0) (2025-06-30)
 
 
