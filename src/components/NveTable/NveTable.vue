@@ -689,7 +689,6 @@ table.hideunderline {
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          min-height: 2em;
           & :deep(.text) {
             white-space: nowrap;
           }
