@@ -26,6 +26,15 @@
       <nve-icon name="table" />
       <span class="text">NVE-Table med egne komponenter for celler</span>
     </router-link>
+
+    <router-link
+      to="/nve-table-sticky"
+      class="link"
+      title="Gå til Nve-table demo med sticky første kolonne"
+    >
+      <nve-icon name="table" />
+      <span class="text">NVE-Table med sticky første kolonne</span>
+    </router-link>
   </div>
 </template>
 

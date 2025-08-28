@@ -23,6 +23,11 @@ const router = createRouter({
       name: "nve-table-custom-components",
       component: () => import("../views/NveTableDemoWithCustomComponents.vue"),
     },
+    {
+      path: "/nve-table-sticky",
+      name: "nve-table-sticky",
+      component: () => import("../views/NveTableDemoStickyFirstColumn.vue"),
+    },
   ],
 });
 

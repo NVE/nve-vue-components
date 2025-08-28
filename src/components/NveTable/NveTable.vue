@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<PropsType>(), {
   rowClass: undefined,
   itemId: (_, index: number) => index,
   hideAllFilters: false,
+  stickyFirstColumn: false,
 });
 
 function isAsyncTable(
@@ -282,6 +283,7 @@ const getCellClass = (
           cellborder: cellBorder,
           hoverrow: hoverRowEffect,
           hideunderline: hideUnderline,
+          stickyfirstcolumn: stickyFirstColumn,
         },
       ]"
       :style="`--_numcolumns: ${
@@ -494,7 +496,7 @@ table {
         transition: background-color 0.3s;
       }
       & tr:hover {
-        background: var(--_row-hover-color);
+        --_row-color: var(--_row-hover-color);
       }
     }
   }
@@ -718,6 +720,27 @@ table.hideunderline {
         }
       }
     }
+  }
+}
+
+.stickyfirstcolumn {
+  max-width: 100%;
+  overflow: auto;
+  & th:first-child,
+  & td:first-child {
+    position: sticky;
+
+    z-index: 2;
+    container-type: scroll-state;
+    inset-inline: 0;
+    /* legger på en skygge for å indikere at det er mer innhold til høyre */
+    box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+  }
+  & td:first-child {
+    background: var(--_row-color);
+  }
+  & th:first-child {
+    background: var(--neutrals-background-canvas);
   }
 }
 </style>
