@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/NVE/nve-vue-components/compare/v1.8.1...v1.9.0) (2025-08-28)
+
+
+### Features
+
+* La til støtte for sticky førstekolonne ([#46](https://github.com/NVE/nve-vue-components/issues/46)) ([8d623d2](https://github.com/NVE/nve-vue-components/commit/8d623d28f1686ed5dd5b29048474eaff9e494db0))
+
 ## [1.8.1](https://github.com/NVE/nve-vue-components/compare/v1.8.0...v1.8.1) (2025-07-10)
 
 
