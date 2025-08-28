@@ -46,6 +46,7 @@ export type TableProps<T> = {
   tableBorder?: boolean /* (!) Dersom cellBorder er satt har tableBorder ingen effekt */;
   cellBorder?: boolean;
   hideUnderline?: boolean;
+  stickyFirstColumn?: boolean;
 };
 
 export type SyncTableProps<T> = TableProps<T> & {
