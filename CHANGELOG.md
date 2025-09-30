@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/NVE/nve-vue-components/compare/v1.9.0...v1.9.1) (2025-09-30)
+
+
+### Bug Fixes
+
+* Header-knapp hadde feil farge i darkmode ([#56](https://github.com/NVE/nve-vue-components/issues/56)) ([c3121e8](https://github.com/NVE/nve-vue-components/commit/c3121e8416dd8790a225a82a73d5a16defde3359))
+
 # [1.9.0](https://github.com/NVE/nve-vue-components/compare/v1.8.1...v1.9.0) (2025-08-28)
 
 
