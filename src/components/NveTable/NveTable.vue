@@ -511,6 +511,9 @@ thead {
     height: 40px;
     background-color: var(--neutrals-background-canvas);
     & button.headersort {
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
       width: 100%;
       text-align: left;
       display: flex;
