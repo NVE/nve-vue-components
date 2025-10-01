@@ -28,6 +28,11 @@ const router = createRouter({
       name: "nve-table-sticky",
       component: () => import("../views/NveTableDemoStickyFirstColumn.vue"),
     },
+    {
+      path: "/nve-table-sub-rows",
+      name: "nve-table-sub-rows",
+      component: () => import("../views/NveTableSubRows.vue"),
+    },
   ],
 });
 

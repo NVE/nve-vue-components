@@ -338,62 +338,72 @@ const getCellClass = (
         </tr>
       </thead>
       <tbody>
-        <tr
+        <template
           v-for="(item, rowIndex) in visibleData"
           :key="props.itemId(item, rowIndex)"
-          :class="[
-            { hasclick: hasClickForRow(item) },
-            props.rowClass ? props.rowClass(item) : '',
-          ]"
-          @click="
-            (e: MouseEvent) => {
-              props.onClickRow &&
-                hasClickForRow(item) &&
-                props.onClickRow(item, e);
-            }
-          "
         >
-          <td
-            v-for="header in props.headers"
-            :key="header.key"
-            class="table-cell"
+          <tr
+            class="table-row"
             :class="[
-              getCellClass(header.cellClass, item),
-              {
-                hidden: header.hidden,
-                'single-line-overflow': header.singleLineOverflow,
-              },
+              { hasclick: hasClickForRow(item) },
+              props.rowClass ? props.rowClass(item) : '',
             ]"
-            :data-header="header.title"
-            :style="header.style"
+            @click="
+              (e: MouseEvent) => {
+                props.onClickRow &&
+                  hasClickForRow(item) &&
+                  props.onClickRow(item, e);
+              }
+            "
           >
-            <template v-if="$slots[`item.${header.key}`]">
-              <slot
-                :name="`item.${header.key}`"
-                :item="item"
-                :value="
-                  header.accessor ? header.accessor(item) : item[header.key]
-                "
-                :index="rowIndex"
-                :original-index="
-                  data?.findIndex((i: any) => i === item) ?? null
-                "
-              ></slot>
-            </template>
-            <span
-              v-else
-              :class="{
-                'single-line-overflow-inner': header.singleLineOverflow,
-              }"
+            <td
+              v-for="header in props.headers"
+              :key="header.key"
+              class="table-cell"
+              :class="[
+                getCellClass(header.cellClass, item),
+                {
+                  hidden: header.hidden,
+                  'single-line-overflow': header.singleLineOverflow,
+                },
+              ]"
+              :data-header="header.title"
+              :style="header.style"
             >
-              {{
-                header.accessor
-                  ? header.accessor(item)
-                  : (item[header.key] ?? "")
-              }}
-            </span>
-          </td>
-        </tr>
+              <template v-if="$slots[`item.${header.key}`]">
+                <slot
+                  :name="`item.${header.key}`"
+                  :item="item"
+                  :value="
+                    header.accessor ? header.accessor(item) : item[header.key]
+                  "
+                  :index="rowIndex"
+                  :original-index="
+                    data?.findIndex((i: any) => i === item) ?? null
+                  "
+                ></slot>
+              </template>
+              <span
+                v-else
+                :class="{
+                  'single-line-overflow-inner': header.singleLineOverflow,
+                }"
+              >
+                {{
+                  header.accessor
+                    ? header.accessor(item)
+                    : (item[header.key] ?? "")
+                }}
+              </span>
+            </td>
+          </tr>
+          <slot
+            name="afterrow"
+            :item="item"
+            :index="rowIndex"
+            :original-index="data?.findIndex((i: any) => i === item) ?? null"
+          />
+        </template>
       </tbody>
     </table>
 
@@ -646,11 +656,11 @@ table.hideunderline {
 }
 
 .striped tbody tr {
-  &:nth-of-type(2n) {
+  &:nth-child(2n of .table-row) {
     --_row-color: var(--neutrals-background-canvas);
     --_row-hover-color: var(--neutrals-background-secondary);
   }
-  &:nth-of-type(2n + 1) {
+  &:nth-of-type(2n + 1 of .table-row) {
     --_row-color: var(--neutrals-background-primary);
   }
 }
