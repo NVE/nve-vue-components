@@ -35,6 +35,14 @@
       <nve-icon name="table" />
       <span class="text">NVE-Table med sticky første kolonne</span>
     </router-link>
+    <router-link
+      to="/nve-table-sub-rows"
+      class="link"
+      title="Gå til Nve-table demo med utviderbare underrader"
+    >
+      <nve-icon name="table" />
+      <span class="text">NVE-Table med utviderbare underrader</span>
+    </router-link>
   </div>
 </template>
 

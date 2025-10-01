@@ -27,6 +27,7 @@ export type TableProps<T> = {
   headers: Array<TableHeader<T>>;
   itemId: (item: T, index: number) => string | number;
   pageSize?: number;
+  pageSizeOptions?: Array<number>;
   striped?: boolean;
   hideTextFilter?: boolean;
   onClickRow?: (item: T, event: MouseEvent) => void;

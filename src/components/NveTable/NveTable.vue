@@ -12,6 +12,7 @@ defineOptions({ name: "NveTable" });
 
 const emit = defineEmits<{
   setExternalData: [val: Record<string, any>];
+  changePageSize: [val: number];
 }>();
 type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
 
@@ -33,6 +34,20 @@ const props = withDefaults(defineProps<PropsType>(), {
   stickyFirstColumn: false,
 });
 
+const localPageSize = ref(props.pageSize);
+watch(
+  () => props.pageSize,
+  (newVal) => {
+    localPageSize.value = newVal;
+  }
+);
+const onChangePageSize = (event: any) => {
+  const newSize = Number(event.target.value);
+  localPageSize.value = newSize;
+  emit("changePageSize", newSize);
+  pageNumber.value = 0; // går til første side
+};
+
 function isAsyncTable(
   props: SyncTableProps<T> | AsyncTableProps<T>
 ): props is AsyncTableProps<T> {
@@ -49,10 +64,10 @@ const pageNumber = ref<number>(0);
 const isFetchingData = ref(false);
 const numPages = computed(() => {
   if (isAsyncTable(props)) {
-    return Math.ceil(props.totalHits / (props.pageSize ?? 1));
+    return Math.ceil(props.totalHits / (localPageSize.value ?? 1));
   } else if (isSyncTable(props)) {
-    return props.pageSize
-      ? Math.ceil((filteredData.value?.length ?? 0) / props.pageSize)
+    return localPageSize.value
+      ? Math.ceil((filteredData.value?.length ?? 0) / localPageSize.value)
       : 1;
   }
   return 1;
@@ -102,7 +117,7 @@ const visibleData = computedAsync(async () => {
     if (pN >= numPages.value) {
       pN = numPages.value - 1;
     }
-    const pS = props.pageSize;
+    const pS = localPageSize.value;
     const sort = currentSort?.value;
 
     if (sort) {
@@ -338,62 +353,72 @@ const getCellClass = (
         </tr>
       </thead>
       <tbody>
-        <tr
+        <template
           v-for="(item, rowIndex) in visibleData"
           :key="props.itemId(item, rowIndex)"
-          :class="[
-            { hasclick: hasClickForRow(item) },
-            props.rowClass ? props.rowClass(item) : '',
-          ]"
-          @click="
-            (e: MouseEvent) => {
-              props.onClickRow &&
-                hasClickForRow(item) &&
-                props.onClickRow(item, e);
-            }
-          "
         >
-          <td
-            v-for="header in props.headers"
-            :key="header.key"
-            class="table-cell"
+          <tr
+            class="table-row"
             :class="[
-              getCellClass(header.cellClass, item),
-              {
-                hidden: header.hidden,
-                'single-line-overflow': header.singleLineOverflow,
-              },
+              { hasclick: hasClickForRow(item) },
+              props.rowClass ? props.rowClass(item) : '',
             ]"
-            :data-header="header.title"
-            :style="header.style"
+            @click="
+              (e: MouseEvent) => {
+                props.onClickRow &&
+                  hasClickForRow(item) &&
+                  props.onClickRow(item, e);
+              }
+            "
           >
-            <template v-if="$slots[`item.${header.key}`]">
-              <slot
-                :name="`item.${header.key}`"
-                :item="item"
-                :value="
-                  header.accessor ? header.accessor(item) : item[header.key]
-                "
-                :index="rowIndex"
-                :original-index="
-                  data?.findIndex((i: any) => i === item) ?? null
-                "
-              ></slot>
-            </template>
-            <span
-              v-else
-              :class="{
-                'single-line-overflow-inner': header.singleLineOverflow,
-              }"
+            <td
+              v-for="header in props.headers"
+              :key="header.key"
+              class="table-cell"
+              :class="[
+                getCellClass(header.cellClass, item),
+                {
+                  hidden: header.hidden,
+                  'single-line-overflow': header.singleLineOverflow,
+                },
+              ]"
+              :data-header="header.title"
+              :style="header.style"
             >
-              {{
-                header.accessor
-                  ? header.accessor(item)
-                  : (item[header.key] ?? "")
-              }}
-            </span>
-          </td>
-        </tr>
+              <template v-if="$slots[`item.${header.key}`]">
+                <slot
+                  :name="`item.${header.key}`"
+                  :item="item"
+                  :value="
+                    header.accessor ? header.accessor(item) : item[header.key]
+                  "
+                  :index="rowIndex"
+                  :original-index="
+                    data?.findIndex((i: any) => i === item) ?? null
+                  "
+                ></slot>
+              </template>
+              <span
+                v-else
+                :class="{
+                  'single-line-overflow-inner': header.singleLineOverflow,
+                }"
+              >
+                {{
+                  header.accessor
+                    ? header.accessor(item)
+                    : (item[header.key] ?? "")
+                }}
+              </span>
+            </td>
+          </tr>
+          <slot
+            name="afterrow"
+            :item="item"
+            :index="rowIndex"
+            :original-index="data?.findIndex((i: any) => i === item) ?? null"
+          />
+        </template>
       </tbody>
     </table>
 
@@ -401,6 +426,18 @@ const getCellClass = (
       Ingen data
     </div>
     <div v-if="numPages > 0 && !hidePagination" class="pagination">
+      <div
+        v-if="pageSizeOptions && pageSizeOptions.length > 0"
+        class="pagesize"
+      >
+        Rader per side
+        <select :value="localPageSize?.toString()" @change="onChangePageSize">
+          <option v-for="size in pageSizeOptions" :key="size" :value="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
+      <div class="spacer" />
       <div class="currentpage">
         Side
         <span class="number">{{ Math.min(numPages, pageNumber + 1) }}</span> av
@@ -646,11 +683,11 @@ table.hideunderline {
 }
 
 .striped tbody tr {
-  &:nth-of-type(2n) {
+  &:nth-child(2n of .table-row) {
     --_row-color: var(--neutrals-background-canvas);
     --_row-hover-color: var(--neutrals-background-secondary);
   }
-  &:nth-of-type(2n + 1) {
+  &:nth-of-type(2n + 1 of .table-row) {
     --_row-color: var(--neutrals-background-primary);
   }
 }
@@ -658,11 +695,13 @@ table.hideunderline {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: right;
   gap: 2rem;
   margin-top: 0.5rem;
   & .number {
     font-weight: var(--font-weight-semibold);
+  }
+  & .spacer {
+    flex-grow: 1;
   }
 }
 
@@ -744,6 +783,30 @@ table.hideunderline {
   }
   & th:first-child {
     background: var(--neutrals-background-canvas);
+  }
+}
+
+.pagesize {
+  font: var(--body-xsmall);
+  color: var(--neutrals-foreground-subtle);
+  & select {
+    margin-left: 0.5rem;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    border-radius: var(--border-radius-small);
+    padding: 0.25rem 0.5rem;
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: 1px solid var(--neutrals-foreground-primary);
+    }
+    & option {
+      color: var(--neutrals-foreground-primary);
+      background-color: var(--neutrals-background-primary);
+    }
   }
 }
 </style>

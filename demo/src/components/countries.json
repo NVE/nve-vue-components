@@ -7,7 +7,14 @@
     "governmentType": "Federal presidential constitutional republic",
     "population": 331002651,
     "area": 9833517,
-    "foundingYear": 1776
+    "foundingYear": 1776,
+    "cities": [
+      { "name": "New York City", "population": 8419600 },
+      { "name": "Los Angeles", "population": 3980400 },
+      { "name": "Chicago", "population": 2716000 },
+      { "name": "Houston", "population": 2328000 },
+      { "name": "Phoenix", "population": 1690000 }
+    ]
   },
   {
     "name": "China",
@@ -17,7 +24,14 @@
     "continent": "Asia",
     "population": 1439323776,
     "area": 9596961,
-    "foundingYear": 1949
+    "foundingYear": 1949,
+    "cities": [
+      { "name": "Shanghai", "population": 24870895 },
+      { "name": "Beijing", "population": 21710000 },
+      { "name": "Chongqing", "population": 16382376 },
+      { "name": "Guangzhou", "population": 14904400 },
+      { "name": "Shenzhen", "population": 17511800 }
+    ]
   },
   {
     "name": "Germany",
@@ -27,7 +41,13 @@
     "continent": "Europe",
     "population": 83783942,
     "area": 357022,
-    "foundingYear": 1871
+    "foundingYear": 1871,
+    "cities": [
+      { "name": "Berlin", "population": 3669491 },
+      { "name": "Hamburg", "population": 1841179 },
+      { "name": "Munich", "population": 1471508 },
+      { "name": "Cologne", "population": 1085664 }
+    ]
   },
   {
     "name": "India",
@@ -37,7 +57,14 @@
     "continent": "Asia",
     "population": 1380004385,
     "area": 3287263,
-    "foundingYear": 1947
+    "foundingYear": 1947,
+    "cities": [
+      { "name": "Mumbai", "population": 12442373 },
+      { "name": "Delhi", "population": 16787941 },
+      { "name": "Bangalore", "population": 8443675 },
+      { "name": "Kolkata", "population": 4486679 },
+      { "name": "Chennai", "population": 7090000 }
+    ]
   },
   {
     "name": "Brazil",
@@ -47,7 +74,13 @@
     "continent": "South America",
     "population": 212559417,
     "area": 8515767,
-    "foundingYear": 1822
+    "foundingYear": 1822,
+    "cities": [
+      { "name": "São Paulo", "population": 12325232 },
+      { "name": "Rio de Janeiro", "population": 6748000 },
+      { "name": "Brasília", "population": 3055149 },
+      { "name": "Salvador", "population": 2886698 }
+    ]
   },
   {
     "name": "South Africa",
@@ -57,7 +90,13 @@
     "continent": "Africa",
     "population": 59308690,
     "area": 1219090,
-    "foundingYear": 1910
+    "foundingYear": 1910,
+    "cities": [
+      { "name": "Johannesburg", "population": 5635127 },
+      { "name": "Cape Town", "population": 433688 },
+      { "name": "Durban", "population": 595061 },
+      { "name": "Pretoria", "population": 741651 }
+    ]
   },
   {
     "name": "Australia",
@@ -67,7 +106,13 @@
     "continent": "Oceania",
     "population": 25499884,
     "area": 7692024,
-    "foundingYear": 1901
+    "foundingYear": 1901,
+    "cities": [
+      { "name": "Sydney", "population": 5312163 },
+      { "name": "Melbourne", "population": 5078193 },
+      { "name": "Brisbane", "population": 2514184 },
+      { "name": "Perth", "population": 2059484 }
+    ]
   },
   {
     "name": "Canada",
@@ -77,7 +122,13 @@
     "continent": "North America",
     "population": 37742154,
     "area": 9984670,
-    "foundingYear": 1867
+    "foundingYear": 1867,
+    "cities": [
+      { "name": "Toronto", "population": 2731571 },
+      { "name": "Montreal", "population": 1704694 },
+      { "name": "Vancouver", "population": 631486 },
+      { "name": "Calgary", "population": 1239220 }
+    ]
   },
   {
     "name": "Russia",
@@ -87,7 +138,13 @@
     "continent": "Europe/Asia",
     "population": 145934462,
     "area": 17098242,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Moscow", "population": 12615882 },
+      { "name": "Saint Petersburg", "population": 5384342 },
+      { "name": "Novosibirsk", "population": 1620162 },
+      { "name": "Yekaterinburg", "population": 1493749 }
+    ]
   },
   {
     "name": "Japan",
@@ -97,7 +154,13 @@
     "continent": "Asia",
     "population": 126476461,
     "area": 377975,
-    "foundingYear": 660
+    "foundingYear": 660,
+    "cities": [
+      { "name": "Tokyo", "population": 13929286 },
+      { "name": "Yokohama", "population": 3748783 },
+      { "name": "Osaka", "population": 2691186 },
+      { "name": "Nagoya", "population": 2295638 }
+    ]
   },
   {
     "name": "United Kingdom",
@@ -107,7 +170,13 @@
     "continent": "Europe",
     "population": 67886011,
     "area": 243610,
-    "foundingYear": 1707
+    "foundingYear": 1707,
+    "cities": [
+      { "name": "London", "population": 8982000 },
+      { "name": "Birmingham", "population": 1141816 },
+      { "name": "Manchester", "population": 553230 },
+      { "name": "Glasgow", "population": 635640 }
+    ]
   },
   {
     "name": "France",
@@ -117,7 +186,13 @@
     "continent": "Europe",
     "population": 65273511,
     "area": 551695,
-    "foundingYear": 1792
+    "foundingYear": 1792,
+    "cities": [
+      { "name": "Paris", "population": 2140526 },
+      { "name": "Marseille", "population": 861635 },
+      { "name": "Lyon", "population": 515695 },
+      { "name": "Toulouse", "population": 479553 }
+    ]
   },
   {
     "name": "Italy",
@@ -127,7 +202,13 @@
     "continent": "Europe",
     "population": 60461826,
     "area": 301340,
-    "foundingYear": 1861
+    "foundingYear": 1861,
+    "cities": [
+      { "name": "Rome", "population": 2872800 },
+      { "name": "Milan", "population": 1378689 },
+      { "name": "Naples", "population": 962003 },
+      { "name": "Turin", "population": 870456 }
+    ]
   },
   {
     "name": "Mexico",
@@ -137,7 +218,13 @@
     "continent": "North America",
     "population": 128932753,
     "area": 1964375,
-    "foundingYear": 1821
+    "foundingYear": 1821,
+    "cities": [
+      { "name": "Mexico City", "population": 9209944 },
+      { "name": "Guadalajara", "population": 1495182 },
+      { "name": "Monterrey", "population": 1135512 },
+      { "name": "Puebla", "population": 1434062 }
+    ]
   },
   {
     "name": "South Korea",
@@ -147,7 +234,13 @@
     "continent": "Asia",
     "population": 51269185,
     "area": 100210,
-    "foundingYear": 1948
+    "foundingYear": 1948,
+    "cities": [
+      { "name": "Seoul", "population": 9776000 },
+      { "name": "Busan", "population": 3448737 },
+      { "name": "Incheon", "population": 2957026 },
+      { "name": "Daegu", "population": 2438727 }
+    ]
   },
   {
     "name": "Argentina",
@@ -157,7 +250,13 @@
     "continent": "South America",
     "population": 45195774,
     "area": 2780400,
-    "foundingYear": 1816
+    "foundingYear": 1816,
+    "cities": [
+      { "name": "Buenos Aires", "population": 2890151 },
+      { "name": "Córdoba", "population": 1391000 },
+      { "name": "Rosario", "population": 948312 },
+      { "name": "Mendoza", "population": 115041 }
+    ]
   },
   {
     "name": "Saudi Arabia",
@@ -167,7 +266,13 @@
     "continent": "Asia",
     "population": 34813871,
     "area": 2149690,
-    "foundingYear": 1932
+    "foundingYear": 1932,
+    "cities": [
+      { "name": "Riyadh", "population": 7200000 },
+      { "name": "Jeddah", "population": 3976000 },
+      { "name": "Mecca", "population": 1675368 },
+      { "name": "Medina", "population": 1300000 }
+    ]
   },
   {
     "name": "Spain",
@@ -177,7 +282,13 @@
     "continent": "Europe",
     "population": 46754778,
     "area": 505990,
-    "foundingYear": 1492
+    "foundingYear": 1492,
+    "cities": [
+      { "name": "Madrid", "population": 3223334 },
+      { "name": "Barcelona", "population": 1620343 },
+      { "name": "Valencia", "population": 794288 },
+      { "name": "Seville", "population": 688711 }
+    ]
   },
   {
     "name": "Turkey",
@@ -187,7 +298,13 @@
     "continent": "Asia/Europe",
     "population": 84339067,
     "area": 783562,
-    "foundingYear": 1923
+    "foundingYear": 1923,
+    "cities": [
+      { "name": "Istanbul", "population": 15462452 },
+      { "name": "Ankara", "population": 5503985 },
+      { "name": "Izmir", "population": 4320519 },
+      { "name": "Bursa", "population": 3056120 }
+    ]
   },
   {
     "name": "Indonesia",
@@ -197,7 +314,13 @@
     "continent": "Asia",
     "population": 273523615,
     "area": 1904569,
-    "foundingYear": 1945
+    "foundingYear": 1945,
+    "cities": [
+      { "name": "Jakarta", "population": 10770487 },
+      { "name": "Surabaya", "population": 2959523 },
+      { "name": "Bandung", "population": 2394877 },
+      { "name": "Medan", "population": 2109332 }
+    ]
   },
   {
     "name": "Nigeria",
@@ -207,7 +330,13 @@
     "continent": "Africa",
     "population": 206139589,
     "area": 923768,
-    "foundingYear": 1960
+    "foundingYear": 1960,
+    "cities": [
+      { "name": "Lagos", "population": 14862111 },
+      { "name": "Kano", "population": 3626068 },
+      { "name": "Ibadan", "population": 3565108 },
+      { "name": "Abuja", "population": 1235880 }
+    ]
   },
   {
     "name": "Pakistan",
@@ -217,7 +346,13 @@
     "continent": "Asia",
     "population": 220892340,
     "area": 881913,
-    "foundingYear": 1947
+    "foundingYear": 1947,
+    "cities": [
+      { "name": "Karachi", "population": 14910352 },
+      { "name": "Lahore", "population": 11126285 },
+      { "name": "Faisalabad", "population": 3203846 },
+      { "name": "Islamabad", "population": 1095064 }
+    ]
   },
   {
     "name": "Bangladesh",
@@ -227,7 +362,13 @@
     "continent": "Asia",
     "population": 164689383,
     "area": 147570,
-    "foundingYear": 1971
+    "foundingYear": 1971,
+    "cities": [
+      { "name": "Dhaka", "population": 8906039 },
+      { "name": "Chittagong", "population": 2581643 },
+      { "name": "Khulna", "population": 663342 },
+      { "name": "Rajshahi", "population": 763952 }
+    ]
   },
   {
     "name": "Vietnam",
@@ -237,7 +378,13 @@
     "continent": "Asia",
     "population": 97338579,
     "area": 331212,
-    "foundingYear": 1945
+    "foundingYear": 1945,
+    "cities": [
+      { "name": "Ho Chi Minh City", "population": 8426000 },
+      { "name": "Hanoi", "population": 8000000 },
+      { "name": "Da Nang", "population": 1138000 },
+      { "name": "Haiphong", "population": 2038000 }
+    ]
   },
   {
     "name": "Egypt",
@@ -247,7 +394,13 @@
     "continent": "Africa",
     "population": 102334404,
     "area": 1002450,
-    "foundingYear": 1922
+    "foundingYear": 1922,
+    "cities": [
+      { "name": "Cairo", "population": 10230350 },
+      { "name": "Alexandria", "population": 5200000 },
+      { "name": "Giza", "population": 4239988 },
+      { "name": "Shubra El Kheima", "population": 1170000 }
+    ]
   },
   {
     "name": "Thailand",
@@ -257,7 +410,13 @@
     "continent": "Asia",
     "population": 69799978,
     "area": 513120,
-    "foundingYear": 1238
+    "foundingYear": 1238,
+    "cities": [
+      { "name": "Bangkok", "population": 10539000 },
+      { "name": "Nonthaburi", "population": 255000 },
+      { "name": "Nakhon Ratchasima", "population": 174000 },
+      { "name": "Chiang Mai", "population": 127000 }
+    ]
   },
   {
     "name": "Iran",
@@ -267,7 +426,13 @@
     "continent": "Asia",
     "population": 83992949,
     "area": 1648195,
-    "foundingYear": 1979
+    "foundingYear": 1979,
+    "cities": [
+      { "name": "Tehran", "population": 8846782 },
+      { "name": "Mashhad", "population": 3076960 },
+      { "name": "Isfahan", "population": 1961260 },
+      { "name": "Karaj", "population": 1750000 }
+    ]
   },
   {
     "name": "Philippines",
@@ -277,7 +442,13 @@
     "continent": "Asia",
     "population": 109581078,
     "area": 300000,
-    "foundingYear": 1946
+    "foundingYear": 1946,
+    "cities": [
+      { "name": "Quezon City", "population": 2936116 },
+      { "name": "Manila", "population": 1780148 },
+      { "name": "Davao City", "population": 1632991 },
+      { "name": "Caloocan", "population": 1583978 }
+    ]
   },
   {
     "name": "Ethiopia",
@@ -287,7 +458,13 @@
     "continent": "Africa",
     "population": 114963588,
     "area": 1104300,
-    "foundingYear": -980
+    "foundingYear": -980,
+    "cities": [
+      { "name": "Addis Ababa", "population": 3041002 },
+      { "name": "Dire Dawa", "population": 440000 },
+      { "name": "Mekelle", "population": 545000 },
+      { "name": "Gondar", "population": 358257 }
+    ]
   },
   {
     "name": "Colombia",
@@ -297,7 +474,13 @@
     "continent": "South America",
     "population": 50882891,
     "area": 1141748,
-    "foundingYear": 1810
+    "foundingYear": 1810,
+    "cities": [
+      { "name": "Bogotá", "population": 7743955 },
+      { "name": "Medellín", "population": 2569000 },
+      { "name": "Cali", "population": 2228000 },
+      { "name": "Barranquilla", "population": 1223000 }
+    ]
   },
   {
     "name": "Ukraine",
@@ -307,7 +490,13 @@
     "continent": "Europe",
     "population": 43733762,
     "area": 603500,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Kyiv", "population": 2962180 },
+      { "name": "Kharkiv", "population": 1433880 },
+      { "name": "Odesa", "population": 1011000 },
+      { "name": "Dnipro", "population": 980948 }
+    ]
   },
   {
     "name": "Oman",
@@ -317,7 +506,12 @@
     "continent": "Asia",
     "population": 5106626,
     "area": 309500,
-    "foundingYear": 1650
+    "foundingYear": 1650,
+    "cities": [
+      { "name": "Muscat", "population": 797000 },
+      { "name": "Salalah", "population": 340815 },
+      { "name": "Sohar", "population": 140006 }
+    ]
   },
   {
     "name": "Myanmar",
@@ -327,7 +521,12 @@
     "continent": "Asia",
     "population": 54409800,
     "area": 676578,
-    "foundingYear": 1948
+    "foundingYear": 1948,
+    "cities": [
+      { "name": "Yangon", "population": 5214000 },
+      { "name": "Mandalay", "population": 1200000 },
+      { "name": "Naypyidaw", "population": 924608 }
+    ]
   },
   {
     "name": "Kenya",
@@ -337,7 +536,12 @@
     "continent": "Africa",
     "population": 53771296,
     "area": 580367,
-    "foundingYear": 1963
+    "foundingYear": 1963,
+    "cities": [
+      { "name": "Nairobi", "population": 4397073 },
+      { "name": "Mombasa", "population": 1208333 },
+      { "name": "Kisumu", "population": 409928 }
+    ]
   },
   {
     "name": "South Sudan",
@@ -347,7 +551,12 @@
     "continent": "Africa",
     "population": 11193725,
     "area": 619745,
-    "foundingYear": 2011
+    "foundingYear": 2011,
+    "cities": [
+      { "name": "Juba", "population": 525953 },
+      { "name": "Wau", "population": 151320 },
+      { "name": "Malakal", "population": 147500 }
+    ]
   },
   {
     "name": "Chile",
@@ -357,7 +566,12 @@
     "continent": "South America",
     "population": 19116201,
     "area": 756102,
-    "foundingYear": 1818
+    "foundingYear": 1818,
+    "cities": [
+      { "name": "Santiago", "population": 5743719 },
+      { "name": "Puente Alto", "population": 568106 },
+      { "name": "Antofagasta", "population": 361873 }
+    ]
   },
   {
     "name": "Malaysia",
@@ -367,7 +581,12 @@
     "continent": "Asia",
     "population": 32365999,
     "area": 330803,
-    "foundingYear": 1957
+    "foundingYear": 1957,
+    "cities": [
+      { "name": "Kuala Lumpur", "population": 1800000 },
+      { "name": "George Town", "population": 708127 },
+      { "name": "Ipoh", "population": 673318 }
+    ]
   },
   {
     "name": "Norway",
@@ -377,7 +596,12 @@
     "continent": "Europe",
     "population": 5379475,
     "area": 385207,
-    "foundingYear": 872
+    "foundingYear": 872,
+    "cities": [
+      { "name": "Oslo", "population": 697010 },
+      { "name": "Bergen", "population": 283929 },
+      { "name": "Stavanger", "population": 144699 }
+    ]
   },
   {
     "name": "Sweden",
@@ -387,7 +611,12 @@
     "continent": "Europe",
     "population": 10353442,
     "area": 450295,
-    "foundingYear": 1523
+    "foundingYear": 1523,
+    "cities": [
+      { "name": "Stockholm", "population": 975904 },
+      { "name": "Gothenburg", "population": 583056 },
+      { "name": "Malmö", "population": 347949 }
+    ]
   },
   {
     "name": "Denmark",
@@ -397,7 +626,12 @@
     "continent": "Europe",
     "population": 5831404,
     "area": 43094,
-    "foundingYear": 965
+    "foundingYear": 965,
+    "cities": [
+      { "name": "Copenhagen", "population": 794128 },
+      { "name": "Aarhus", "population": 280534 },
+      { "name": "Odense", "population": 180760 }
+    ]
   },
   {
     "name": "Finland",
@@ -407,7 +641,12 @@
     "continent": "Europe",
     "population": 5536146,
     "area": 338424,
-    "foundingYear": 1917
+    "foundingYear": 1917,
+    "cities": [
+      { "name": "Helsinki", "population": 656920 },
+      { "name": "Espoo", "population": 297132 },
+      { "name": "Tampere", "population": 244223 }
+    ]
   },
   {
     "name": "Iceland",
@@ -417,7 +656,12 @@
     "continent": "Europe",
     "population": 366425,
     "area": 103000,
-    "foundingYear": 1944
+    "foundingYear": 1944,
+    "cities": [
+      { "name": "Reykjavik", "population": 131136 },
+      { "name": "Kopavogur", "population": 37558 },
+      { "name": "Hafnarfjordur", "population": 29200 }
+    ]
   },
   {
     "name": "Portugal",
@@ -427,7 +671,12 @@
     "continent": "Europe",
     "population": 10276617,
     "area": 92212,
-    "foundingYear": 1143
+    "foundingYear": 1143,
+    "cities": [
+      { "name": "Lisbon", "population": 504718 },
+      { "name": "Porto", "population": 214349 },
+      { "name": "Amadora", "population": 175136 }
+    ]
   },
   {
     "name": "Greece",
@@ -437,7 +686,12 @@
     "continent": "Europe",
     "population": 10423054,
     "area": 131957,
-    "foundingYear": 1830
+    "foundingYear": 1830,
+    "cities": [
+      { "name": "Athens", "population": 664046 },
+      { "name": "Thessaloniki", "population": 315196 },
+      { "name": "Patras", "population": 167446 }
+    ]
   },
   {
     "name": "Switzerland",
@@ -447,7 +701,12 @@
     "continent": "Europe",
     "population": 8654622,
     "area": 41284,
-    "foundingYear": 1291
+    "foundingYear": 1291,
+    "cities": [
+      { "name": "Zurich", "population": 434008 },
+      { "name": "Geneva", "population": 203856 },
+      { "name": "Basel", "population": 178120 }
+    ]
   },
   {
     "name": "Austria",
@@ -457,7 +716,12 @@
     "continent": "Europe",
     "population": 9006398,
     "area": 83879,
-    "foundingYear": 1955
+    "foundingYear": 1955,
+    "cities": [
+      { "name": "Vienna", "population": 1911191 },
+      { "name": "Graz", "population": 294236 },
+      { "name": "Linz", "population": 204846 }
+    ]
   },
   {
     "name": "Belgium",
@@ -467,7 +731,12 @@
     "continent": "Europe",
     "population": 11589623,
     "area": 30528,
-    "foundingYear": 1830
+    "foundingYear": 1830,
+    "cities": [
+      { "name": "Brussels", "population": 179277 },
+      { "name": "Antwerp", "population": 529247 },
+      { "name": "Ghent", "population": 263927 }
+    ]
   },
   {
     "name": "Netherlands",
@@ -477,7 +746,12 @@
     "continent": "Europe",
     "population": 17441139,
     "area": 41543,
-    "foundingYear": 1581
+    "foundingYear": 1581,
+    "cities": [
+      { "name": "Amsterdam", "population": 872680 },
+      { "name": "Rotterdam", "population": 651446 },
+      { "name": "The Hague", "population": 545838 }
+    ]
   },
   {
     "name": "Poland",
@@ -487,7 +761,12 @@
     "continent": "Europe",
     "population": 38386000,
     "area": 312696,
-    "foundingYear": 966
+    "foundingYear": 966,
+    "cities": [
+      { "name": "Warsaw", "population": 1793579 },
+      { "name": "Kraków", "population": 779115 },
+      { "name": "Łódź", "population": 672185 }
+    ]
   },
   {
     "name": "Czech Republic",
@@ -497,7 +776,12 @@
     "continent": "Europe",
     "population": 10708981,
     "area": 78865,
-    "foundingYear": 1993
+    "foundingYear": 1993,
+    "cities": [
+      { "name": "Prague", "population": 1309077 },
+      { "name": "Brno", "population": 382405 },
+      { "name": "Ostrava", "population": 287968 }
+    ]
   },
   {
     "name": "Hungary",
@@ -507,7 +791,12 @@
     "continent": "Europe",
     "population": 9772756,
     "area": 93028,
-    "foundingYear": 1000
+    "foundingYear": 1000,
+    "cities": [
+      { "name": "Budapest", "population": 1752286 },
+      { "name": "Debrecen", "population": 202214 },
+      { "name": "Szeged", "population": 161921 }
+    ]
   },
   {
     "name": "Romania",
@@ -517,7 +806,12 @@
     "continent": "Europe",
     "population": 19237691,
     "area": 238397,
-    "foundingYear": 1859
+    "foundingYear": 1859,
+    "cities": [
+      { "name": "Bucharest", "population": 1836000 },
+      { "name": "Cluj-Napoca", "population": 324576 },
+      { "name": "Timișoara", "population": 319279 }
+    ]
   },
   {
     "name": "Bulgaria",
@@ -527,7 +821,12 @@
     "continent": "Europe",
     "population": 6927288,
     "area": 110879,
-    "foundingYear": 681
+    "foundingYear": 681,
+    "cities": [
+      { "name": "Sofia", "population": 1277416 },
+      { "name": "Plovdiv", "population": 345213 },
+      { "name": "Varna", "population": 335177 }
+    ]
   },
   {
     "name": "Slovakia",
@@ -537,7 +836,12 @@
     "continent": "Europe",
     "population": 5456362,
     "area": 49035,
-    "foundingYear": 1993
+    "foundingYear": 1993,
+    "cities": [
+      { "name": "Bratislava", "population": 432864 },
+      { "name": "Košice", "population": 238593 },
+      { "name": "Prešov", "population": 89000 }
+    ]
   },
   {
     "name": "Croatia",
@@ -547,7 +851,12 @@
     "continent": "Europe",
     "population": 4047200,
     "area": 56594,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Zagreb", "population": 806341 },
+      { "name": "Split", "population": 178102 },
+      { "name": "Rijeka", "population": 128624 }
+    ]
   },
   {
     "name": "Serbia",
@@ -557,7 +866,12 @@
     "continent": "Europe",
     "population": 6963764,
     "area": 77474,
-    "foundingYear": 2006
+    "foundingYear": 2006,
+    "cities": [
+      { "name": "Belgrade", "population": 1378682 },
+      { "name": "Novi Sad", "population": 277522 },
+      { "name": "Niš", "population": 183164 }
+    ]
   },
   {
     "name": "Slovenia",
@@ -567,7 +881,12 @@
     "continent": "Europe",
     "population": 2100126,
     "area": 20273,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Ljubljana", "population": 295504 },
+      { "name": "Maribor", "population": 112642 },
+      { "name": "Celje", "population": 37870 }
+    ]
   },
   {
     "name": "Bosnia and Herzegovina",
@@ -577,7 +896,12 @@
     "continent": "Europe",
     "population": 3280819,
     "area": 51197,
-    "foundingYear": 1992
+    "foundingYear": 1992,
+    "cities": [
+      { "name": "Sarajevo", "population": 275524 },
+      { "name": "Banja Luka", "population": 185042 },
+      { "name": "Tuzla", "population": 110979 }
+    ]
   },
   {
     "name": "Montenegro",
@@ -587,7 +911,12 @@
     "continent": "Europe",
     "population": 622359,
     "area": 13812,
-    "foundingYear": 2006
+    "foundingYear": 2006,
+    "cities": [
+      { "name": "Podgorica", "population": 150977 },
+      { "name": "Nikšić", "population": 56719 },
+      { "name": "Herceg Novi", "population": 12739 }
+    ]
   },
   {
     "name": "North Macedonia",
@@ -597,7 +926,12 @@
     "continent": "Europe",
     "population": 2077132,
     "area": 25713,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Skopje", "population": 507000 },
+      { "name": "Bitola", "population": 74410 },
+      { "name": "Kumanovo", "population": 105484 }
+    ]
   },
   {
     "name": "Albania",
@@ -607,7 +941,12 @@
     "continent": "Europe",
     "population": 2877797,
     "area": 28748,
-    "foundingYear": 1912
+    "foundingYear": 1912,
+    "cities": [
+      { "name": "Tirana", "population": 418495 },
+      { "name": "Durrës", "population": 122034 },
+      { "name": "Vlorë", "population": 79513 }
+    ]
   },
   {
     "name": "Kosovo",
@@ -617,7 +956,12 @@
     "continent": "Europe",
     "population": 1831000,
     "area": 10887,
-    "foundingYear": 2008
+    "foundingYear": 2008,
+    "cities": [
+      { "name": "Pristina", "population": 198897 },
+      { "name": "Pec", "population": 95500 },
+      { "name": "Gjakova", "population": 94000 }
+    ]
   },
   {
     "name": "Kazakhstan",
@@ -627,7 +971,12 @@
     "continent": "Asia",
     "population": 18754440,
     "area": 2724900,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Almaty", "population": 1960000 },
+      { "name": "Astana", "population": 1078362 },
+      { "name": "Shymkent", "population": 1060000 }
+    ]
   },
   {
     "name": "Uzbekistan",
@@ -637,7 +986,12 @@
     "continent": "Asia",
     "population": 34232050,
     "area": 447400,
-    "foundingYear": 1991
+    "foundingYear": 1991,
+    "cities": [
+      { "name": "Tashkent", "population": 2546000 },
+      { "name": "Samarkand", "population": 530000 },
+      { "name": "Namangan", "population": 542000 }
+    ]
   },
   {
     "name": "Morocco",
@@ -647,7 +1001,12 @@
     "continent": "Africa",
     "population": 36910560,
     "area": 446550,
-    "foundingYear": 1956
+    "foundingYear": 1956,
+    "cities": [
+      { "name": "Casablanca", "population": 3359818 },
+      { "name": "Rabat", "population": 577827 },
+      { "name": "Fes", "population": 1112072 }
+    ]
   },
   {
     "name": "Algeria",
@@ -657,7 +1016,12 @@
     "continent": "Africa",
     "population": 43851044,
     "area": 2381741,
-    "foundingYear": 1962
+    "foundingYear": 1962,
+    "cities": [
+      { "name": "Algiers", "population": 3415811 },
+      { "name": "Oran", "population": 803329 },
+      { "name": "Constantine", "population": 448374 }
+    ]
   },
   {
     "name": "Angola",
@@ -667,7 +1031,12 @@
     "continent": "Africa",
     "population": 32866272,
     "area": 1246700,
-    "foundingYear": 1975
+    "foundingYear": 1975,
+    "cities": [
+      { "name": "Luanda", "population": 8417000 },
+      { "name": "N'dalatando", "population": 161584 },
+      { "name": "Huambo", "population": 665000 }
+    ]
   },
   {
     "name": "Tanzania",
@@ -677,7 +1046,12 @@
     "continent": "Africa",
     "population": 59734218,
     "area": 945087,
-    "foundingYear": 1964
+    "foundingYear": 1964,
+    "cities": [
+      { "name": "Dar es Salaam", "population": 4364541 },
+      { "name": "Dodoma", "population": 410956 },
+      { "name": "Mwanza", "population": 706543 }
+    ]
   },
   {
     "name": "Eritrea",
@@ -687,7 +1061,12 @@
     "continent": "Africa",
     "population": 3546421,
     "area": 117600,
-    "foundingYear": 1993
+    "foundingYear": 1993,
+    "cities": [
+      { "name": "Asmara", "population": 963000 },
+      { "name": "Keren", "population": 146000 },
+      { "name": "Massawa", "population": 54000 }
+    ]
   },
   {
     "name": "Sri Lanka",
@@ -697,7 +1076,12 @@
     "continent": "Asia",
     "population": 21919000,
     "area": 65610,
-    "foundingYear": 1948
+    "foundingYear": 1948,
+    "cities": [
+      { "name": "Colombo", "population": 752993 },
+      { "name": "Kandy", "population": 125400 },
+      { "name": "Galle", "population": 100000 }
+    ]
   },
   {
     "name": "Nepal",
@@ -707,7 +1091,12 @@
     "continent": "Asia",
     "population": 29136808,
     "area": 147181,
-    "foundingYear": 1768
+    "foundingYear": 1768,
+    "cities": [
+      { "name": "Kathmandu", "population": 1442271 },
+      { "name": "Pokhara", "population": 518452 },
+      { "name": "Lalitpur", "population": 284922 }
+    ]
   },
   {
     "name": "Ghana",
@@ -717,7 +1106,12 @@
     "continent": "Africa",
     "population": 31072940,
     "area": 238533,
-    "foundingYear": 1957
+    "foundingYear": 1957,
+    "cities": [
+      { "name": "Accra", "population": 2270000 },
+      { "name": "Kumasi", "population": 2069350 },
+      { "name": "Tamale", "population": 371934 }
+    ]
   },
   {
     "name": "Vatican City",
@@ -727,7 +1121,8 @@
     "continent": "Europe",
     "population": 825,
     "area": 0.44,
-    "foundingYear": 1929
+    "foundingYear": 1929,
+    "cities": [{ "name": "Vatican City", "population": 825 }]
   },
   {
     "name": "Monaco",
@@ -737,7 +1132,8 @@
     "continent": "Europe",
     "population": 39242,
     "area": 2.02,
-    "foundingYear": 1297
+    "foundingYear": 1297,
+    "cities": [{ "name": "Monaco", "population": 39242 }]
   },
   {
     "name": "Andorra",
@@ -747,7 +1143,11 @@
     "continent": "Europe",
     "population": 77265,
     "area": 468,
-    "foundingYear": 1278
+    "foundingYear": 1278,
+    "cities": [
+      { "name": "Andorra la Vella", "population": 22615 },
+      { "name": "Escaldes-Engordany", "population": 14295 }
+    ]
   },
   {
     "name": "San Marino",
@@ -757,7 +1157,11 @@
     "continent": "Europe",
     "population": 33931,
     "area": 61,
-    "foundingYear": 301
+    "foundingYear": 301,
+    "cities": [
+      { "name": "San Marino", "population": 4493 },
+      { "name": "Serravalle", "population": 10800 }
+    ]
   },
   {
     "name": "Liechtenstein",
@@ -767,7 +1171,11 @@
     "continent": "Europe",
     "population": 38749,
     "area": 160,
-    "foundingYear": 1719
+    "foundingYear": 1719,
+    "cities": [
+      { "name": "Vaduz", "population": 5450 },
+      { "name": "Schaan", "population": 6000 }
+    ]
   },
   {
     "name": "North Korea",
@@ -777,7 +1185,12 @@
     "continent": "Asia",
     "population": 25778816,
     "area": 120540,
-    "foundingYear": 1948
+    "foundingYear": 1948,
+    "cities": [
+      { "name": "Pyongyang", "population": 2860000 },
+      { "name": "Hamhung", "population": 768551 },
+      { "name": "Chongjin", "population": 667929 }
+    ]
   },
   {
     "name": "Eswatini",
@@ -787,7 +1200,11 @@
     "continent": "Africa",
     "population": 1160164,
     "area": 17364,
-    "foundingYear": 1968
+    "foundingYear": 1968,
+    "cities": [
+      { "name": "Mbabane", "population": 94874 },
+      { "name": "Manzini", "population": 110000 }
+    ]
   },
   {
     "name": "Brunei",
@@ -797,7 +1214,11 @@
     "continent": "Asia",
     "population": 437479,
     "area": 5765,
-    "foundingYear": 1984
+    "foundingYear": 1984,
+    "cities": [
+      { "name": "Bandar Seri Begawan", "population": 100700 },
+      { "name": "Kuala Belait", "population": 41000 }
+    ]
   },
   {
     "name": "Qatar",
@@ -807,7 +1228,11 @@
     "continent": "Asia",
     "population": 2881060,
     "area": 11571,
-    "foundingYear": 1971
+    "foundingYear": 1971,
+    "cities": [
+      { "name": "Doha", "population": 956457 },
+      { "name": "Al Rayyan", "population": 605712 }
+    ]
   },
   {
     "name": "Kuwait",
@@ -817,7 +1242,11 @@
     "continent": "Asia",
     "population": 4270571,
     "area": 17818,
-    "foundingYear": 1961
+    "foundingYear": 1961,
+    "cities": [
+      { "name": "Kuwait City", "population": 1510606 },
+      { "name": "Al Ahmadi", "population": 637411 }
+    ]
   },
   {
     "name": "United Arab Emirates",
@@ -827,7 +1256,12 @@
     "continent": "Asia",
     "population": 9890402,
     "area": 83600,
-    "foundingYear": 1971
+    "foundingYear": 1971,
+    "cities": [
+      { "name": "Dubai", "population": 3331400 },
+      { "name": "Abu Dhabi", "population": 1482816 },
+      { "name": "Sharjah", "population": 1400000 }
+    ]
   },
   {
     "name": "New Zealand",
@@ -837,6 +1271,11 @@
     "continent": "Oceania",
     "population": 5084300,
     "area": 268838,
-    "foundingYear": 1840
+    "foundingYear": 1840,
+    "cities": [
+      { "name": "Auckland", "population": 1657000 },
+      { "name": "Wellington", "population": 215100 },
+      { "name": "Christchurch", "population": 383200 }
+    ]
   }
 ]
