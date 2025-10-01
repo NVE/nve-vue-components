@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/NVE/nve-vue-components/compare/v1.9.1...v1.10.0) (2025-10-01)
+
+
+### Features
+
+* La inn slot for under hver rad og mulighet for pagesize-velger ([#57](https://github.com/NVE/nve-vue-components/issues/57)) ([4b58bf6](https://github.com/NVE/nve-vue-components/commit/4b58bf602b82484a770cec2256fd9a3f77c4041b))
+
 ## [1.9.1](https://github.com/NVE/nve-vue-components/compare/v1.9.0...v1.9.1) (2025-09-30)
 
 
