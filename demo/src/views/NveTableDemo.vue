@@ -235,6 +235,7 @@ const stickyHeader = ref(false);
       :data="countries"
       :striped="striped"
       :page-size="15"
+      :page-size-options="[5, 10, 15, 25, 50]"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
       :filter-function="tableFilter"
       :item-id="(country: Country) => country.countryCode"

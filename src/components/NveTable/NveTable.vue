@@ -12,6 +12,7 @@ defineOptions({ name: "NveTable" });
 
 const emit = defineEmits<{
   setExternalData: [val: Record<string, any>];
+  changePageSize: [val: number];
 }>();
 type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
 
@@ -33,6 +34,20 @@ const props = withDefaults(defineProps<PropsType>(), {
   stickyFirstColumn: false,
 });
 
+const localPageSize = ref(props.pageSize);
+watch(
+  () => props.pageSize,
+  (newVal) => {
+    localPageSize.value = newVal;
+  }
+);
+const onChangePageSize = (event: any) => {
+  const newSize = Number(event.target.value);
+  localPageSize.value = newSize;
+  emit("changePageSize", newSize);
+  pageNumber.value = 0; // går til første side
+};
+
 function isAsyncTable(
   props: SyncTableProps<T> | AsyncTableProps<T>
 ): props is AsyncTableProps<T> {
@@ -49,10 +64,10 @@ const pageNumber = ref<number>(0);
 const isFetchingData = ref(false);
 const numPages = computed(() => {
   if (isAsyncTable(props)) {
-    return Math.ceil(props.totalHits / (props.pageSize ?? 1));
+    return Math.ceil(props.totalHits / (localPageSize.value ?? 1));
   } else if (isSyncTable(props)) {
-    return props.pageSize
-      ? Math.ceil((filteredData.value?.length ?? 0) / props.pageSize)
+    return localPageSize.value
+      ? Math.ceil((filteredData.value?.length ?? 0) / localPageSize.value)
       : 1;
   }
   return 1;
@@ -102,7 +117,7 @@ const visibleData = computedAsync(async () => {
     if (pN >= numPages.value) {
       pN = numPages.value - 1;
     }
-    const pS = props.pageSize;
+    const pS = localPageSize.value;
     const sort = currentSort?.value;
 
     if (sort) {
@@ -411,6 +426,18 @@ const getCellClass = (
       Ingen data
     </div>
     <div v-if="numPages > 0 && !hidePagination" class="pagination">
+      <div
+        v-if="pageSizeOptions && pageSizeOptions.length > 0"
+        class="pagesize"
+      >
+        Rader per side
+        <select :value="localPageSize?.toString()" @change="onChangePageSize">
+          <option v-for="size in pageSizeOptions" :key="size" :value="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
+      <div class="spacer" />
       <div class="currentpage">
         Side
         <span class="number">{{ Math.min(numPages, pageNumber + 1) }}</span> av
@@ -668,11 +695,13 @@ table.hideunderline {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: right;
   gap: 2rem;
   margin-top: 0.5rem;
   & .number {
     font-weight: var(--font-weight-semibold);
+  }
+  & .spacer {
+    flex-grow: 1;
   }
 }
 
@@ -754,6 +783,30 @@ table.hideunderline {
   }
   & th:first-child {
     background: var(--neutrals-background-canvas);
+  }
+}
+
+.pagesize {
+  font: var(--body-xsmall);
+  color: var(--neutrals-foreground-subtle);
+  & select {
+    margin-left: 0.5rem;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    border-radius: var(--border-radius-small);
+    padding: 0.25rem 0.5rem;
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: 1px solid var(--neutrals-foreground-primary);
+    }
+    & option {
+      color: var(--neutrals-foreground-primary);
+      background-color: var(--neutrals-background-primary);
+    }
   }
 }
 </style>
