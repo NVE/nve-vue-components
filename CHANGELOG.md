@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/NVE/nve-vue-components/compare/v1.10.0...v1.10.1) (2025-10-03)
+
+
+### Bug Fixes
+
+* Lagrer nå antall per side i localstorage-state tilsvarende sidenummer og sortering ([#60](https://github.com/NVE/nve-vue-components/issues/60)) ([724d9bf](https://github.com/NVE/nve-vue-components/commit/724d9bfc2acc866c14b86649f1f9d2138c6265b3))
+
 # [1.10.0](https://github.com/NVE/nve-vue-components/compare/v1.9.1...v1.10.0) (2025-10-01)
 
 
