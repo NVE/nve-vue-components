@@ -154,7 +154,7 @@ const saveExternalData = (data: Record<string, unknown>) => {
 const tableholder: Ref<HTMLDivElement | null> = ref(null);
 
 watch(
-  [externalDataForSaving, currentSort, pageNumber, filterText],
+  [externalDataForSaving, currentSort, pageNumber, filterText, localPageSize],
   (newdata, olddata) => {
     if (isSyncTable(props) && props.saveStateId) {
       let savedState = JSON.stringify({
@@ -162,6 +162,7 @@ watch(
         currentSort: JSON.stringify(currentSort.value),
         pageNumber: pageNumber.value,
         filterText: filterText.value,
+        pageSize: localPageSize.value,
       });
       localStorage.setItem(props.saveStateId, savedState);
     }
@@ -202,6 +203,10 @@ onMounted(() => {
       }
       if (savedState.filterText) {
         filterText.value = savedState.filterText;
+      }
+      if (savedState.pageSize) {
+        localPageSize.value = Number(savedState.pageSize);
+        emit("changePageSize", localPageSize.value);
       }
       if (savedState.externalDataForSaving) {
         emit("setExternalData", savedState);

@@ -243,6 +243,7 @@ const stickyHeader = ref(false);
       :table-border="tableBorder"
       :cell-border="cellBorder"
       :hover-row-effect="hoverrow"
+      saveStateId="nve-table-demo"
       :scroll-to-top-on-page-switch="true"
     >
       <template #filterbutton>
