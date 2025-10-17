@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<PropsType>(), {
   hasClickForRow: undefined,
   stickyHeader: false,
   scrollToTopOnPageSwitch: false,
+  filterSize: "medium",
   initialSort: null,
   rowClass: undefined,
   itemId: (_, index: number) => index,
@@ -236,6 +237,7 @@ onMounted(() => {
     observer.observe(thead);
   }
 });
+
 const hasFilterFunction = computed(() => {
   if (isAsyncTable(props)) {
     return !props.hideAllFilters;
@@ -279,7 +281,7 @@ const getCellClass = (
     <div v-if="hasFilterFunction && !props.hideTextFilter" class="filter">
       <nve-input
         v-model="filterText"
-        size="medium"
+        :size="props.filterSize"
         filled
         type="search"
         placeholder="Søk"
