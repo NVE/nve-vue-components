@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<PropsType>(), {
   hasClickForRow: undefined,
   stickyHeader: false,
   scrollToTopOnPageSwitch: false,
-  filterSize: "medium",
+  filterTextInputSize: "medium",
   initialSort: null,
   rowClass: undefined,
   itemId: (_, index: number) => index,
@@ -281,7 +281,7 @@ const getCellClass = (
     <div v-if="hasFilterFunction && !props.hideTextFilter" class="filter">
       <nve-input
         v-model="filterText"
-        :size="props.filterSize"
+        :size="props.filterTextInputSize"
         filled
         type="search"
         placeholder="Søk"

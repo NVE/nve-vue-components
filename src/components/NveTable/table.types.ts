@@ -43,7 +43,7 @@ export type TableProps<T> = {
   stickyHeader?: boolean;
   scrollToTopOnPageSwitch?: boolean;
   hideAllFilters?: boolean;
-  filterSize?: "small" | "medium";
+  filterTextInputSize?: "small" | "medium";
   hoverRowEffect?: boolean;
   tableBorder?: boolean /* (!) Dersom cellBorder er satt har tableBorder ingen effekt */;
   cellBorder?: boolean;
