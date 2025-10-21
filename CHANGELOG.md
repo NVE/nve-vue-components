@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/NVE/nve-vue-components/compare/v1.10.1...v1.11.0) (2025-10-21)
+
+
+### Features
+
+* Mulighet å endre størrelsen på søkefeltet ([#68](https://github.com/NVE/nve-vue-components/issues/68)) ([207a92e](https://github.com/NVE/nve-vue-components/commit/207a92ef89e0955d3123beff3f72f44955db6c8a))
+
 ## [1.10.1](https://github.com/NVE/nve-vue-components/compare/v1.10.0...v1.10.1) (2025-10-03)
 
 
