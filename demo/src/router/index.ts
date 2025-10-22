@@ -33,6 +33,11 @@ const router = createRouter({
       name: "nve-table-sub-rows",
       component: () => import("../views/NveTableSubRows.vue"),
     },
+    {
+      path: "/nve-table-events",
+      name: "nve-table-events",
+      component: () => import("../views/NveTableEvents.vue"),
+    },
   ],
 });
 

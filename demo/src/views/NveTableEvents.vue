@@ -11,7 +11,6 @@ import {
   NveCheckboxGroup,
   NveCheckbox,
   NveIcon,
-  NveAccordionItem,
 } from "nve-designsystem";
 import countries from "../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
@@ -24,13 +23,7 @@ type Country = {
   population: number;
   area: number;
   foundingYear: number;
-  cities: Array<{ name: string; population: number }>;
 };
-
-/* 
-  Jeg vet ikke helt hvorfor, men row i afterrow templaten blir typed som "boolean | undefined | Country[]" og ikke som Country.
-  Derfor har jeg brukt "as any" i templaten under. 
-*/
 
 // For å demonstrere sortering med funksjon så bruker vi en egen sorteringsfunksjon for styreform.
 // Den sier at monarkier sorteres øverst, så republikker, og så alt annet.
@@ -173,36 +166,60 @@ const updateContinents = () => {
   selectedContinents.value = continents.value?.selectedValues ?? [];
 };
 
-const tableBorder = ref(false);
-const cellBorder = ref(false);
-const striped = ref(true);
-const hoverrow = ref(false);
-const stickyHeader = ref(false);
+const eventLog = ref<Array<string>>([]);
 
-const expanded: Ref<string | null> = ref(null);
+const eventsCalled = (eventName: string, value: any) => {
+  if (typeof value === "object") {
+    eventLog.value.unshift(
+      `${new Date().toLocaleTimeString()}: ${eventName} - ${JSON.stringify(
+        value
+      )}`
+    );
+  } else {
+    eventLog.value.unshift(
+      `${new Date().toLocaleTimeString()}: ${eventName} - ${value}`
+    );
+  }
+};
 </script>
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo</h2>
-    <div>Klikk på en rad for å se "under-rad" med byer</div>
+    <h2>NveTable Demo for events</h2>
+    <div class="eventlog">
+      <h3>Event log</h3>
+      <nve-button
+        variant="tertiary"
+        size="small"
+        @click="eventLog = []"
+        v-if="eventLog.length > 0"
+      >
+        Clear
+      </nve-button>
+      <div style="max-height: 400px; overflow: auto">
+        <div v-for="(log, index) of eventLog" :key="index">{{ log }}</div>
+      </div>
+    </div>
     <NveTable
       :headers="tableHeaders"
-      :data="countries as Array<Country>"
-      :striped="striped"
+      :data="countries"
+      :striped="true"
       :page-size="15"
+      :page-size-options="[5, 10, 15, 25, 50]"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
       :filter-function="tableFilter"
       :item-id="(country: Country) => country.countryCode"
-      :sticky-header="stickyHeader"
-      :table-border="tableBorder"
-      :cell-border="cellBorder"
-      :hover-row-effect="hoverrow"
       :scroll-to-top-on-page-switch="true"
-      @click-row="
-        (country: Country) => {
-          expanded = country.name;
-        }
+      save-state-id="events-table"
+      @page-size-change="
+        (pageSize) => eventsCalled('page-size-changed', pageSize)
+      "
+      @click-row="(row) => eventsCalled('click-row', row)"
+      @page-change="(page) => eventsCalled('page-change [null-indexed]', page)"
+      @set-external-data="(data) => eventsCalled('set-external-data', data)"
+      @sort-change="(newSort) => eventsCalled('sort-change', newSort)"
+      @filter-text-change="
+        (newText) => eventsCalled('filter-text-changed', newText)
       "
     >
       <template #filterbutton>
@@ -248,27 +265,6 @@ const expanded: Ref<string | null> = ref(null);
           />
         </span>
       </template>
-      <template #afterrow="row">
-        <tr
-          v-if="expanded === (row.item as any).name"
-          v-for="(city, index) in (row.item as any).cities"
-          :key="city.name"
-          class="subrow"
-          :class="{
-            'table-stripe': (row.index as any) % 2 === 1,
-            'is-expanded': expanded === city.name,
-          }"
-        >
-          <td />
-          <td>
-            <span v-if="(index as any) === 0"
-              >Noen byer i {{ (row.item as any).countryCode }}:</span
-            >
-          </td>
-          <td>{{ city.name }}</td>
-          <td>{{ prettyPrintNumber(city.population) }}</td>
-        </tr>
-      </template>
     </NveTable>
   </div>
 </template>
@@ -313,25 +309,5 @@ nve-accordion-item {
 }
 .nve-table-demo :deep(.table-cell.big) {
   font-size: 105%;
-}
-
-.subrow {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1 / -1;
-  height: unset;
-  min-height: 44px;
-  &.table-stripe {
-    background: var(--neutrals-background-canvas);
-  }
-  & td {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    text-align: left;
-    padding-left: 1.125rem;
-    padding-right: 0.75rem;
-  }
 }
 </style>
