@@ -179,7 +179,7 @@ const eventsCalled = (eventName: string, value: object | null) => {
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo</h2>
+    <h2>NveTable Demo for events</h2>
     <div class="eventlog">
       <h3>Event log</h3>
       <nve-button
