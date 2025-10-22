@@ -30,6 +30,10 @@ export type TableProps<T> = {
   pageSizeOptions?: Array<number>;
   striped?: boolean;
   hideTextFilter?: boolean;
+  /* 
+    brukes ikke direkte, men kun via eventlistener 
+    vi har det her for å kunne sjekke om det finnes en listener i parent
+  */
   onClickRow?: (item: T, event: MouseEvent) => void;
   hasClickForRow?: (row: T) => boolean;
   rowClass?: (item: T) => string;

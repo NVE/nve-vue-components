@@ -10,16 +10,19 @@ import {
 } from "./table.types";
 defineOptions({ name: "NveTable" });
 
+/** Legg merke til pageChange-evented. Den er null-indexed */
 const emit = defineEmits<{
   setExternalData: [val: Record<string, any>];
-  changePageSize: [val: number];
+  pageSizeChange: [val: number];
+  pageChange: [newPage: number];
+  sortChange: [newSort: SorterType | null];
+  filterTextChange: [newFilterText: string];
 }>();
 type PropsType = SyncTableProps<T> | AsyncTableProps<T>;
 
 const props = withDefaults(defineProps<PropsType>(), {
   async: false,
   pageSize: undefined,
-  onClickRow: undefined,
   filterFunction: undefined,
   saveStateId: undefined,
   tableclass: undefined,
@@ -45,7 +48,7 @@ watch(
 const onChangePageSize = (event: any) => {
   const newSize = Number(event.target.value);
   localPageSize.value = newSize;
-  emit("changePageSize", newSize);
+  emit("pageSizeChange", newSize);
   pageNumber.value = 0; // går til første side
 };
 
@@ -61,7 +64,19 @@ function isSyncTable(
   return props.async === false;
 }
 let filterText = ref("");
+watch(
+  () => filterText.value,
+  (newVal) => {
+    emit("filterTextChange", newVal);
+  }
+);
+
 const pageNumber = ref<number>(0);
+
+watch(pageNumber, (newPage) => {
+  emit("pageChange", newPage);
+});
+
 const isFetchingData = ref(false);
 const numPages = computed(() => {
   if (isAsyncTable(props)) {
@@ -85,6 +100,7 @@ const sortFunction = (header: TableHeader<T>) => {
     newSort.direction = currentSort.value.direction === "DESC" ? "ASC" : "DESC";
   }
   currentSort.value = newSort;
+  emit("sortChange", newSort);
 };
 const filteredData = computed(() => {
   if (isSyncTable(props)) {
@@ -207,7 +223,7 @@ onMounted(() => {
       }
       if (savedState.pageSize) {
         localPageSize.value = Number(savedState.pageSize);
-        emit("changePageSize", localPageSize.value);
+        emit("pageSizeChange", localPageSize.value);
       }
       if (savedState.externalDataForSaving) {
         emit("setExternalData", savedState);
@@ -268,6 +284,13 @@ const getCellClass = (
     return cellClass;
   }
   return cellClass(item);
+};
+
+const clickRow = (row: T, event: MouseEvent) => {
+  if (props.onClickRow) {
+    /* Vi gjør ikke denne via event fordi vi sjekker hasClickForRow for å sette cursor og hover-effekt */
+    props.onClickRow(row, event);
+  }
 };
 </script>
 
@@ -370,13 +393,7 @@ const getCellClass = (
               { hasclick: hasClickForRow(item) },
               props.rowClass ? props.rowClass(item) : '',
             ]"
-            @click="
-              (e: MouseEvent) => {
-                props.onClickRow &&
-                  hasClickForRow(item) &&
-                  props.onClickRow(item, e);
-              }
-            "
+            @click="(e: MouseEvent) => clickRow(item, e)"
           >
             <td
               v-for="header in props.headers"

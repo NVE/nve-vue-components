@@ -43,6 +43,14 @@
       <nve-icon name="table" />
       <span class="text">NVE-Table med utviderbare underrader</span>
     </router-link>
+    <router-link
+      to="/nve-table-events"
+      class="link"
+      title="Gå til Nve-table demo for events"
+    >
+      <nve-icon name="table" />
+      <span class="text">NVE-Table med alle eventer</span>
+    </router-link>
   </div>
 </template>
 
