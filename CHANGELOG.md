@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/NVE/nve-vue-components/compare/v1.11.0...v1.12.0) (2025-10-22)
+
+
+### Features
+
+* La til flere eventer for nve-table ([#70](https://github.com/NVE/nve-vue-components/issues/70)) ([4479ddf](https://github.com/NVE/nve-vue-components/commit/4479ddf5592709d617cd7972890223bfb65ac1b1))
+
 # [1.11.0](https://github.com/NVE/nve-vue-components/compare/v1.10.1...v1.11.0) (2025-10-21)
 
 
