@@ -168,12 +168,18 @@ const updateContinents = () => {
 
 const eventLog = ref<Array<string>>([]);
 
-const eventsCalled = (eventName: string, value: object | null) => {
-  eventLog.value.unshift(
-    `${new Date().toLocaleTimeString()}: ${eventName} - ${JSON.stringify(
-      value
-    )}`
-  );
+const eventsCalled = (eventName: string, value: any) => {
+  if (typeof value === "object") {
+    eventLog.value.unshift(
+      `${new Date().toLocaleTimeString()}: ${eventName} - ${JSON.stringify(
+        value
+      )}`
+    );
+  } else {
+    eventLog.value.unshift(
+      `${new Date().toLocaleTimeString()}: ${eventName} - ${value}`
+    );
+  }
 };
 </script>
 
@@ -190,7 +196,9 @@ const eventsCalled = (eventName: string, value: object | null) => {
       >
         Clear
       </nve-button>
-      <div v-for="(log, index) of eventLog" :key="index">{{ log }}</div>
+      <div style="max-height: 400px; overflow: auto">
+        <div v-for="(log, index) of eventLog" :key="index">{{ log }}</div>
+      </div>
     </div>
     <NveTable
       :headers="tableHeaders"
@@ -204,16 +212,14 @@ const eventsCalled = (eventName: string, value: object | null) => {
       :scroll-to-top-on-page-switch="true"
       save-state-id="events-table"
       @page-size-change="
-        (pageSize) => eventsCalled('page-size-changed', { pageSize })
+        (pageSize) => eventsCalled('page-size-changed', pageSize)
       "
-      @click-row="(row) => eventsCalled('click-row', { countryName: row.name })"
-      @page-change="
-        (page) => eventsCalled('page-change [null-indexed]', { page })
-      "
+      @click-row="(row) => eventsCalled('click-row', row)"
+      @page-change="(page) => eventsCalled('page-change [null-indexed]', page)"
       @set-external-data="(data) => eventsCalled('set-external-data', data)"
       @sort-change="(newSort) => eventsCalled('sort-change', newSort)"
       @filter-text-change="
-        (newText) => eventsCalled('filter-text-changed', { text: newText })
+        (newText) => eventsCalled('filter-text-changed', newText)
       "
     >
       <template #filterbutton>
