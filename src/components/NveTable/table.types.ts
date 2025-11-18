@@ -36,7 +36,7 @@ export type TableProps<T> = {
   */
   onClickRow?: (item: T, event: MouseEvent) => void;
   hasClickForRow?: (row: T) => boolean;
-  rowClass?: (item: T) => string;
+  rowClass?: (item: T, index: number, visibleData: Array<T>) => string;
   initialSort?: SorterType | null;
   hidePagination?: boolean;
   hideHeader?: boolean;

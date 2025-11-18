@@ -391,7 +391,9 @@ const clickRow = (row: T, event: MouseEvent) => {
             class="table-row"
             :class="[
               { hasclick: hasClickForRow(item) },
-              props.rowClass ? props.rowClass(item) : '',
+              props.rowClass
+                ? props.rowClass(item, rowIndex, visibleData!)
+                : '',
             ]"
             @click="(e: MouseEvent) => clickRow(item, e)"
           >
