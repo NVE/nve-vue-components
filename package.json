@@ -56,7 +56,7 @@
     "@vueuse/core": "^14.0.0",
     "eslint-plugin-vue": "^10.5.1",
     "husky": "^9.1.7",
-    "nve-designsystem": "^2.16.1",
+    "nve-designsystem": "^3.0.0",
     "vue-eslint-parser": "^10.2.0"
   },
   "devDependencies": {
