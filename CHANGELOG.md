@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/NVE/nve-vue-components/compare/v1.13.0...v1.13.1) (2025-11-18)
+
+
+### Bug Fixes
+
+* Tar også med original-index og visibleData til row-class ([6003203](https://github.com/NVE/nve-vue-components/commit/60032030a7ea4edffdac851802cc86c88e27b74d))
+
 # [1.13.0](https://github.com/NVE/nve-vue-components/compare/v1.12.0...v1.13.0) (2025-11-18)
 
 
