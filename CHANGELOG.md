@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/NVE/nve-vue-components/compare/v1.12.0...v1.13.0) (2025-11-18)
+
+
+### Features
+
+* afterrow-slot får nå med all synlig data som en prop. Dette er den sorterte listen ([c7a2864](https://github.com/NVE/nve-vue-components/commit/c7a28644023aaefd278d29ecc47a73c1bbe61a14))
+
 # [1.12.0](https://github.com/NVE/nve-vue-components/compare/v1.11.0...v1.12.0) (2025-10-22)
 
 
