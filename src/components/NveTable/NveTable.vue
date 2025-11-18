@@ -440,6 +440,7 @@ const clickRow = (row: T, event: MouseEvent) => {
             name="afterrow"
             :item="item"
             :index="rowIndex"
+            :visible-data="visibleData"
             :original-index="data?.findIndex((i: any) => i === item) ?? null"
           />
         </template>
