@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/NVE/nve-vue-components/compare/v1.13.1...v1.14.0) (2025-11-19)
+
+
+### Features
+
+* Oppdaterte til DS 3 med nye variabelnavn ([0d7e0dc](https://github.com/NVE/nve-vue-components/commit/0d7e0dcec4b38ed8176b9a740990bd68ca9cfaba))
+
 ## [1.13.1](https://github.com/NVE/nve-vue-components/compare/v1.13.0...v1.13.1) (2025-11-18)
 
 
