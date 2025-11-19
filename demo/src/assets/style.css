@@ -9,15 +9,16 @@
 html,
 body {
   margin: 0;
-  color: var(--neutrals-foreground-primary);
+  color: var(--color-neutrals-foreground-primary);
   --top-menu-height: 80px;
   --footer-height: 80px;
-  outline-color: var(--interactive-ghost-border-focus);
+  outline-color: var(--color-interactive-ghost-border-focus);
+  --color-text: var(--color-neutrals-foreground-primary);
 }
 
 #app,
 #modalholder {
-  font: var(--body-small);
+  font: var(--typography-body-small);
 }
 
 /* Material Symbols sine ikoner */

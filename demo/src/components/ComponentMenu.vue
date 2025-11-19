@@ -57,7 +57,7 @@
 <style scoped>
 .sidemenu {
   width: 390px;
-  background: var(--neutrals-background-primary);
+  background: var(--color-neutrals-background-primary);
   padding: var(--sizing-x-small);
   padding-bottom: var(--footer-height);
   padding-top: var(--main-padding-top);
@@ -74,7 +74,7 @@
     gap: var(--spacing-small);
     color: var(--color-text);
     text-decoration: none;
-    font: var(--label-large);
+    font: var(--typography-label-large);
     margin-block-end: var(--spacing-medium);
     &:hover .text {
       text-decoration: underline;

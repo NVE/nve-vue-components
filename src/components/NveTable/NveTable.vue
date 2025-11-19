@@ -516,16 +516,16 @@ table {
   table-layout: fixed;
   width: 100%;
   --_row-border-bottom: var(--border-width-default) solid
-    var(--neutrals-border-subtle);
+    var(--color-neutrals-border-subtle);
   &.cellborder {
     --_cell-border: var(--border-width-default) solid
-      var(--neutrals-border-subtle);
+      var(--color-neutrals-border-subtle);
     --_row-border-bottom: none;
   }
   &:is(.cellborder, .tableborder) {
     --_br: var(--border-radius-large);
     border-radius: var(--_br);
-    border: var(--border-width-default) solid var(--neutrals-border-subtle);
+    border: var(--border-width-default) solid var(--color-neutrals-border-subtle);
     & thead {
       & tr {
         border-top-left-radius: var(--_br);
@@ -570,10 +570,10 @@ table {
 }
 
 thead {
-  background-color: var(--neutrals-background-canvas);
+  background-color: var(--color-neutrals-background-canvas);
   & tr {
     height: 40px;
-    background-color: var(--neutrals-background-canvas);
+    background-color: var(--color-neutrals-background-canvas);
     & button.headersort {
       color: inherit;
       font: inherit;
@@ -598,7 +598,7 @@ thead {
       &:has(button) {
         transition: background-color 0.3s;
         &:hover {
-          background-color: var(--neutrals-background-secondary);
+          background-color: var(--color-neutrals-background-secondary);
         }
       }
     }
@@ -614,7 +614,7 @@ thead {
     z-index: 1;
     &[data-stuck] {
       & th {
-        border-bottom: 1px solid var(--neutrals-border-default);
+        border-bottom: 1px solid var(--color-neutrals-border-default);
       }
     }
   }
@@ -642,9 +642,9 @@ thead {
 tbody {
   & tr {
     min-height: 44px;
-    --_row-color: var(--neutrals-background-primary);
+    --_row-color: var(--color-neutrals-background-primary);
     background-color: var(--_row-color);
-    --_row-hover-color: var(--neutrals-background-secondary);
+    --_row-hover-color: var(--color-neutrals-background-secondary);
     & td {
       border-bottom: var(--_cell-border);
       border-right: var(--_cell-border);
@@ -711,11 +711,11 @@ table.hideunderline {
 
 .striped tbody tr {
   &:nth-child(2n of .table-row) {
-    --_row-color: var(--neutrals-background-canvas);
-    --_row-hover-color: var(--neutrals-background-secondary);
+    --_row-color: var(--color-neutrals-background-canvas);
+    --_row-hover-color: var(--color-neutrals-background-secondary);
   }
   &:nth-of-type(2n + 1 of .table-row) {
-    --_row-color: var(--neutrals-background-primary);
+    --_row-color: var(--color-neutrals-background-primary);
   }
 }
 .pagination {
@@ -809,13 +809,13 @@ table.hideunderline {
     background: var(--_row-color);
   }
   & th:first-child {
-    background: var(--neutrals-background-canvas);
+    background: var(--color-neutrals-background-canvas);
   }
 }
 
 .pagesize {
-  font: var(--body-xsmall);
-  color: var(--neutrals-foreground-subtle);
+  font: var(--typography-body-x-small);
+  color: var(--color-neutrals-foreground-subtle);
   & select {
     margin-left: 0.5rem;
     font: inherit;
@@ -828,11 +828,11 @@ table.hideunderline {
       outline: none;
     }
     &:focus-visible {
-      outline: 1px solid var(--neutrals-foreground-primary);
+      outline: 1px solid var(--color-neutrals-foreground-primary);
     }
     & option {
-      color: var(--neutrals-foreground-primary);
-      background-color: var(--neutrals-background-primary);
+      color: var(--color-neutrals-foreground-primary);
+      background-color: var(--color-neutrals-background-primary);
     }
   }
 }

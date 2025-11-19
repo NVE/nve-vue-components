@@ -29,7 +29,7 @@ nav {
   ); /* Venstre-alignet med browser. Høyre-alignet med article (som har padding) */
 }
 .title {
-  font: var(--label-medium);
+  font: var(--typography-label-medium);
   order: 1;
   z-index: 1;
 }

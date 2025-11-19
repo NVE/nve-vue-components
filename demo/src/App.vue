@@ -34,12 +34,12 @@ registerIconLibrary("system", {
 .page {
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--neutrals-background-primary);
+  background-color: var(--color-neutrals-background-primary);
   display: grid;
   grid-template-rows: var(--top-menu-height) auto max-content;
 }
 main {
-  background-color: var(--neutrals-background-primary-contrast);
+  background-color: var(--color-neutrals-background-primary-contrast);
 }
 
 main article {
@@ -80,10 +80,10 @@ main article {
 }
 .content {
   margin-inline-start: var(--spacing-large);
-  background-color: var(--neutrals-background-primary);
+  background-color: var(--color-neutrals-background-primary);
   padding: var(--spacing-2x-large) var(--spacing-3x-large);
   &:deep(h2) {
-    font: var(--header-medium);
+    font: var(--typography-heading-medium);
     margin-block-end: var(--spacing-large);
   }
 }

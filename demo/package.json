@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "nve-designsystem": "^2.12.3",
-    "vue": "^3.5.22",
-    "vue-router": "^4.5.1"
+    "nve-designsystem": "^3.0.0",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitejs/plugin-vue": "^6.0.2",
     "@vue/tsconfig": "^0.8.1",
     "typescript": "~5.9.3",
-    "vite": "^7.1.9",
-    "vue-tsc": "^3.1.0"
+    "vite": "^7.2.2",
+    "vue-tsc": "^3.1.4"
   }
 }

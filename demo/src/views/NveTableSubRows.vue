@@ -322,7 +322,7 @@ nve-accordion-item {
   height: unset;
   min-height: 44px;
   &.table-stripe {
-    background: var(--neutrals-background-canvas);
+    background: var(--color-neutrals-background-canvas);
   }
   & td {
     display: flex;
