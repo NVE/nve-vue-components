@@ -2,11 +2,19 @@
 
 <template>
   <div class="page">
-    <h2>NVE Vue-komponenter</h2>
+    <h1>NVE Vue-komponenter</h1>
     <p>
       Dette er en demo av NVE-designsystemet. Her kan du se hvordan komponentene
       fungerer og hvordan de kan brukes i applikasjonen din.
+      <span>For å se på en spesifikk komponent, velg den i høyremenyen.</span>
     </p>
-    <p>For å se på en spesifikk komponent, velg den i høyremenyen</p>
   </div>
 </template>
+
+<style scoped>
+span {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+</style>

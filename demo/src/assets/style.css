@@ -8,12 +8,14 @@
 
 html,
 body {
+  font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
   color: var(--color-neutrals-foreground-primary);
-  --top-menu-height: 80px;
+  --top-menu-height: 70px;
   --footer-height: 80px;
   outline-color: var(--color-interactive-ghost-border-focus);
   --color-text: var(--color-neutrals-foreground-primary);
+  background-color: var(--Neutrals-Background-Canvas, #f7f7f8);
 }
 
 #app,
