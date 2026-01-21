@@ -18,6 +18,12 @@ body {
   background-color: var(--Neutrals-Background-Canvas, #f7f7f8);
 }
 
+h1 {
+    font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
 #app,
 #modalholder {
   font: var(--typography-body-small);

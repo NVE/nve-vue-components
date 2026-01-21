@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
-} from "../../../src/components/NveTable/tableSortFunctions";
-import type {
-  SorterType,
-  TableHeader,
-} from "../../../src/components/NveTable/table.types";
+  simpleSortByAccessor,
+} from "../../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
@@ -15,7 +13,7 @@ import {
   NveIcon,
   NveAccordionItem,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -47,18 +45,16 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
     key: "name",
     title: "Navn",
     hidden: false,
-    sort: (sorter) => {
-      const sF = sortByProperty(sorter.direction);
-      return (a: Country, b: Country) => sF(a["name"], b["name"]);
-    },
+    sort: simpleSortByAccessor<Country>((c) => c.name),
   },
   {
     key: "governmentType",
     title: "Styreform",
+    singleLineOverflow: true,
     hidden: false,
     sort: (sorter) => {
       const sF = sortByFunction<Country>(sorter.direction);
-      return (a: Country, b: Country) =>
+      return (a, b) =>
         sF(a, b, (d) => governmentSorterFunction(d.governmentType));
     },
   },
@@ -108,6 +104,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
       return (a: Country, b: Country) => sF(a["area"], b["area"]);
     },
     accessor: (row: Country) => `${prettyPrintNumber(row["area"])} km²`,
+    cellClass: (item: Country) => (item.area > 50000 ? "big" : "small"),
   },
   {
     key: "foundingYear",
@@ -118,12 +115,13 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
       return (a: Country, b: Country) =>
         sF(a["foundingYear"], b["foundingYear"]);
     },
+    cellClass: "year",
   },
 ]);
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -139,7 +137,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -174,45 +172,19 @@ const toggleColumn = (header: TableHeader<Country>) => {
   tableHeaders.value = [...tableHeaders.value];
 };
 
-const pageSize = 15; // Antall rader per side
-const totalHits = ref(countries.length); // Totalt antall rader i dataen
-const timeoutMs = ref(1000); // Simulerer en 1 sekunders forsinkelse for å hente data
-
-const getData = (
-  page: number,
-  filterText: string,
-  sort: SorterType | null
-): Promise<Array<Country>> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const data = tableFilter(filterText, countries);
-      if (sort) {
-        const sortHeader = tableHeaders.value.find((h) => h.key === sort.field);
-        if (sortHeader?.sort) {
-          const sortFn = sortHeader.sort(sort);
-          data.sort(sortFn);
-        }
-      }
-      const start = page * pageSize;
-      const end = start + pageSize;
-      totalHits.value = data.length; // Oppdaterer totalHits med antall rader i dataen
-      resolve(data.slice(start, end));
-    }, timeoutMs.value);
-  });
-};
+const tableBorder = ref(false);
+const cellBorder = ref(false);
+const striped = ref(true);
+const hoverrow = ref(false);
+const stickyHeader = ref(false);
 </script>
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo</h2>
-    <p>
-      Dette er en rask versjon. Async-versjonen av NveTable er ikke i bruk i
-      noen prosjekter akkurat nå, så skriv gjerne om funksjonalitet slik at den
-      er bedre dersom du tar den i bruk.
-    </p>
+    <h1>Nve-Table Demo</h1>
     <nve-accordion-item variant="secondary" :open="true">
       <div slot="summary">Slå av og på kolonner</div>
-      <div class="column-toggles">
+      <div class="toggles">
         <nve-checkbox
           v-for="col in tableHeaders"
           :key="col.key"
@@ -223,15 +195,56 @@ const getData = (
         </nve-checkbox>
       </div>
     </nve-accordion-item>
+    <nve-accordion-item variant="secondary" :open="false">
+      <div slot="summary">Slå av og på properties</div>
+      <div class="toggles">
+        <nve-checkbox
+          :checked="tableBorder"
+          @sl-change="() => (tableBorder = !tableBorder)"
+        >
+          Ramme rundt tabell
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="cellBorder"
+          @sl-change="() => (cellBorder = !cellBorder)"
+        >
+          Ramme rundt hver celle
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="striped"
+          @sl-change="() => (striped = !striped)"
+        >
+          Zebra-striper
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="hoverrow"
+          @sl-change="() => (hoverrow = !hoverrow)"
+        >
+          Hover-effekt på rader
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="stickyHeader"
+          @sl-change="() => (stickyHeader = !stickyHeader)"
+        >
+          Gjør header "sticky"
+        </nve-checkbox>
+      </div>
+    </nve-accordion-item>
     <NveTable
       :headers="tableHeaders"
-      async
-      :get-data="getData"
-      :total-hits="totalHits"
-      striped
+      :data="countries"
+      :striped="striped"
       :page-size="15"
+      :page-size-options="[5, 10, 15, 25, 50]"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
+      :filter-function="tableFilter"
       :item-id="(country: Country) => country.countryCode"
+      :sticky-header="stickyHeader"
+      :table-border="tableBorder"
+      :cell-border="cellBorder"
+      :hover-row-effect="hoverrow"
+      saveStateId="nve-table-demo"
+      :scroll-to-top-on-page-switch="true"
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">
@@ -262,7 +275,12 @@ const getData = (
           </div>
         </Transition>
       </template>
-
+      <template #[`header.countryCode`]="item">
+        <span style="display: flex; gap: 4px">
+          <span>{{ item.header.title }}</span>
+          <span>🚩</span>
+        </span>
+      </template>
       <template #[`item.countryCode`]="row">
         <span class="country-code">
           <img
@@ -298,11 +316,22 @@ const getData = (
   }
 }
 
-.column-toggles {
+.toggles {
   display: flex;
   gap: var(--spacing-small);
 }
 nve-accordion-item {
   margin-block-end: var(--spacing-large);
+}
+.nve-table-demo :deep(.table-cell.year) {
+  ::before {
+    content: "📅";
+  }
+}
+.nve-table-demo :deep(.table-cell.small) {
+  font-size: 95%;
+}
+.nve-table-demo :deep(.table-cell.big) {
+  font-size: 105%;
 }
 </style>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
   simpleSortByAccessor,
-} from "../../../src/components/NveTable/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable/table.types";
+} from "../../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
@@ -13,7 +13,7 @@ import {
   NveIcon,
   NveAccordionItem,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -127,7 +127,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -143,7 +143,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -184,8 +184,8 @@ const expanded: Ref<string | null> = ref(null);
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo</h2>
-    <div>Klikk på en rad for å se "under-rad" med byer</div>
+    <h1>Nve-Table Demo med utvidbare rader</h1>
+    <p class="info-text">Klikk på en rad for å se "under-rad" med byer</p>
     <NveTable
       :headers="tableHeaders"
       :data="countries as Array<Country>"
@@ -274,6 +274,9 @@ const expanded: Ref<string | null> = ref(null);
 </template>
 
 <style scoped>
+.info-text {
+  margin-bottom: var(--spacing-medium);
+}
 .filter-wrapper {
   display: grid;
   grid-template-rows: 1fr;

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
   simpleSortByAccessor,
-} from "../../../src/components/NveTable/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable/table.types";
+} from "../../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
   NveCheckbox,
   NveIcon,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -120,7 +120,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -136,7 +136,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -172,12 +172,12 @@ const eventsCalled = (eventName: string, value: any) => {
   if (typeof value === "object") {
     eventLog.value.unshift(
       `${new Date().toLocaleTimeString()}: ${eventName} - ${JSON.stringify(
-        value
-      )}`
+        value,
+      )}`,
     );
   } else {
     eventLog.value.unshift(
-      `${new Date().toLocaleTimeString()}: ${eventName} - ${value}`
+      `${new Date().toLocaleTimeString()}: ${eventName} - ${value}`,
     );
   }
 };
@@ -185,7 +185,7 @@ const eventsCalled = (eventName: string, value: any) => {
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo for events</h2>
+    <h1>Nve-Table Demo for events</h1>
     <div class="eventlog">
       <h3>Event log</h3>
       <nve-button

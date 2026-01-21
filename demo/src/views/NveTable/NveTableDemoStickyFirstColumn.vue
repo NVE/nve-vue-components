@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
   simpleSortByAccessor,
-} from "../../../src/components/NveTable/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable/table.types";
+} from "../../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
@@ -13,7 +13,7 @@ import {
   NveIcon,
   NveAccordionItem,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -121,7 +121,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -137,7 +137,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -181,10 +181,10 @@ const stickyHeader = ref(false);
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable med "sticky" første-kolonne</h2>
-    <div style="margin-block-end: var(--spacing-medium)">
+    <h1>Nve-Table Demo med "sticky" første-kolonne</h1>
+    <p class="info-text">
       Gjør vinduet smalere for å se effekten av sticky kolonne
-    </div>
+    </p>
     <nve-accordion-item variant="secondary" :open="true">
       <div slot="summary">Slå av og på kolonner</div>
       <div class="toggles">
@@ -296,6 +296,9 @@ const stickyHeader = ref(false);
 </template>
 
 <style scoped>
+.info-text {
+  margin-bottom: var(--spacing-medium);
+}
 .filter-wrapper {
   display: grid;
   grid-template-rows: 1fr;

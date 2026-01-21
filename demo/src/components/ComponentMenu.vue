@@ -6,6 +6,7 @@
       <nve-icon name="home" />
       <span class="text">Forsiden</span>
     </router-link>
+    <nve-divider class="divider" />
     <router-link to="/nve-table" class="link" title="Gå til Nve-table demo">
       <nve-icon name="table" />
       <span class="text">NVE-Table</span>
@@ -41,7 +42,7 @@
       title="Gå til Nve-table demo med utviderbare underrader"
     >
       <nve-icon name="table" />
-      <span class="text">NVE-Table med utviderbare underrader</span>
+      <span class="text">NVE-Table med utvidbare underrader</span>
     </router-link>
     <router-link
       to="/nve-table-events"
@@ -50,6 +51,15 @@
     >
       <nve-icon name="table" />
       <span class="text">NVE-Table med alle eventer</span>
+    </router-link>
+    <nve-divider class="divider" />
+    <router-link
+      to="/nve-month-selector"
+      class="link"
+      title="Gå til Nve Month Selector demo"
+    >
+      <nve-icon name="calendar_today" />
+      <span class="text">NVE Month Selector</span>
     </router-link>
   </div>
 </template>
@@ -87,6 +97,9 @@
       text-decoration: none !important;
       font-size: 24px;
     }
+  }
+  & .divider {
+    margin-block: var(--spacing-medium);
   }
 }
 </style>

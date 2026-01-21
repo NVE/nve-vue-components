@@ -10,7 +10,7 @@ import { NveDarkmodeSwitch } from "nve-designsystem";
           <img class="logo" src="/images/logo.svg" alt="NVE logo" />
         </router-link>
 
-        <h1 class="title">Vue-components Demo</h1>
+        <h1 class="title">NVE-Vue-Components Demo</h1>
       </div>
       <div class="switch"><nve-darkmode-switch /></div>
     </nav>
@@ -47,6 +47,7 @@ import { NveDarkmodeSwitch } from "nve-designsystem";
 .title {
   font-size: 20px;
   font-weight: 600;
+  margin: unset;
 }
 .switch {
   margin-right: var(--spacing-x-large);
