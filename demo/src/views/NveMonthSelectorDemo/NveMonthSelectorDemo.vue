@@ -62,6 +62,22 @@ const isSupported = testInput.type === "month";
     <div class="info-section">
       <h2>Hvordan bruke komponentet</h2>
       <p>
+        Komponenten forutsetter at prosjektet ditt gjør en sjekk på om
+        nettleseren støtter input type="month". Hvis denne input-typen ikke er
+        støttet (!isSuppported), kan NveMonthSelector benyttes som fallback.
+        Denne sjekken kan gjøres ved å skrive inn en slik kodesnutt:
+      </p>
+
+      <p class="code-snippet">
+        <code>const testInput = document.createElement("input");</code>
+        <code>testInput.type = "month";</code>
+        <code>const isSupported = testInput.type === "month";</code>
+      </p>
+    </div>
+
+    <div class="info-section">
+      <h2>Attributter</h2>
+      <p>
         Velg språk ved å sende inn et egendefinert datasett i
         months-attributtet. Per nå støttes bokmål, nynorsk og engelsk i
         labels-attributtet. I demoen er det brukt et datasett med norske
@@ -108,6 +124,11 @@ const isSupported = testInput.type === "month";
   width: 60%;
   flex-direction: column;
   gap: var(--spacing-medium);
+}
+
+.code-snippet {
+  display: flex;
+  flex-direction: column;
 }
 
 .attributes-list {
