@@ -11,37 +11,37 @@ const router = createRouter({
     {
       path: "/nve-table",
       name: "nve-table",
-      component: () => import("../views/NveTable/NveTableDemo.vue"),
+      component: () => import("../views/NveTableDemo/NveTableDemo.vue"),
     },
     {
       path: "/nve-table-async",
       name: "nve-table-async",
-      component: () => import("../views/NveTable/NveAsyncTableDemo.vue"),
+      component: () => import("../views/NveTableDemo/NveAsyncTableDemo.vue"),
     },
     {
       path: "/nve-table-custom-components",
       name: "nve-table-custom-components",
-      component: () => import("../views/NveTable/NveTableDemoWithCustomComponents.vue"),
+      component: () => import("../views/NveTableDemo/NveTableDemoWithCustomComponents.vue"),
     },
     {
       path: "/nve-table-sticky",
       name: "nve-table-sticky",
-      component: () => import("../views/NveTable/NveTableDemoStickyFirstColumn.vue"),
+      component: () => import("../views/NveTableDemo/NveTableDemoStickyFirstColumn.vue"),
     },
     {
       path: "/nve-table-sub-rows",
       name: "nve-table-sub-rows",
-      component: () => import("../views/NveTable/NveTableSubRows.vue"),
+      component: () => import("../views/NveTableDemo/NveTableSubRows.vue"),
     },
     {
       path: "/nve-table-events",
       name: "nve-table-events",
-      component: () => import("../views/NveTable/NveTableEvents.vue"),
+      component: () => import("../views/NveTableDemo/NveTableEvents.vue"),
     },
         {
       path: "/nve-month-selector",
       name: "nve-month-selector",
-      component: () => import("../views/NveMonthSelectorDemo.vue")
+      component: () => import("../views/NveMonthSelectorDemo/NveMonthSelectorDemo.vue")
     },
   ],
 });

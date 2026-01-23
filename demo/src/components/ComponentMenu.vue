@@ -59,7 +59,7 @@
       title="Gå til Nve Month Selector demo"
     >
       <nve-icon name="calendar_today" />
-      <span class="text">NVE Month Selector</span>
+      <span class="text">NVE-Month-Selector</span>
     </router-link>
   </div>
 </template>

@@ -278,6 +278,7 @@ const getData = (
 <style scoped>
 .info-text {
   margin-bottom: var(--spacing-medium);
+  max-width: 100ch;
 }
 .filter-wrapper {
   display: grid;
