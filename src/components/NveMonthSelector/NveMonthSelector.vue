@@ -1,20 +1,47 @@
 <script setup lang="ts">
 import { NveInput, NveOption, NveSelect } from "nve-designsystem";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-const emit = defineEmits(["change", "input", "update:modelValue"]);
+const emit = defineEmits(["sl-blur", "change", "input", "update:modelValue"]);
 
-const { modelValue, months, labelLanguage } = defineProps<{
-  modelValue: string;
-  months: string[];
-  labelLanguage: "nb" | "nn" | "en";
-}>();
+const props = withDefaults(
+  defineProps<{
+    modelValue?: string;
+    months?: string[];
+    labelLanguage?: "nb" | "nn" | "en";
+  }>(),
+  {
+    labelLanguage: "nb",
+    months: () => [
+      "Januar",
+      "Februar",
+      "Mars",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ],
+  },
+);
 
 const monthLabel =
-  labelLanguage === "en" ? "Month" : labelLanguage === "nn" ? "Månad" : "Måned";
+  props.labelLanguage === "en"
+    ? "Month"
+    : props.labelLanguage === "nn"
+      ? "Månad"
+      : "Måned";
 
 const yearLabel =
-  labelLanguage === "en" ? "Year" : labelLanguage === "nn" ? "År" : "År";
+  props.labelLanguage === "en"
+    ? "Year"
+    : props.labelLanguage === "nn"
+      ? "År"
+      : "År";
 
 // Check if the browser supports input type="month"
 const testInput = document.createElement("input");
@@ -26,10 +53,11 @@ const changeField = (event: any) => {
 };
 
 const thisYear = new Date().getFullYear();
-const selectedMonth = ref(modelValue?.split("-")?.[1] || "1");
-const selectedYear = ref(modelValue?.split("-")?.[0] || thisYear.toString());
+const selectedMonth = ref(props.modelValue?.split("-")?.[1] || "1");
+const selectedYear = ref(
+  props.modelValue?.split("-")?.[0] || thisYear.toString(),
+);
 
-// Flytte dette ut?
 const monthInput = (event: any) => {
   selectedMonth.value = event.target.value;
   selectorsChange();
@@ -45,6 +73,24 @@ const selectorsChange = () => {
     emit("update:modelValue", `${selectedYear.value}-${selectedMonth.value}`);
   }
 };
+
+const selectorsBlur = (event: any) => {
+  emit("sl-blur", event);
+};
+
+watch(
+  () => props.modelValue,
+  (value) => {
+    if (!value) return;
+
+    const [year, month] = value.split("-");
+    if (year && month) {
+      selectedYear.value = year;
+      selectedMonth.value = month;
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
@@ -52,12 +98,14 @@ const selectorsChange = () => {
     v-if="isSupported"
     v-bind="$attrs"
     :value="modelValue"
+    @sl-blur="(event: any) => emit('sl-blur', event)"
     @sl-input="(event: any) => changeField(event)"
   />
   <div v-if="!isSupported" v-bind="$attrs" class="selector-fields">
     <nve-select
       :label="monthLabel"
       :value="selectedMonth"
+      @sl-blur="selectorsBlur"
       @sl-input="monthInput"
     >
       <nve-option
@@ -68,7 +116,13 @@ const selectorsChange = () => {
         {{ months[index] }}
       </nve-option>
     </nve-select>
-    <nve-select :label="yearLabel" :value="selectedYear" @sl-input="yearInput">
+
+    <nve-select
+      :label="yearLabel"
+      :value="selectedYear"
+      @sl-blur="selectorsBlur"
+      @sl-input="yearInput"
+    >
       <nve-option
         v-for="(_e, index) in 50"
         :key="index"

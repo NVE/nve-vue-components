@@ -2,22 +2,7 @@
 import NveMonthSelector from "../../../../src/components/NveMonthSelector/NveMonthSelector.vue";
 import { ref } from "vue";
 
-const test = ref("2023-05-01");
-
-const months = [
-  "Januar",
-  "Februar",
-  "Mars",
-  "April",
-  "Mai",
-  "Juni",
-  "Juli",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-];
+const input = ref("2023-05");
 
 // Checks if the browser supports input type="month"
 const testInput = document.createElement("input");
@@ -31,11 +16,12 @@ const isSupported = testInput.type === "month";
 
     <div class="info-section">
       <p>
-        Dette komponentet er utviklet på bakgrunn av at nettleserne Firefox og
-        Safari mangler støtte for input-felt av typen month. I stedet for at
-        hvert prosjekt som benytter <i>nve-input type="month"</i> må
-        implementere sin egen løsning, er det laget et enkelt og gjenbrukbart
-        komponent som kan brukes på tvers av prosjekter.
+        Et Vue 3-komponent med automatisk fallback for nettlesere som ikke
+        støtter input type="month", som Firefox og Safari. Komponentet gir en
+        enkel og gjenbrukbar løsning som kan brukes på tvers av prosjekter, uten
+        at hvert prosjekt må lage sin egen implementasjon. Komponentet er basert
+        på nve-designsystem, og støtter v-model, flere språk og egendefinerte
+        månedsnavn.
       </p>
     </div>
 
@@ -43,7 +29,7 @@ const isSupported = testInput.type === "month";
       <h2 class="subtitle">Demonstasjon</h2>
       <div v-if="!isSupported" class="demo-field">
         <p>Slik vil komponentet bli seendes ut i Firefox og Safari.</p>
-        <NveMonthSelector v-model="test" :months="months" label-language="nb" />
+        <NveMonthSelector v-model="input" />
       </div>
 
       <div v-if="isSupported" class="demo-field">
@@ -54,7 +40,7 @@ const isSupported = testInput.type === "month";
         </p>
         <img
           src="./assets//nve-month-selector.png"
-          alt="Nve Month Selector skjermdump"
+          alt="Nve Month Selector forhåndsvisning"
         />
       </div>
     </div>
@@ -62,31 +48,37 @@ const isSupported = testInput.type === "month";
     <div class="info-section">
       <h2>Hvordan bruke komponentet</h2>
       <p>
-        Komponenten forutsetter at prosjektet ditt gjør en sjekk på om
-        nettleseren støtter input type="month". Hvis denne input-typen ikke er
-        støttet (!isSuppported), kan NveMonthSelector benyttes som fallback.
-        Denne sjekken kan gjøres ved å skrive inn en slik kodesnutt:
+        Komponenten gjør en sjekk på om nettleseren støtter input type="month".
+        Hvis denne input-typen ikke er støttet, blir NveMonthSelector benyttes
+        som fallback. Eksempel på bruk i kode:
       </p>
-
       <p class="code-snippet">
-        <code>const testInput = document.createElement("input");</code>
-        <code>testInput.type = "month";</code>
-        <code>const isSupported = testInput.type === "month";</code>
+        Standard:
+        <code>&lt;NveMonthSelector v-model="input"/&gt;</code>
+      </p>
+      <p class="code-snippet">
+        Engelsk:
+        <code>
+          &lt;NveMonthSelector v-model="input" :months="engMonths"
+          labelLanguage="en"/&gt;
+        </code>
       </p>
     </div>
 
     <div class="info-section">
       <h2>Attributter</h2>
       <p>
-        Velg språk ved å sende inn et egendefinert datasett i
-        months-attributtet. Per nå støttes bokmål, nynorsk og engelsk i
-        labels-attributtet. I demoen er det brukt et datasett med norske
-        månedsnavn og norsk bokmål til labels. modelValue-attributten brukes til
-        å sette og hente verdien på formatet «ÅÅÅÅ-MM».
+        Språk på labels og måneder er standard definert til norsk bokmål. Endre
+        språk i options ved å sende inn egendefinerte verdier i months
+        attributten. Per nå støttes bokmål, nynorsk og engelsk i
+        labels-attributtet osm kan velges i mellom. modelValue-attributten
+        brukes til å sette og hente verdien på formatet «YYYY-MM». Sl-blur,
+        change, input og update:modelValue events blir emittet ut fra
+        komponentet som kan brukes.
       </p>
 
       <ul class="attributes-list">
-        <li><b>modelValue</b> (string) - Verdien på formatet "ÅÅÅÅ-MM".</li>
+        <li><b>modelValue</b> (string) - Verdien på formatet "YYYY-MM".</li>
         <li>
           <b>months</b> (string[]) - Et datasett med månedsnavn som skal vises i
           nedtrekksmenyen.
@@ -96,6 +88,14 @@ const isSupported = testInput.type === "month";
           labels.
         </li>
       </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Emits</h2>
+      <p>
+        Sl-blur, change, input og update:modelValue events blir emittet ut fra
+        komponentet som kan brukes.
+      </p>
     </div>
   </div>
 </template>
@@ -130,11 +130,17 @@ const isSupported = testInput.type === "month";
   display: flex;
   flex-direction: column;
 }
+.code-snippet > code {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--neutrals-border-subtle);
+}
 
 .attributes-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-small);
+  gap: var(--spacing-x-small);
   padding-top: var(--spacing-small);
 }
 .attributes-list > li {
