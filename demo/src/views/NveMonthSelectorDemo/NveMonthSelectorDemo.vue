@@ -20,7 +20,7 @@ const isSupported = testInput.type === "month";
         støtter input type="month", som Firefox og Safari. Komponentet gir en
         enkel og gjenbrukbar løsning som kan brukes på tvers av prosjekter, uten
         at hvert prosjekt må lage sin egen implementasjon. Komponentet er basert
-        på nve-designsystem, og støtter v-model, flere språk og egendefinerte
+        på nve-designsystem og støtter v-model, flere språk og egendefinerte
         månedsnavn.
       </p>
     </div>
@@ -71,10 +71,8 @@ const isSupported = testInput.type === "month";
         Språk på labels og måneder er standard definert til norsk bokmål. Endre
         språk i options ved å sende inn egendefinerte verdier i months
         attributten. Per nå støttes bokmål, nynorsk og engelsk i
-        labels-attributtet osm kan velges i mellom. modelValue-attributten
-        brukes til å sette og hente verdien på formatet «YYYY-MM». Sl-blur,
-        change, input og update:modelValue events blir emittet ut fra
-        komponentet som kan brukes.
+        labels-attributtet som kan velges i mellom. modelValue-attributten
+        brukes til å hente og sette verdien på til «YYYY-MM» format.
       </p>
 
       <ul class="attributes-list">
