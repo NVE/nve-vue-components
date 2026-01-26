@@ -70,7 +70,8 @@ const yearInput = (event: any) => {
 
 const selectorsChange = () => {
   if (selectedYear.value != null && selectedMonth.value != null) {
-    emit("update:modelValue", `${selectedYear.value}-${selectedMonth.value}`);
+    const value = `${selectedYear.value}-${selectedMonth.value}`;
+    emit("update:modelValue", value);
   }
 };
 
