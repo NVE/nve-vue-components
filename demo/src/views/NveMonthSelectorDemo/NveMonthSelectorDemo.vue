@@ -33,13 +33,13 @@ const isSupported = testInput.type === "month";
       <div v-if="isSupported" class="demo-field">
         <p>
           Slik ser komponentet ut i nettlesere som støtter input type="month",
-          som Chrome og Edge.
+          som Chrome og Edge (med kalender velger).
         </p>
-        <NveMonthSelector v-model="input" />
+        <NveMonthSelector v-model="input" label="Dato" />
         <p>
-          Skjermdump på hvordan komponentet vil bli seendes ut i Firefox og
-          Safari. Dersom du har tilgang til en av disse nettleserne kan du teste
-          komponentet direkte der.
+          Under viser skjermdump på hvordan komponentet vil bli seendes ut i
+          Firefox og Safari. Dersom du har tilgang til en av disse nettleserne
+          kan du teste komponentet direkte der.
         </p>
         <img
           src="./assets//nve-month-selector.png"
@@ -71,7 +71,8 @@ const isSupported = testInput.type === "month";
         Språk på labels og måneder er standard definert til norsk bokmål, men
         nynorsk og engelsk er også støttet. Endre språk ved å sende inn "nb",
         "nn" eller "en" language-attributten. modelValue-attributten brukes til
-        å hente og sette verdien på til «YYYY-MM» format.
+        å hente og sette verdien på til «YYYY-MM» format. Sett
+        labels-attributten til "false" dersom de ikke skal vises.
       </p>
 
       <ul class="attributes-list">
@@ -79,6 +80,9 @@ const isSupported = testInput.type === "month";
         <li>
           <b>language</b> ("nb" | "nn" | "en") - Språket som skal brukes på
           labels og måneder i nedtrekk.
+        </li>
+        <li>
+          <b>labels</b> (boolean) - Bestemmer om labels skal vises eller ikke.
         </li>
       </ul>
     </div>

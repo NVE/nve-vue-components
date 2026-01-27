@@ -4,10 +4,16 @@ import { ref, watch } from "vue";
 
 const emit = defineEmits(["sl-blur", "change", "input", "update:modelValue"]);
 
-const props = defineProps<{
-  modelValue?: string;
-  language?: "nb" | "nn" | "en";
-}>();
+const props = withDefaults(
+  defineProps<{
+    modelValue?: string;
+    language?: "nb" | "nn" | "en";
+    labels?: boolean;
+  }>(),
+  {
+    labels: true,
+  },
+);
 
 const norwegianMonths = [
   "Januar",
@@ -47,14 +53,22 @@ const monthOptions =
       : norwegianMonths;
 
 const monthLabel =
-  props.language === "en"
-    ? "Month"
-    : props.language === "nn"
-      ? "Månad"
-      : "Måned";
+  props.labels === false
+    ? ""
+    : props.language === "en"
+      ? "Month"
+      : props.language === "nn"
+        ? "Månad"
+        : "Måned";
 
 const yearLabel =
-  props.language === "en" ? "Year" : props.language === "nn" ? "År" : "År";
+  props.labels === false
+    ? ""
+    : props.language === "en"
+      ? "Year"
+      : props.language === "nn"
+        ? "År"
+        : "År";
 
 // Check if the browser supports input type="month"
 const testInput = document.createElement("input");
