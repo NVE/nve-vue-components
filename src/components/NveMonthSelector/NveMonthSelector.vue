@@ -99,6 +99,7 @@ watch(
     v-if="isSupported"
     v-bind="$attrs"
     :value="modelValue"
+    type="month"
     @sl-blur="(event: any) => emit('sl-blur', event)"
     @sl-input="(event: any) => changeField(event)"
   />

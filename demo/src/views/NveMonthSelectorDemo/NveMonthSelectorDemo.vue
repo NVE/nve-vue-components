@@ -24,15 +24,19 @@ const isSupported = testInput.type === "month";
         månedsnavn.
       </p>
     </div>
-
     <div class="demo-section">
-      <h2 class="subtitle">Demonstasjon</h2>
+      <h2 class="subtitle">Demonstrasjon</h2>
       <div v-if="!isSupported" class="demo-field">
         <p>Slik vil komponentet bli seendes ut i Firefox og Safari.</p>
         <NveMonthSelector v-model="input" />
       </div>
 
       <div v-if="isSupported" class="demo-field">
+        <p>
+          Slik ser komponentet ut i nettlesere som støtter input type="month",
+          som Chrome og Edge.
+          <NveMonthSelector v-model="input" />
+        </p>
         <p>
           Skjermdump på hvordan komponentet vil bli seendes ut i Firefox og
           Safari. Dersom du har tilgang til en av disse nettleserne kan du teste
@@ -129,7 +133,6 @@ const isSupported = testInput.type === "month";
   flex-direction: column;
 }
 .code-snippet > code {
-  background-color: white;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid var(--neutrals-border-subtle);
