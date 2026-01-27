@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/NVE/nve-vue-components/compare/v1.15.1...v1.15.2) (2026-01-27)
+
+
+### Bug Fixes
+
+* Lag labels valgfritt på NveMonthSelect ([#89](https://github.com/NVE/nve-vue-components/issues/89)) ([a28cb89](https://github.com/NVE/nve-vue-components/commit/a28cb89d3f4020993ac0807c1eb6c81267d9bccf))
+
 ## [1.15.1](https://github.com/NVE/nve-vue-components/compare/v1.15.0...v1.15.1) (2026-01-27)
 
 
