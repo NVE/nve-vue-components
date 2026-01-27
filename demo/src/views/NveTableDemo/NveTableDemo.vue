@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
   simpleSortByAccessor,
-} from "../../../src/components/NveTable/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable/table.types";
+} from "../../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
   NveCheckbox,
   NveIcon,
+  NveAccordionItem,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -120,7 +121,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -136,7 +137,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -166,61 +167,84 @@ const updateContinents = () => {
   selectedContinents.value = continents.value?.selectedValues ?? [];
 };
 
-const eventLog = ref<Array<string>>([]);
-
-const eventsCalled = (eventName: string, value: any) => {
-  if (typeof value === "object") {
-    eventLog.value.unshift(
-      `${new Date().toLocaleTimeString()}: ${eventName} - ${JSON.stringify(
-        value
-      )}`
-    );
-  } else {
-    eventLog.value.unshift(
-      `${new Date().toLocaleTimeString()}: ${eventName} - ${value}`
-    );
-  }
+const toggleColumn = (header: TableHeader<Country>) => {
+  header.hidden = !header.hidden;
+  tableHeaders.value = [...tableHeaders.value];
 };
+
+const tableBorder = ref(false);
+const cellBorder = ref(false);
+const striped = ref(true);
+const hoverrow = ref(false);
+const stickyHeader = ref(false);
 </script>
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo for events</h2>
-    <div class="eventlog">
-      <h3>Event log</h3>
-      <nve-button
-        variant="tertiary"
-        size="small"
-        @click="eventLog = []"
-        v-if="eventLog.length > 0"
-      >
-        Clear
-      </nve-button>
-      <div style="max-height: 400px; overflow: auto">
-        <div v-for="(log, index) of eventLog" :key="index">{{ log }}</div>
+    <h1>Nve-Table Demo</h1>
+    <nve-accordion-item variant="secondary" :open="true">
+      <div slot="summary">Slå av og på kolonner</div>
+      <div class="toggles">
+        <nve-checkbox
+          v-for="col in tableHeaders"
+          :key="col.key"
+          :checked="!col.hidden"
+          @sl-change="() => toggleColumn(col)"
+        >
+          {{ col.title }}
+        </nve-checkbox>
       </div>
-    </div>
+    </nve-accordion-item>
+    <nve-accordion-item variant="secondary" :open="false">
+      <div slot="summary">Slå av og på properties</div>
+      <div class="toggles">
+        <nve-checkbox
+          :checked="tableBorder"
+          @sl-change="() => (tableBorder = !tableBorder)"
+        >
+          Ramme rundt tabell
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="cellBorder"
+          @sl-change="() => (cellBorder = !cellBorder)"
+        >
+          Ramme rundt hver celle
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="striped"
+          @sl-change="() => (striped = !striped)"
+        >
+          Zebra-striper
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="hoverrow"
+          @sl-change="() => (hoverrow = !hoverrow)"
+        >
+          Hover-effekt på rader
+        </nve-checkbox>
+        <nve-checkbox
+          :checked="stickyHeader"
+          @sl-change="() => (stickyHeader = !stickyHeader)"
+        >
+          Gjør header "sticky"
+        </nve-checkbox>
+      </div>
+    </nve-accordion-item>
     <NveTable
       :headers="tableHeaders"
       :data="countries"
-      :striped="true"
+      :striped="striped"
       :page-size="15"
       :page-size-options="[5, 10, 15, 25, 50]"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
       :filter-function="tableFilter"
       :item-id="(country: Country) => country.countryCode"
+      :sticky-header="stickyHeader"
+      :table-border="tableBorder"
+      :cell-border="cellBorder"
+      :hover-row-effect="hoverrow"
+      saveStateId="nve-table-demo"
       :scroll-to-top-on-page-switch="true"
-      save-state-id="events-table"
-      @page-size-change="
-        (pageSize) => eventsCalled('page-size-changed', pageSize)
-      "
-      @click-row="(row) => eventsCalled('click-row', row)"
-      @page-change="(page) => eventsCalled('page-change [null-indexed]', page)"
-      @set-external-data="(data) => eventsCalled('set-external-data', data)"
-      @sort-change="(newSort) => eventsCalled('sort-change', newSort)"
-      @filter-text-change="
-        (newText) => eventsCalled('filter-text-changed', newText)
-      "
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
-import type { TableHeader } from "../../../src/components/NveTable/table.types";
-import countries from "../components/countries.json";
-import { computed,  type Ref } from "vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
+import countries from "../../components/countries.json";
+import { computed, type Ref } from "vue";
 type Country = {
   name: string;
   governmentType: string;
@@ -60,7 +60,7 @@ function RedComponent(props: CustomProps) {
         color: "red",
       },
     },
-    [props.value]
+    [props.value],
   );
 }
 function NumberComponent(props: CustomProps) {
@@ -81,7 +81,7 @@ function ButtonThatLogs(props: CustomProps) {
         console.dir(props.country);
       },
     },
-    [h("nve-icon", { name: "info" })]
+    [h("nve-icon", { name: "info" })],
   );
 }
 /** komponent-liste slutt */
@@ -99,7 +99,7 @@ const tableHeaders: Ref<Array<TableHeaderWithComponent<Country>>> = computed(
         component: header.component ?? DefaultComponent,
       };
     });
-  }
+  },
 );
 
 const prettyPrintNumber = (number: number): string => {
@@ -112,7 +112,7 @@ const prettyPrintNumber = (number: number): string => {
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo med Programmatiske celler</h2>
+    <h1>Nve-Table Demo med programmatiske celler</h1>
     <NveTable
       :headers="tableHeaders"
       :data="countries"

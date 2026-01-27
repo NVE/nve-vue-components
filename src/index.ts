@@ -1,13 +1,15 @@
-import type { App, Plugin } from 'vue';
-import { sortByFunction, sortByProperty } from './components/NveTable/tableSortFunctions';
+import type { App, Plugin } from "vue";
+import {
+  sortByFunction,
+  sortByProperty,
+} from "./components/NveTable/tableSortFunctions";
 
 //  Automatisk global registrering
-const modules = import.meta.glob('./components/**/*.vue', { eager: true });
+const modules = import.meta.glob("./components/**/*.vue", { eager: true });
 
 const NVEComponents: Plugin = {
   install(app: App) {
     for (const path in modules) {
-       
       const mod = modules[path] as any;
       const component = mod.default;
       if (component?.name) {
@@ -27,5 +29,6 @@ export default NVEComponents;
 export { sortByFunction, sortByProperty };
 
 //  Legg til en eksport for hver komponent du ønsker å kunne importere separat:
-export * from './components/NveTable';
+export * from "./components/NveTable";
 
+export * from "./components/NveMonthSelector";

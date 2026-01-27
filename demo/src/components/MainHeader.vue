@@ -4,34 +4,68 @@ import { NveDarkmodeSwitch } from "nve-designsystem";
 
 <template>
   <header class="main-header">
-    <nav>
-      <router-link to="/" class="img-link home-link">
-        <img src="/images/logo.svg" alt="NVE ikon" />
-      </router-link>
-      <div class="home-link">
-        <h1 class="title">Vue-demo</h1>
+    <nav class="nav">
+      <div class="nav-logo-title">
+        <router-link to="/" class="img-link home-link">
+          <img class="logo" src="/images/logo.svg" alt="NVE logo" />
+        </router-link>
+
+        <h1 class="title">NVE-Vue-Components Demo</h1>
       </div>
-      <div class="spacer" />
-      <nve-darkmode-switch />
+      <div class="switch"><nve-darkmode-switch /></div>
     </nav>
   </header>
 </template>
 
 <style scoped>
+.main-header {
+  width: 100vw;
+  height: var(--top-menu-height);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-large);
+}
+
+.logo {
+  height: 74px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: unset;
+}
+.switch {
+  margin-right: var(--spacing-x-large);
+}
+
+/*
 nav {
   height: var(--top-menu-height);
   display: flex;
-  background-color: var(--color-page-bg);
+  background-color: white;
   align-items: center;
   gap: var(--spacing-large);
-  max-width: calc(
-    50vw + 675px
-  ); /* Venstre-alignet med browser. Høyre-alignet med article (som har padding) */
 }
 .title {
-  font: var(--typography-label-medium);
+  font-size: 20px;
   order: 1;
   z-index: 1;
+  font-weight: 600;
 }
 nav .spacer {
   flex-grow: 1;
@@ -63,5 +97,5 @@ a.home-link {
   &:hover {
     text-decoration: underline;
   }
-}
+} */
 </style>

@@ -14,7 +14,7 @@ const testData = [
 ]
 
 describe('NveTable', () => {
-  it('renderar rader korrekt', async () => {
+  it('rendrer rader korrekt', async () => {
     const wrapper = mount(NveTable, {
       props: {
         headers,

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
   simpleSortByAccessor,
-} from "../../../src/components/NveTable/tableSortFunctions";
-import type { TableHeader } from "../../../src/components/NveTable/table.types";
+} from "../../../../src/components/NveTable/tableSortFunctions";
+import type { TableHeader } from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
@@ -13,7 +13,7 @@ import {
   NveIcon,
   NveAccordionItem,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -24,7 +24,13 @@ type Country = {
   population: number;
   area: number;
   foundingYear: number;
+  cities: Array<{ name: string; population: number }>;
 };
+
+/* 
+  Jeg vet ikke helt hvorfor, men row i afterrow templaten blir typed som "boolean | undefined | Country[]" og ikke som Country.
+  Derfor har jeg brukt "as any" i templaten under. 
+*/
 
 // For å demonstrere sortering med funksjon så bruker vi en egen sorteringsfunksjon for styreform.
 // Den sier at monarkier sorteres øverst, så republikker, og så alt annet.
@@ -121,7 +127,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -137,7 +143,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -167,75 +173,22 @@ const updateContinents = () => {
   selectedContinents.value = continents.value?.selectedValues ?? [];
 };
 
-const toggleColumn = (header: TableHeader<Country>) => {
-  header.hidden = !header.hidden;
-  tableHeaders.value = [...tableHeaders.value];
-};
-
 const tableBorder = ref(false);
 const cellBorder = ref(false);
 const striped = ref(true);
 const hoverrow = ref(false);
 const stickyHeader = ref(false);
+
+const expanded: Ref<string | null> = ref(null);
 </script>
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable med "sticky" første-kolonne</h2>
-    <div style="margin-block-end: var(--spacing-medium)">
-      Gjør vinduet smalere for å se effekten av sticky kolonne
-    </div>
-    <nve-accordion-item variant="secondary" :open="true">
-      <div slot="summary">Slå av og på kolonner</div>
-      <div class="toggles">
-        <nve-checkbox
-          v-for="col in tableHeaders"
-          :key="col.key"
-          :checked="!col.hidden"
-          @sl-change="() => toggleColumn(col)"
-        >
-          {{ col.title }}
-        </nve-checkbox>
-      </div>
-    </nve-accordion-item>
-    <nve-accordion-item variant="secondary" :open="false">
-      <div slot="summary">Slå av og på properties</div>
-      <div class="toggles">
-        <nve-checkbox
-          :checked="tableBorder"
-          @sl-change="() => (tableBorder = !tableBorder)"
-        >
-          Ramme rundt tabell
-        </nve-checkbox>
-        <nve-checkbox
-          :checked="cellBorder"
-          @sl-change="() => (cellBorder = !cellBorder)"
-        >
-          Ramme rundt hver celle
-        </nve-checkbox>
-        <nve-checkbox
-          :checked="striped"
-          @sl-change="() => (striped = !striped)"
-        >
-          Zebra-striper
-        </nve-checkbox>
-        <nve-checkbox
-          :checked="hoverrow"
-          @sl-change="() => (hoverrow = !hoverrow)"
-        >
-          Hover-effekt på rader
-        </nve-checkbox>
-        <nve-checkbox
-          :checked="stickyHeader"
-          @sl-change="() => (stickyHeader = !stickyHeader)"
-        >
-          Gjør header "sticky"
-        </nve-checkbox>
-      </div>
-    </nve-accordion-item>
+    <h1>Nve-Table Demo med utvidbare rader</h1>
+    <p class="info-text">Klikk på en rad for å se "under-rad" med byer</p>
     <NveTable
       :headers="tableHeaders"
-      :data="countries"
+      :data="countries as Array<Country>"
       :striped="striped"
       :page-size="15"
       :initial-sort="{ field: 'name', direction: 'ASC' }"
@@ -246,7 +199,11 @@ const stickyHeader = ref(false);
       :cell-border="cellBorder"
       :hover-row-effect="hoverrow"
       :scroll-to-top-on-page-switch="true"
-      sticky-first-column
+      @click-row="
+        (country: Country) => {
+          expanded = country.name;
+        }
+      "
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">
@@ -291,11 +248,36 @@ const stickyHeader = ref(false);
           />
         </span>
       </template>
+      <template #afterrow="row">
+        <tr
+          v-if="expanded === (row.item as any).name"
+          v-for="(city, index) in (row.item as any).cities"
+          :key="city.name"
+          class="subrow"
+          :class="{
+            'table-stripe': (row.index as any) % 2 === 1,
+            'is-expanded': expanded === city.name,
+          }"
+        >
+          <td />
+          <td>
+            <span v-if="(index as any) === 0"
+              >Noen byer i {{ (row.item as any).countryCode }}:</span
+            >
+          </td>
+          <td>{{ city.name }}</td>
+          <td>{{ prettyPrintNumber(city.population) }}</td>
+        </tr>
+      </template>
     </NveTable>
   </div>
 </template>
 
 <style scoped>
+.info-text {
+  margin-bottom: var(--spacing-medium);
+  max-width: 100ch;
+}
 .filter-wrapper {
   display: grid;
   grid-template-rows: 1fr;
@@ -335,5 +317,25 @@ nve-accordion-item {
 }
 .nve-table-demo :deep(.table-cell.big) {
   font-size: 105%;
+}
+
+.subrow {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  height: unset;
+  min-height: 44px;
+  &.table-stripe {
+    background: var(--color-neutrals-background-canvas);
+  }
+  & td {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 1.125rem;
+    padding-right: 0.75rem;
+  }
 }
 </style>

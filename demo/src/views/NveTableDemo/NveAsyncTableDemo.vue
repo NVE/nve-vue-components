@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import NveTable from "../../../src/components/NveTable/NveTable.vue";
+import NveTable from "../../../../src/components/NveTable/NveTable.vue";
 import {
   sortByProperty,
   sortByFunction,
-} from "../../../src/components/NveTable/tableSortFunctions";
+} from "../../../../src/components/NveTable/tableSortFunctions";
 import type {
   SorterType,
   TableHeader,
-} from "../../../src/components/NveTable/table.types";
+} from "../../../../src/components/NveTable/table.types";
 import {
   NveButton,
   NveCheckboxGroup,
@@ -15,7 +15,7 @@ import {
   NveIcon,
   NveAccordionItem,
 } from "nve-designsystem";
-import countries from "../components/countries.json";
+import countries from "../../components/countries.json";
 import { ref, type Ref, useTemplateRef } from "vue";
 type Country = {
   name: string;
@@ -123,7 +123,7 @@ const tableHeaders: Ref<Array<TableHeader<Country>>> = ref([
 
 const tableFilter = (
   textSearch: string,
-  data: Array<Country> = countries
+  data: Array<Country> = countries,
 ): Array<Country> => {
   if (textSearch && textSearch.trim().length > 0) {
     const search = textSearch.toLowerCase();
@@ -139,7 +139,7 @@ const tableFilter = (
   data = data.filter((row) => {
     // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
     return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc)
+      row.continent.split("/").includes(sc),
     );
   });
   return data;
@@ -181,7 +181,7 @@ const timeoutMs = ref(1000); // Simulerer en 1 sekunders forsinkelse for å hent
 const getData = (
   page: number,
   filterText: string,
-  sort: SorterType | null
+  sort: SorterType | null,
 ): Promise<Array<Country>> => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -204,8 +204,8 @@ const getData = (
 
 <template>
   <div class="nve-table-demo">
-    <h2>NveTable Demo</h2>
-    <p>
+    <h1>Nve-Table Demo Async</h1>
+    <p class="info-text">
       Dette er en rask versjon. Async-versjonen av NveTable er ikke i bruk i
       noen prosjekter akkurat nå, så skriv gjerne om funksjonalitet slik at den
       er bedre dersom du tar den i bruk.
@@ -276,6 +276,10 @@ const getData = (
 </template>
 
 <style scoped>
+.info-text {
+  margin-bottom: var(--spacing-medium);
+  max-width: 100ch;
+}
 .filter-wrapper {
   display: grid;
   grid-template-rows: 1fr;
