@@ -4,44 +4,57 @@ import { ref, watch } from "vue";
 
 const emit = defineEmits(["sl-blur", "change", "input", "update:modelValue"]);
 
-const props = withDefaults(
-  defineProps<{
-    modelValue?: string;
-    months?: string[];
-    labelLanguage?: "nb" | "nn" | "en";
-  }>(),
-  {
-    labelLanguage: "nb",
-    months: () => [
-      "Januar",
-      "Februar",
-      "Mars",
-      "April",
-      "Mai",
-      "Juni",
-      "Juli",
-      "August",
-      "September",
-      "Oktober",
-      "November",
-      "Desember",
-    ],
-  },
-);
+const props = defineProps<{
+  modelValue?: string;
+  language?: "nb" | "nn" | "en";
+}>();
+
+const norwegianMonths = [
+  "Januar",
+  "Februar",
+  "Mars",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Desember",
+];
+
+const englishMonths = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const monthOptions =
+  props.language === "en"
+    ? englishMonths
+    : props.language === "nn"
+      ? norwegianMonths
+      : norwegianMonths;
 
 const monthLabel =
-  props.labelLanguage === "en"
+  props.language === "en"
     ? "Month"
-    : props.labelLanguage === "nn"
+    : props.language === "nn"
       ? "Månad"
       : "Måned";
 
 const yearLabel =
-  props.labelLanguage === "en"
-    ? "Year"
-    : props.labelLanguage === "nn"
-      ? "År"
-      : "År";
+  props.language === "en" ? "Year" : props.language === "nn" ? "År" : "År";
 
 // Check if the browser supports input type="month"
 const testInput = document.createElement("input");
@@ -115,7 +128,7 @@ watch(
         :key="index"
         :value="month.toString().padStart(2, '0')"
       >
-        {{ months[index] }}
+        {{ monthOptions[index] }}
       </nve-option>
     </nve-select>
 

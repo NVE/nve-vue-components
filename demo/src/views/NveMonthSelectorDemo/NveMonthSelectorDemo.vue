@@ -62,32 +62,24 @@ const isSupported = testInput.type === "month";
       </p>
       <p class="code-snippet">
         Engelsk:
-        <code>
-          &lt;NveMonthSelector v-model="input" :months="engMonths"
-          labelLanguage="en"/&gt;
-        </code>
+        <code> &lt;NveMonthSelector v-model="input" language="en"/&gt; </code>
       </p>
     </div>
 
     <div class="info-section">
       <h2>Attributter</h2>
       <p>
-        Språk på labels og måneder er standard definert til norsk bokmål. Endre
-        språk i options ved å sende inn egendefinerte verdier i months
-        attributten. Per nå støttes bokmål, nynorsk og engelsk i
-        labels-attributtet som kan velges i mellom. modelValue-attributten
-        brukes til å hente og sette verdien på til «YYYY-MM» format.
+        Språk på labels og måneder er standard definert til norsk bokmål, men
+        nynorsk og engelsk er også støttet. Endre språk ved å sende inn "nb",
+        "nn" eller "en" language-attributten. modelValue-attributten brukes til
+        å hente og sette verdien på til «YYYY-MM» format.
       </p>
 
       <ul class="attributes-list">
         <li><b>modelValue</b> (string) - Verdien på formatet "YYYY-MM".</li>
         <li>
-          <b>months</b> (string[]) - Et datasett med månedsnavn som skal vises i
-          nedtrekksmenyen.
-        </li>
-        <li>
-          <b>labelLanguage</b> ("nb" | "nn" | "en") - Språket som skal brukes på
-          labels.
+          <b>language</b> ("nb" | "nn" | "en") - Språket som skal brukes på
+          labels og måneder i nedtrekk.
         </li>
       </ul>
     </div>
@@ -142,7 +134,7 @@ const isSupported = testInput.type === "month";
   display: flex;
   flex-direction: column;
   gap: var(--spacing-x-small);
-  padding-top: var(--spacing-small);
+  padding-top: var(--spacing-x-small);
 }
 .attributes-list > li {
   list-style-type: none;
