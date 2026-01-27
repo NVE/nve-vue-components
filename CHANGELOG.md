@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/NVE/nve-vue-components/compare/v1.14.0...v1.15.0) (2026-01-27)
+
+
+### Features
+
+* NveMonthSelector ([#87](https://github.com/NVE/nve-vue-components/issues/87)) ([7dc2e54](https://github.com/NVE/nve-vue-components/commit/7dc2e54bf5913b45523be3700987b8a01474d78f))
+
 # [1.14.0](https://github.com/NVE/nve-vue-components/compare/v1.13.1...v1.14.0) (2025-11-19)
 
 
