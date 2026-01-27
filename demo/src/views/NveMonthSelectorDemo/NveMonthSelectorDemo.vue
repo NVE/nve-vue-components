@@ -35,8 +35,8 @@ const isSupported = testInput.type === "month";
         <p>
           Slik ser komponentet ut i nettlesere som støtter input type="month",
           som Chrome og Edge.
-          <NveMonthSelector v-model="input" />
         </p>
+        <NveMonthSelector v-model="input" />
         <p>
           Skjermdump på hvordan komponentet vil bli seendes ut i Firefox og
           Safari. Dersom du har tilgang til en av disse nettleserne kan du teste
@@ -135,7 +135,7 @@ const isSupported = testInput.type === "month";
 .code-snippet > code {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid var(--neutrals-border-subtle);
+  border: 1px solid var(--neutrals-border-default);
 }
 
 .attributes-list {
