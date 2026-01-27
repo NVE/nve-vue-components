@@ -27,19 +27,19 @@ const isSupported = testInput.type === "month";
       <h2 class="subtitle">Demonstrasjon</h2>
       <div v-if="!isSupported" class="demo-field">
         <p>Slik vil komponentet bli seendes ut i Firefox og Safari.</p>
-        <NveMonthSelector v-model="input" />
+        <NveMonthSelector v-model="input" :labels="false" />
       </div>
 
       <div v-if="isSupported" class="demo-field">
         <p>
           Slik ser komponentet ut i nettlesere som støtter input type="month",
-          som Chrome og Edge.
+          som Chrome og Edge (med kalender velger).
         </p>
-        <NveMonthSelector v-model="input" />
+        <NveMonthSelector v-model="input" label="Dato" />
         <p>
-          Skjermdump på hvordan komponentet vil bli seendes ut i Firefox og
-          Safari. Dersom du har tilgang til en av disse nettleserne kan du teste
-          komponentet direkte der.
+          Under er skjermdump på hvordan komponentet vil bli seendes ut i
+          Firefox og Safari. Dersom du har tilgang til en av disse nettleserne
+          kan du teste komponentet direkte der.
         </p>
         <img
           src="./assets//nve-month-selector.png"
@@ -79,6 +79,9 @@ const isSupported = testInput.type === "month";
         <li>
           <b>language</b> ("nb" | "nn" | "en") - Språket som skal brukes på
           labels og måneder i nedtrekk.
+        </li>
+        <li>
+          <b>labels</b> (boolean) - Bestemmer om labels skal vises eller ikke.
         </li>
       </ul>
     </div>
