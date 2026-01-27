@@ -27,7 +27,7 @@ const isSupported = testInput.type === "month";
       <h2 class="subtitle">Demonstrasjon</h2>
       <div v-if="!isSupported" class="demo-field">
         <p>Slik vil komponentet bli seendes ut i Firefox og Safari.</p>
-        <NveMonthSelector v-model="input" :labels="false" />
+        <NveMonthSelector v-model="input" />
       </div>
 
       <div v-if="isSupported" class="demo-field">
@@ -37,7 +37,7 @@ const isSupported = testInput.type === "month";
         </p>
         <NveMonthSelector v-model="input" label="Dato" />
         <p>
-          Under er skjermdump på hvordan komponentet vil bli seendes ut i
+          Under viser skjermdump på hvordan komponentet vil bli seendes ut i
           Firefox og Safari. Dersom du har tilgang til en av disse nettleserne
           kan du teste komponentet direkte der.
         </p>
