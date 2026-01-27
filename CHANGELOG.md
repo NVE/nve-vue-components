@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/NVE/nve-vue-components/compare/v1.15.0...v1.15.1) (2026-01-27)
+
+
+### Bug Fixes
+
+* Oppgraderte pakker ([#88](https://github.com/NVE/nve-vue-components/issues/88)) ([f535e26](https://github.com/NVE/nve-vue-components/commit/f535e266fe97ec582fae6c1380bf8d29b995c7d5))
+
 # [1.15.0](https://github.com/NVE/nve-vue-components/compare/v1.14.0...v1.15.0) (2026-01-27)
 
 
