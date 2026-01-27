@@ -20,8 +20,7 @@ const isSupported = testInput.type === "month";
         støtter input type="month", som Firefox og Safari. Komponentet gir en
         enkel og gjenbrukbar løsning som kan brukes på tvers av prosjekter, uten
         at hvert prosjekt må lage sin egen implementasjon. Komponentet er basert
-        på nve-designsystem og støtter v-model, flere språk og egendefinerte
-        månedsnavn.
+        på nve-designsystem, og støtter v-model og flere språk.
       </p>
     </div>
     <div class="demo-section">
