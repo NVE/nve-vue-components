@@ -75,7 +75,7 @@ function ButtonThatLogs(props: CustomProps) {
   return h(
     "nve-button",
     {
-      variant: "default",
+      variant: "ghost",
       size: "small",
       onClick: () => {
         console.dir(props.country);

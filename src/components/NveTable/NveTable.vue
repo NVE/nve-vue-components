@@ -43,7 +43,7 @@ watch(
   () => props.pageSize,
   (newVal) => {
     localPageSize.value = newVal;
-  }
+  },
 );
 const onChangePageSize = (event: any) => {
   const newSize = Number(event.target.value);
@@ -53,13 +53,13 @@ const onChangePageSize = (event: any) => {
 };
 
 function isAsyncTable(
-  props: SyncTableProps<T> | AsyncTableProps<T>
+  props: SyncTableProps<T> | AsyncTableProps<T>,
 ): props is AsyncTableProps<T> {
   return props.async === true;
 }
 
 function isSyncTable(
-  props: SyncTableProps<T> | AsyncTableProps<T>
+  props: SyncTableProps<T> | AsyncTableProps<T>,
 ): props is SyncTableProps<T> {
   return props.async === false;
 }
@@ -68,7 +68,7 @@ watch(
   () => filterText.value,
   (newVal) => {
     emit("filterTextChange", newVal);
-  }
+  },
 );
 
 const pageNumber = ref<number>(0);
@@ -122,7 +122,7 @@ const visibleData = computedAsync(async () => {
     const newData = await props.getData(
       pageNumber.value,
       filterText.value,
-      currentSort.value
+      currentSort.value,
     );
     isFetchingData.value = false;
     return newData;
@@ -197,7 +197,7 @@ watch(
         }
       }
     }
-  }
+  },
 );
 defineExpose({ saveExternalData });
 
@@ -243,7 +243,7 @@ const hasClickForRow = (row: T) => {
 };
 const observer = new IntersectionObserver(
   ([e]) => e.target.toggleAttribute("data-stuck", e.intersectionRatio < 1),
-  { threshold: [1] }
+  { threshold: [1] },
 );
 
 const tableheader: Ref<HTMLTableSectionElement | null> = ref(null);
@@ -275,7 +275,7 @@ const showTable = computed(() => {
 
 const getCellClass = (
   cellClass: undefined | string | ((item: T) => string),
-  item: T
+  item: T,
 ) => {
   if (!cellClass) {
     return "";
@@ -525,7 +525,8 @@ table {
   &:is(.cellborder, .tableborder) {
     --_br: var(--border-radius-large);
     border-radius: var(--_br);
-    border: var(--border-width-default) solid var(--color-neutrals-border-subtle);
+    border: var(--border-width-default) solid
+      var(--color-neutrals-border-subtle);
     & thead {
       & tr {
         border-top-left-radius: var(--_br);
@@ -714,7 +715,7 @@ table.hideunderline {
     --_row-color: var(--color-neutrals-background-canvas);
     --_row-hover-color: var(--color-neutrals-background-secondary);
   }
-  &:nth-of-type(2n + 1 of .table-row) {
+  &:nth-child(2n + 1 of .table-row) {
     --_row-color: var(--color-neutrals-background-primary);
   }
 }
