@@ -71,7 +71,8 @@ const isSupported = testInput.type === "month";
         Språk på labels og måneder er standard definert til norsk bokmål, men
         nynorsk og engelsk er også støttet. Endre språk ved å sende inn "nb",
         "nn" eller "en" language-attributten. modelValue-attributten brukes til
-        å hente og sette verdien på til «YYYY-MM» format.
+        å hente og sette verdien på til «YYYY-MM» format. Sett
+        labels-attributten til "false" dersom de ikke skal vises.
       </p>
 
       <ul class="attributes-list">
