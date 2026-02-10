@@ -1,7 +1,5 @@
 {
-  "branches": [
-    "main"
-  ],
+  "branches": ["main"],
   "tagFormat": "v${version}",
   "plugins": [
     "@semantic-release/commit-analyzer",
@@ -23,10 +21,6 @@
           {
             "path": "dist/index.d.ts",
             "name": "index-${nextRelease.version}.d.ts"
-          },
-          {
-            "path": ["dist/**/*.d.ts", "!dist/index.d.ts"],
-            "label": "Other type declarations"
           }
         ]
       }
