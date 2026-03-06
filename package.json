@@ -56,13 +56,13 @@
     "@vueuse/core": "^14.2.1",
     "eslint-plugin-vue": "^10.8.0",
     "husky": "^9.1.7",
-    "nve-designsystem": "^3.10.1",
+    "nve-designsystem": "^3.12.0",
     "vue-eslint-parser": "^10.4.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^25.3.3",
+    "@types/node": "^25.3.5",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
     "@vitejs/plugin-vue": "^6.0.4",
