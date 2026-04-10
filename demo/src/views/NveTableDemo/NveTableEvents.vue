@@ -224,7 +224,7 @@ const eventsCalled = (eventName: string, value: any) => {
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">
-          <nve-icon slot="prefix" name="filter_alt" />
+          <nve-icon slot="start" name="filter_alt" />
           Filtrer
         </nve-button>
       </template>

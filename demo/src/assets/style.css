@@ -8,19 +8,18 @@
 
 html,
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   margin: 0;
   color: var(--color-neutrals-foreground-primary);
   --top-menu-height: 70px;
   --footer-height: 80px;
-  outline-color: var(--color-interactive-ghost-border-focus);
+  outline-color: var(--color-interactive-border-accessibility-focus);
   --color-text: var(--color-neutrals-foreground-primary);
-  /* background-color: var(--Neutrals-Background-Canvas, #f7f7f8); */
   line-height: 150%;
 }
 
 h1 {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 2rem;
 }
