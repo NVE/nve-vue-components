@@ -310,7 +310,7 @@ const clickRow = (row: T, event: MouseEvent) => {
         placeholder="Søk"
         data-test="filter-input"
       >
-        <nve-icon slot="prefix" name="search" library="Sharp"></nve-icon>
+        <nve-icon slot="start" name="search" library="Sharp"></nve-icon>
       </nve-input>
     </div>
   </div>

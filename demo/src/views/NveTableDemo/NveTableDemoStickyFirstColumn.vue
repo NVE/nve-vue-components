@@ -250,7 +250,7 @@ const stickyHeader = ref(false);
     >
       <template #filterbutton>
         <nve-button variant="ghost" @click="filterOpen = !filterOpen">
-          <nve-icon slot="prefix" name="filter_alt" />
+          <nve-icon slot="start" name="filter_alt" />
           Filtrer
         </nve-button>
       </template>
@@ -298,7 +298,7 @@ const stickyHeader = ref(false);
 <style scoped>
 .info-text {
   margin-bottom: var(--spacing-medium);
-   max-width: 100ch;
+  max-width: 100ch;
 }
 .filter-wrapper {
   display: grid;
