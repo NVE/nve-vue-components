@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/NVE/nve-vue-components/compare/v1.15.3...v2.0.0) (2026-04-10)
+
+
+* feat!: Oppdaterer DS til versjon 4 ([#112](https://github.com/NVE/nve-vue-components/issues/112)) ([d648ee1](https://github.com/NVE/nve-vue-components/commit/d648ee1e590d60250099d41ad8c32be1084ba9aa))
+
+
+### BREAKING CHANGES
+
+* Siden DS oppdateres så vil det påvirke alle andre ting i løsningen som bruker DS-knappen
+
 ## [1.15.3](https://github.com/NVE/nve-vue-components/compare/v1.15.2...v1.15.3) (2026-03-02)
 
 
