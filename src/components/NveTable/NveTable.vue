@@ -36,6 +36,7 @@ const props = withDefaults(defineProps<PropsType>(), {
   itemId: (_, index: number) => index,
   hideAllFilters: false,
   stickyFirstColumn: false,
+  hideSortableIcon: true,
 });
 
 const localPageSize = ref(props.pageSize);
@@ -372,7 +373,9 @@ const clickRow = (row: T, event: MouseEvent) => {
                 />
               </template>
               <template v-else>
-                <span style="width: 24px; display: inline-block"></span>
+                <span style="width: 24px; display: inline-block">
+                  <nve-icon v-if="!hideSortableIcon" name="swap_vert" />
+                </span>
               </template>
             </button>
             <template v-else-if="$slots[`header.${header.key}`]">
