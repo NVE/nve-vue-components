@@ -42,6 +42,7 @@ export type TableProps<T> = {
   hideHeader?: boolean;
   hideTableHeader?: boolean;
   hideEmpty?: boolean;
+  hideSortableIcon?: boolean;
   tableclass?: string;
   tableholderclass?: string;
   stickyHeader?: boolean;
