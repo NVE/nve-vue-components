@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/NVE/nve-vue-components/compare/v2.0.0...v2.1.0) (2026-07-06)
+
+
+### Features
+
+* add "is sortable" icons ([#127](https://github.com/NVE/nve-vue-components/issues/127)) ([b7414a7](https://github.com/NVE/nve-vue-components/commit/b7414a7970e789c9189f6e937df133eea75bd7d8))
+
 # [2.0.0](https://github.com/NVE/nve-vue-components/compare/v1.15.3...v2.0.0) (2026-04-10)
 
 
