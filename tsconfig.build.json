@@ -7,6 +7,8 @@
       "noEmit": false,
       "outDir": "dist",
       "composite": false,
+      "rootDir": "src",
+      "ignoreDeprecations": "6.0",
       "baseUrl": ".",
       "paths": {
         "@/*": ["src/*"]
@@ -15,4 +17,3 @@
     "include": ["src"],
     "exclude": ["demo", "dist", "node_modules"]
   }
-  
