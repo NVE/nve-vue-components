@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/NVE/nve-vue-components/compare/v2.1.0...v2.1.1) (2026-08-07)
+
+
+### Bug Fixes
+
+* **build:** updated build config and node ([#129](https://github.com/NVE/nve-vue-components/issues/129)) ([6d52516](https://github.com/NVE/nve-vue-components/commit/6d52516566b9d32a8913cff247d3f54b37ad6a2f))
+
 # [2.1.0](https://github.com/NVE/nve-vue-components/compare/v2.0.0...v2.1.0) (2026-07-06)
 
 
