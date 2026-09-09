@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/NVE/nve-vue-components/compare/v2.1.1...v2.2.0) (2026-09-09)
+
+
+### Features
+
+* Oppdatere til nyeste versjon av designsystemet ([#141](https://github.com/NVE/nve-vue-components/issues/141)) ([31c8bc3](https://github.com/NVE/nve-vue-components/commit/31c8bc396af91d7a7d20b17e307fa6990e5dc76d))
+
 ## [2.1.1](https://github.com/NVE/nve-vue-components/compare/v2.1.0...v2.1.1) (2026-08-07)
 
 
