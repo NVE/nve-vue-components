@@ -1,8 +1,8 @@
-import { defineConfig } from 'vitest/config'
-import vue from "@vitejs/plugin-vue"
-import dts from "vite-plugin-dts"
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js"
-import * as path from "path"
+import { defineConfig } from "vitest/config";
+import vue from "@vitejs/plugin-vue";
+import dts from "vite-plugin-dts";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import * as path from "path";
 
 export default defineConfig({
   plugins: [
@@ -14,18 +14,18 @@ export default defineConfig({
       },
     }),
     dts({
-      outDir: "dist",             
+      outDir: "dist",
       insertTypesEntry: true,
-        include: ["src"],    
+      include: ["src"],
     }),
-    cssInjectedByJsPlugin()
+    cssInjectedByJsPlugin(),
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"), 
+      entry: path.resolve(import.meta.dirname, "src/index.ts"),
       name: "NveVueComponents",
-      fileName: (format) => `vue-components.${format}.js`, 
-      formats: ["es", "umd"]
+      fileName: (format) => `vue-components.${format}.js`,
+      formats: ["es", "umd"],
     },
     rollupOptions: {
       external: ["vue", "nve-designsystem", "@vueuse/core"],
@@ -34,26 +34,26 @@ export default defineConfig({
         globals: {
           vue: "Vue",
           "nve-designsystem": "NveDesignsystem",
-          "@vueuse/core": "@vueuse/core"
-        }
-      }
+          "@vueuse/core": "@vueuse/core",
+        },
+      },
     },
     outDir: "dist",
-    emptyOutDir: true
+    emptyOutDir: true,
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src")
-    }
+      "@": path.resolve(import.meta.dirname, "src"),
+    },
   },
   test: {
-  globals: true,
-  environment: 'jsdom',
-  setupFiles: './vitest.setup.ts',
-  include: ['src/**/*.spec.ts', 'src/**/*.test.ts'],
-  coverage: {
-    reporter: ['text', 'json', 'html'],
-    exclude: ['src/index.ts'],
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./vitest.setup.ts",
+    include: ["src/**/*.spec.ts", "src/**/*.test.ts"],
+    coverage: {
+      reporter: ["text", "json", "html"],
+      exclude: ["src/index.ts"],
+    },
   },
-}
-})
+});
