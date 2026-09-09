@@ -14,7 +14,7 @@ import {
   NveAccordionItem,
 } from "nve-designsystem";
 import countries from "../../components/countries.json";
-import { ref, type Ref, useTemplateRef } from "vue";
+import { ref, type Ref } from "vue";
 type Country = {
   name: string;
   governmentType: string;
@@ -162,11 +162,6 @@ const allContinents = [
 ];
 const selectedContinents: Ref<Array<string>> = ref([...allContinents]);
 
-const continents = useTemplateRef("continents-checkbox-group");
-const updateContinents = () => {
-  selectedContinents.value = continents.value?.selectedValues ?? [];
-};
-
 const toggleColumn = (header: TableHeader<Country>) => {
   header.hidden = !header.hidden;
   tableHeaders.value = [...tableHeaders.value];
@@ -177,6 +172,15 @@ const cellBorder = ref(false);
 const striped = ref(true);
 const hoverrow = ref(false);
 const stickyHeader = ref(false);
+
+const toggleContinent = (continent: string) => {
+  const index = selectedContinents.value.indexOf(continent);
+  if (index === -1) {
+    selectedContinents.value.push(continent);
+  } else {
+    selectedContinents.value.splice(index, 1);
+  }
+};
 </script>
 
 <template>
@@ -192,7 +196,7 @@ const stickyHeader = ref(false);
           v-for="col in tableHeaders"
           :key="col.key"
           :checked="!col.hidden"
-          @sl-change="() => toggleColumn(col)"
+          @change="() => toggleColumn(col)"
         >
           {{ col.title }}
         </nve-checkbox>
@@ -203,31 +207,28 @@ const stickyHeader = ref(false);
       <div class="toggles">
         <nve-checkbox
           :checked="tableBorder"
-          @sl-change="() => (tableBorder = !tableBorder)"
+          @change="() => (tableBorder = !tableBorder)"
         >
           Ramme rundt tabell
         </nve-checkbox>
         <nve-checkbox
           :checked="cellBorder"
-          @sl-change="() => (cellBorder = !cellBorder)"
+          @change="() => (cellBorder = !cellBorder)"
         >
           Ramme rundt hver celle
         </nve-checkbox>
-        <nve-checkbox
-          :checked="striped"
-          @sl-change="() => (striped = !striped)"
-        >
+        <nve-checkbox :checked="striped" @change="() => (striped = !striped)">
           Zebra-striper
         </nve-checkbox>
         <nve-checkbox
           :checked="hoverrow"
-          @sl-change="() => (hoverrow = !hoverrow)"
+          @change="() => (hoverrow = !hoverrow)"
         >
           Hover-effekt på rader
         </nve-checkbox>
         <nve-checkbox
           :checked="stickyHeader"
-          @sl-change="() => (stickyHeader = !stickyHeader)"
+          @change="() => (stickyHeader = !stickyHeader)"
         >
           Gjør header "sticky"
         </nve-checkbox>
@@ -262,13 +263,12 @@ const stickyHeader = ref(false);
                 :value="selectedContinents"
                 orientation="horizontal"
                 :[`selectedValues`]="selectedContinents"
-                ref="continents-checkbox-group"
-                @input="updateContinents"
               >
                 <nve-checkbox
                   v-for="cont of allContinents"
                   :key="cont"
                   :value="cont"
+                  @change="() => toggleContinent(cont)"
                 >
                   {{ cont }}
                 </nve-checkbox>

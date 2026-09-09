@@ -92,7 +92,7 @@ const isSupported = testInput.type === "month";
     <div class="info-section">
       <h2>Emits</h2>
       <p>
-        Sl-blur, change, input og update:modelValue events blir emittet ut fra
+        Blur, change, input og update:modelValue events blir emittet ut fra
         komponentet som kan brukes.
       </p>
     </div>
