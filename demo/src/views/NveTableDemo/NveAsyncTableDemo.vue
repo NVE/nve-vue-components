@@ -8,15 +8,9 @@ import type {
   SorterType,
   TableHeader,
 } from "../../../../src/components/NveTable/table.types";
-import {
-  NveButton,
-  NveCheckboxGroup,
-  NveCheckbox,
-  NveIcon,
-  NveAccordionItem,
-} from "nve-designsystem";
+import { NveCheckbox, NveAccordionItem } from "nve-designsystem";
 import countries from "../../components/countries.json";
-import { ref, type Ref, useTemplateRef } from "vue";
+import { ref, type Ref } from "vue";
 type Country = {
   name: string;
   governmentType: string;
@@ -136,12 +130,6 @@ const tableFilter = (
       );
     });
   }
-  data = data.filter((row) => {
-    // Russland, Tyrkia er i både Europa og Asia. Så litt avansert filtrering. De er som "Europe/Asia" og "Asia/Europe" i json-fila.
-    return selectedContinents.value.some((sc) =>
-      row.continent.split("/").includes(sc),
-    );
-  });
   return data;
 };
 
@@ -150,23 +138,6 @@ const prettyPrintNumber = (number: number): string => {
     notation: "standard",
     maximumFractionDigits: 2,
   }).format(number);
-};
-
-const filterOpen = ref(false);
-
-const allContinents = [
-  "Africa",
-  "Asia",
-  "Europe",
-  "North America",
-  "Oceania",
-  "South America",
-];
-const selectedContinents: Ref<Array<string>> = ref([...allContinents]);
-
-const continents = useTemplateRef("continents-checkbox-group");
-const updateContinents = () => {
-  selectedContinents.value = continents.value?.selectedValues ?? [];
 };
 
 const toggleColumn = (header: TableHeader<Country>) => {
@@ -186,6 +157,7 @@ const getData = (
   return new Promise((resolve) => {
     setTimeout(() => {
       const data = tableFilter(filterText, countries);
+
       if (sort) {
         const sortHeader = tableHeaders.value.find((h) => h.key === sort.field);
         if (sortHeader?.sort) {
@@ -217,7 +189,7 @@ const getData = (
           v-for="col in tableHeaders"
           :key="col.key"
           :checked="!col.hidden"
-          @sl-change="() => toggleColumn(col)"
+          @change="() => toggleColumn(col)"
         >
           {{ col.title }}
         </nve-checkbox>
@@ -233,36 +205,6 @@ const getData = (
       :initial-sort="{ field: 'name', direction: 'ASC' }"
       :item-id="(country: Country) => country.countryCode"
     >
-      <template #filterbutton>
-        <nve-button variant="ghost" @click="filterOpen = !filterOpen">
-          <nve-icon slot="start" name="filter_alt" />
-          Filtrer
-        </nve-button>
-      </template>
-      <template #subheader>
-        <Transition :duration="400" name="filter">
-          <div v-if="filterOpen" class="filter-wrapper">
-            <div class="filter">
-              <nve-checkbox-group
-                :value="selectedContinents"
-                orientation="horizontal"
-                :[`selectedValues`]="selectedContinents"
-                ref="continents-checkbox-group"
-                @input="updateContinents"
-              >
-                <nve-checkbox
-                  v-for="cont of allContinents"
-                  :key="cont"
-                  :value="cont"
-                >
-                  {{ cont }}
-                </nve-checkbox>
-              </nve-checkbox-group>
-            </div>
-          </div>
-        </Transition>
-      </template>
-
       <template #[`item.countryCode`]="row">
         <span class="country-code">
           <img

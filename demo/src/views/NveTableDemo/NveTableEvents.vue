@@ -13,7 +13,7 @@ import {
   NveIcon,
 } from "nve-designsystem";
 import countries from "../../components/countries.json";
-import { ref, type Ref, useTemplateRef } from "vue";
+import { ref, type Ref } from "vue";
 type Country = {
   name: string;
   governmentType: string;
@@ -161,11 +161,6 @@ const allContinents = [
 ];
 const selectedContinents: Ref<Array<string>> = ref([...allContinents]);
 
-const continents = useTemplateRef("continents-checkbox-group");
-const updateContinents = () => {
-  selectedContinents.value = continents.value?.selectedValues ?? [];
-};
-
 const eventLog = ref<Array<string>>([]);
 
 const eventsCalled = (eventName: string, value: any) => {
@@ -179,6 +174,15 @@ const eventsCalled = (eventName: string, value: any) => {
     eventLog.value.unshift(
       `${new Date().toLocaleTimeString()}: ${eventName} - ${value}`,
     );
+  }
+};
+
+const toggleContinent = (continent: string) => {
+  const index = selectedContinents.value.indexOf(continent);
+  if (index === -1) {
+    selectedContinents.value.push(continent);
+  } else {
+    selectedContinents.value.splice(index, 1);
   }
 };
 </script>
@@ -236,13 +240,12 @@ const eventsCalled = (eventName: string, value: any) => {
                 :value="selectedContinents"
                 orientation="horizontal"
                 :[`selectedValues`]="selectedContinents"
-                ref="continents-checkbox-group"
-                @input="updateContinents"
               >
                 <nve-checkbox
                   v-for="cont of allContinents"
                   :key="cont"
                   :value="cont"
+                  @change="() => toggleContinent(cont)"
                 >
                   {{ cont }}
                 </nve-checkbox>

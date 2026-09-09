@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { NveInput, NveOption, NveSelect } from "nve-designsystem";
+import { NveInput, NveCombobox } from "nve-designsystem";
 import { ref, watch } from "vue";
 
-const emit = defineEmits(["sl-blur", "change", "input", "update:modelValue"]);
+const emit = defineEmits(["blur", "change", "input", "update:modelValue"]);
 
 const props = withDefaults(
   defineProps<{
@@ -52,6 +52,11 @@ const monthOptions =
       ? norwegianMonths
       : norwegianMonths;
 
+const monthOptionsForCombobox = monthOptions.map((month, index) => ({
+  label: month,
+  value: (index + 1).toString().padStart(2, "0"),
+}));
+
 const monthLabel =
   props.labels === false
     ? ""
@@ -86,12 +91,12 @@ const selectedYear = ref(
 );
 
 const monthInput = (event: any) => {
-  selectedMonth.value = event.target.value;
+  selectedMonth.value = (event.target as NveCombobox).selectedValues?.[0];
   selectorsChange();
 };
 
 const yearInput = (event: any) => {
-  selectedYear.value = event.target.value;
+  selectedYear.value = (event.target as NveCombobox).selectedValues?.[0];
   selectorsChange();
 };
 
@@ -103,7 +108,7 @@ const selectorsChange = () => {
 };
 
 const selectorsBlur = (event: any) => {
-  emit("sl-blur", event);
+  emit("blur", event);
 };
 
 watch(
@@ -119,6 +124,14 @@ watch(
   },
   { immediate: true },
 );
+
+const yearOptionsForCombobox = Array.from({ length: 50 }, (_e, index) => {
+  const year = thisYear - 25 + index;
+  return {
+    label: year.toString(),
+    value: year.toString(),
+  };
+});
 </script>
 
 <template>
@@ -127,39 +140,27 @@ watch(
     v-bind="$attrs"
     :value="modelValue"
     type="month"
-    @sl-blur="(event: any) => emit('sl-blur', event)"
-    @sl-input="(event: any) => changeField(event)"
+    @blur="(event: any) => emit('blur', event)"
+    @input="(event: any) => changeField(event)"
   />
   <div v-if="!isSupported" v-bind="$attrs" class="selector-fields">
-    <nve-select
+    <nve-combobox
       :label="monthLabel"
-      :value="selectedMonth"
-      @sl-blur="selectorsBlur"
-      @sl-input="monthInput"
+      :selectedValues="[selectedMonth]"
+      :options="monthOptionsForCombobox"
+      @blur="selectorsBlur"
+      @change="monthInput"
     >
-      <nve-option
-        v-for="(month, index) in 12"
-        :key="index"
-        :value="month.toString().padStart(2, '0')"
-      >
-        {{ monthOptions[index] }}
-      </nve-option>
-    </nve-select>
+    </nve-combobox>
 
-    <nve-select
+    <nve-combobox
       :label="yearLabel"
-      :value="selectedYear"
-      @sl-blur="selectorsBlur"
-      @sl-input="yearInput"
+      :selectedValues="[selectedYear]"
+      :options="yearOptionsForCombobox"
+      @blur="selectorsBlur"
+      @change="yearInput"
     >
-      <nve-option
-        v-for="(_e, index) in 50"
-        :key="index"
-        :value="(thisYear - 25 + index).toString()"
-      >
-        {{ thisYear - 25 + index }}
-      </nve-option>
-    </nve-select>
+    </nve-combobox>
   </div>
 </template>
 
@@ -170,7 +171,7 @@ watch(
   gap: 0.5rem;
 }
 
-nve-select {
+nve-combobox {
   flex: 1;
 }
 </style>

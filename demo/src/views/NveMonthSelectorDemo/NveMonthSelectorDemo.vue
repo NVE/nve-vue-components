@@ -28,6 +28,7 @@ const isSupported = testInput.type === "month";
       <div v-if="!isSupported" class="demo-field">
         <p>Slik vil komponentet bli seendes ut i Firefox og Safari.</p>
         <NveMonthSelector v-model="input" />
+        <p>Valgt måned: {{ input }}</p>
       </div>
 
       <div v-if="isSupported" class="demo-field">
@@ -36,6 +37,7 @@ const isSupported = testInput.type === "month";
           som Chrome og Edge (med kalender velger).
         </p>
         <NveMonthSelector v-model="input" label="Dato" />
+        <p>Valgt måned: {{ input }}</p>
         <p>
           Under viser skjermdump på hvordan komponentet vil bli seendes ut i
           Firefox og Safari. Dersom du har tilgang til en av disse nettleserne
@@ -90,7 +92,7 @@ const isSupported = testInput.type === "month";
     <div class="info-section">
       <h2>Emits</h2>
       <p>
-        Sl-blur, change, input og update:modelValue events blir emittet ut fra
+        Blur, change, input og update:modelValue events blir emittet ut fra
         komponentet som kan brukes.
       </p>
     </div>
