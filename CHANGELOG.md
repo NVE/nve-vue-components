@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/NVE/nve-vue-components/compare/v2.2.0...v2.2.1) (2026-09-22)
+
+
+### Bug Fixes
+
+* Border-bottom også. ([#149](https://github.com/NVE/nve-vue-components/issues/149)) ([439586c](https://github.com/NVE/nve-vue-components/commit/439586c83f21ff2a80fd57b07bccb2eca43163e6))
+
 # [2.2.0](https://github.com/NVE/nve-vue-components/compare/v2.1.1...v2.2.0) (2026-09-09)
 
 
