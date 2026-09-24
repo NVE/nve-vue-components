@@ -85,7 +85,7 @@ testInput.type = "month";
 const isSupported = testInput.type === "month";
 
 const changeField = (event: any) => {
-  emit("update:modelValue", event.target.value);
+  emit("update:modelValue", event.target.value || undefined);
 };
 
 const thisYear = new Date().getFullYear();
