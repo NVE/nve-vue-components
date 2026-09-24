@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "nve-designsystem": "^5.3.3",
+    "nve-designsystem": "^5.3.8",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
   },
