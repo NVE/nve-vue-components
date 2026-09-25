@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { NveInput, NveCombobox } from "nve-designsystem";
-import { ref, watch } from "vue";
+import "nve-designsystem";
+import { computed, ref, useAttrs, watch } from "vue";
+
+import type {
+  NveSelectChangeDetail,
+  Option as ComboboxOption,
+} from "nve-designsystem/components/nve-combobox/nve-combobox.component.js";
 
 const emit = defineEmits(["blur", "change", "input", "update:modelValue"]);
+const attrs = useAttrs();
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string;
+    modelValue?: string | null;
     language?: "nb" | "nn" | "en";
     labels?: boolean;
   }>(),
@@ -52,10 +58,9 @@ const monthOptions =
       ? norwegianMonths
       : norwegianMonths;
 
-const monthOptionsForCombobox = monthOptions.map((month, index) => ({
-  label: month,
-  value: (index + 1).toString().padStart(2, "0"),
-}));
+const monthValues = monthOptions.map((_month, index) =>
+  (index + 1).toString().padStart(2, "0"),
+);
 
 const monthLabel =
   props.labels === false
@@ -81,29 +86,55 @@ testInput.type = "month";
 const isSupported = testInput.type === "month";
 
 const changeField = (event: any) => {
-  emit("update:modelValue", event.target.value);
+  emit("update:modelValue", event.target.value || undefined);
 };
 
 const thisYear = new Date().getFullYear();
-const selectedMonth = ref(props.modelValue?.split("-")?.[1] || "1");
-const selectedYear = ref(
-  props.modelValue?.split("-")?.[0] || thisYear.toString(),
+const selectedMonth = ref<string | undefined>(
+  props.modelValue?.split("-")?.[1],
+);
+const selectedYear = ref<string | undefined>(props.modelValue?.split("-")?.[0]);
+
+const monthOptionsForCombobox = computed<ComboboxOption[]>(() =>
+  monthOptions.map((month, index) => ({
+    label: month,
+    value: monthValues[index],
+  })),
 );
 
-const monthInput = (event: any) => {
-  selectedMonth.value = (event.target as NveCombobox).selectedValues?.[0];
+const getComboboxAttrs = (field: "month" | "year") => {
+  const sharedAttrs = Object.fromEntries(
+    Object.entries(attrs).filter(
+      ([attribute]) =>
+        attribute !== "id" &&
+        attribute !== "name" &&
+        !attribute.startsWith("aria-"),
+    ),
+  );
+
+  return {
+    ...sharedAttrs,
+    ...(attrs.id ? { id: `${attrs.id}-${field}` } : {}),
+    ...(attrs.name ? { name: `${attrs.name}-${field}` } : {}),
+  };
+};
+
+const monthChange = (event: CustomEvent<NveSelectChangeDetail>) => {
+  selectedMonth.value = event.detail.selectedValues[0];
   selectorsChange();
 };
 
-const yearInput = (event: any) => {
-  selectedYear.value = (event.target as NveCombobox).selectedValues?.[0];
+const yearChange = (event: CustomEvent<NveSelectChangeDetail>) => {
+  selectedYear.value = event.detail.selectedValues[0];
   selectorsChange();
 };
 
 const selectorsChange = () => {
-  if (selectedYear.value != null && selectedMonth.value != null) {
+  if (selectedYear.value && selectedMonth.value) {
     const value = `${selectedYear.value}-${selectedMonth.value}`;
     emit("update:modelValue", value);
+  } else {
+    emit("update:modelValue", undefined);
   }
 };
 
@@ -114,7 +145,11 @@ const selectorsBlur = (event: any) => {
 watch(
   () => props.modelValue,
   (value) => {
-    if (!value) return;
+    if (!value) {
+      selectedYear.value = undefined;
+      selectedMonth.value = undefined;
+      return;
+    }
 
     const [year, month] = value.split("-");
     if (year && month) {
@@ -125,13 +160,16 @@ watch(
   { immediate: true },
 );
 
-const yearOptionsForCombobox = Array.from({ length: 50 }, (_e, index) => {
-  const year = thisYear - 25 + index;
-  return {
-    label: year.toString(),
-    value: year.toString(),
-  };
-});
+const yearOptionsForCombobox = computed<ComboboxOption[]>(() =>
+  Array.from({ length: 50 }, (_e, index) => {
+    const year = (thisYear - 25 + index).toString();
+    return {
+      label: year,
+      value: year,
+      selected: year === selectedYear.value,
+    };
+  }),
+);
 </script>
 
 <template>
@@ -143,22 +181,24 @@ const yearOptionsForCombobox = Array.from({ length: 50 }, (_e, index) => {
     @blur="(event: any) => emit('blur', event)"
     @input="(event: any) => changeField(event)"
   />
-  <div v-if="!isSupported" v-bind="$attrs" class="selector-fields">
+  <div v-if="!isSupported" class="selector-fields">
     <nve-combobox
+      v-bind="getComboboxAttrs('month')"
       :label="monthLabel"
-      :selectedValues="[selectedMonth]"
       :options="monthOptionsForCombobox"
+      :[`selectedValues`]="selectedMonth ? [selectedMonth] : []"
       @blur="selectorsBlur"
-      @change="monthInput"
+      @change="monthChange"
     >
     </nve-combobox>
 
     <nve-combobox
+      v-bind="getComboboxAttrs('year')"
       :label="yearLabel"
-      :selectedValues="[selectedYear]"
       :options="yearOptionsForCombobox"
+      :[`selectedValues`]="selectedYear ? [selectedYear] : []"
       @blur="selectorsBlur"
-      @change="yearInput"
+      @change="yearChange"
     >
     </nve-combobox>
   </div>
