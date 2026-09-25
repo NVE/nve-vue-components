@@ -531,11 +531,16 @@ table {
     border: var(--border-width-default) solid
       var(--color-neutrals-border-subtle);
     & thead {
+      border-top-left-radius: var(--_br);
+      border-top-right-radius: var(--_br);
       & tr {
         border-top-left-radius: var(--_br);
         border-top-right-radius: var(--_br);
         & th:first-of-type {
           border-top-left-radius: var(--_br);
+          & button {
+            border-top-left-radius: var(--_br);
+          }
         }
         & th:last-of-type {
           border-top-right-radius: var(--_br);
@@ -543,6 +548,8 @@ table {
       }
     }
     & tbody {
+      border-bottom-left-radius: var(--_br);
+      border-bottom-right-radius: var(--_br);
       & tr:last-of-type {
         border-bottom-left-radius: var(--_br);
         border-bottom-right-radius: var(--_br);
