@@ -102,9 +102,8 @@ const monthOptionsForCombobox = computed<ComboboxOption[]>(() =>
   })),
 );
 
-// To prevent attribute duplication
-const comboboxAttrs = computed(() => {
-  return Object.fromEntries(
+const getComboboxAttrs = (field: "month" | "year") => {
+  const sharedAttrs = Object.fromEntries(
     Object.entries(attrs).filter(
       ([attribute]) =>
         attribute !== "id" &&
@@ -112,19 +111,13 @@ const comboboxAttrs = computed(() => {
         !attribute.startsWith("aria-"),
     ),
   );
-});
 
-const monthComboboxAttrs = computed(() => ({
-  ...comboboxAttrs.value,
-  ...(attrs.id ? { id: `${attrs.id}-month` } : {}),
-  ...(attrs.name ? { name: `${attrs.name}-month` } : {}),
-}));
-
-const yearComboboxAttrs = computed(() => ({
-  ...comboboxAttrs.value,
-  ...(attrs.id ? { id: `${attrs.id}-year` } : {}),
-  ...(attrs.name ? { name: `${attrs.name}-year` } : {}),
-}));
+  return {
+    ...sharedAttrs,
+    ...(attrs.id ? { id: `${attrs.id}-${field}` } : {}),
+    ...(attrs.name ? { name: `${attrs.name}-${field}` } : {}),
+  };
+};
 
 const monthChange = (event: CustomEvent<NveSelectChangeDetail>) => {
   selectedMonth.value = event.detail.selectedValues[0];
@@ -190,7 +183,7 @@ const yearOptionsForCombobox = computed<ComboboxOption[]>(() =>
   />
   <div v-if="!isSupported" class="selector-fields">
     <nve-combobox
-      v-bind="monthComboboxAttrs"
+      v-bind="getComboboxAttrs('month')"
       :label="monthLabel"
       :options="monthOptionsForCombobox"
       :[`selectedValues`]="selectedMonth ? [selectedMonth] : []"
@@ -200,7 +193,7 @@ const yearOptionsForCombobox = computed<ComboboxOption[]>(() =>
     </nve-combobox>
 
     <nve-combobox
-      v-bind="yearComboboxAttrs"
+      v-bind="getComboboxAttrs('year')"
       :label="yearLabel"
       :options="yearOptionsForCombobox"
       :[`selectedValues`]="selectedYear ? [selectedYear] : []"
