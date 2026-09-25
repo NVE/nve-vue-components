@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "nve-designsystem";
-import { computed, ref, watch } from "vue";
+import { computed, ref, useAttrs, watch } from "vue";
 
 import type {
   NveSelectChangeDetail,
@@ -8,6 +8,7 @@ import type {
 } from "nve-designsystem/components/nve-combobox/nve-combobox.component.js";
 
 const emit = defineEmits(["blur", "change", "input", "update:modelValue"]);
+const attrs = useAttrs();
 
 const props = withDefaults(
   defineProps<{
@@ -101,6 +102,30 @@ const monthOptionsForCombobox = computed<ComboboxOption[]>(() =>
   })),
 );
 
+// To prevent attribute duplication
+const comboboxAttrs = computed(() => {
+  return Object.fromEntries(
+    Object.entries(attrs).filter(
+      ([attribute]) =>
+        attribute !== "id" &&
+        attribute !== "name" &&
+        !attribute.startsWith("aria-"),
+    ),
+  );
+});
+
+const monthComboboxAttrs = computed(() => ({
+  ...comboboxAttrs.value,
+  ...(attrs.id ? { id: `${attrs.id}-month` } : {}),
+  ...(attrs.name ? { name: `${attrs.name}-month` } : {}),
+}));
+
+const yearComboboxAttrs = computed(() => ({
+  ...comboboxAttrs.value,
+  ...(attrs.id ? { id: `${attrs.id}-year` } : {}),
+  ...(attrs.name ? { name: `${attrs.name}-year` } : {}),
+}));
+
 const monthChange = (event: CustomEvent<NveSelectChangeDetail>) => {
   selectedMonth.value = event.detail.selectedValues[0];
   selectorsChange();
@@ -165,7 +190,7 @@ const yearOptionsForCombobox = computed<ComboboxOption[]>(() =>
   />
   <div v-if="!isSupported" class="selector-fields">
     <nve-combobox
-      v-bind="$attrs"
+      v-bind="monthComboboxAttrs"
       :label="monthLabel"
       :options="monthOptionsForCombobox"
       :[`selectedValues`]="selectedMonth ? [selectedMonth] : []"
@@ -175,7 +200,7 @@ const yearOptionsForCombobox = computed<ComboboxOption[]>(() =>
     </nve-combobox>
 
     <nve-combobox
-      v-bind="$attrs"
+      v-bind="yearComboboxAttrs"
       :label="yearLabel"
       :options="yearOptionsForCombobox"
       :[`selectedValues`]="selectedYear ? [selectedYear] : []"
